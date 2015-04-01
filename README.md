@@ -5,4 +5,5 @@ Ohtu miniprojekti
 
 
 https://waffle.io/Ohtu-bugfarm/miniprojekti
+
 http://ohtu.jamo.io/view/k2015-ohtu-miniprojektit/job/ohtu-bugfarm/
