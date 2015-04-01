@@ -4,7 +4,7 @@
 
 # miniprojekti
 
-### **Definition of done**: Vaatimus on suunniteltu, ohjelmoitu, testattu ja integroitu aiemmin toteuttujen toimintojen kanssa.
+### **Definition of done**: Vaatimus on suunniteltu, ohjelmoitu, testattu ja integroitu aiemmin toteutettujen toimintojen kanssa.
 
 **Product backlog:**
 https://waffle.io/Ohtu-bugfarm/miniprojekti
