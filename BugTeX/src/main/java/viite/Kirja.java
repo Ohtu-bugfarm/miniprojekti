@@ -27,6 +27,7 @@ public class Kirja implements Viite {
         this.vuosi = vuosi;
     }
 
+    @Override
     public int getID() {
         return this.id;
     }

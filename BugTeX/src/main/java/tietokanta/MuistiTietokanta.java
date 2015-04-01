@@ -27,7 +27,13 @@ public class MuistiTietokanta implements TietokantaRajapinta {
 
     @Override
     public Viite haeTunnuksella(int id) {
-        throw new UnsupportedOperationException("Ei toteutettu vielä");
+        for (Viite viite: this.viitteet) {
+            if (viite.getID() == id) {
+                return viite;
+            }
+        }
+        
+        return null;
     }
 
     @Override
