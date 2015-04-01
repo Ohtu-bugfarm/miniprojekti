@@ -1,4 +1,4 @@
-package alijonot.kayttoliittyma;
+package bugtex.kayttoliittyma;
 
 public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
 

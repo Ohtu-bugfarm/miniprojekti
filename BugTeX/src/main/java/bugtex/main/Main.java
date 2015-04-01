@@ -1,6 +1,6 @@
-package alijonot.main;
+package bugtex.main;
 
-import alijonot.kayttoliittyma.TekstiKayttoliittyma;
+import bugtex.kayttoliittyma.TekstiKayttoliittyma;
 
 public class Main 
 {
