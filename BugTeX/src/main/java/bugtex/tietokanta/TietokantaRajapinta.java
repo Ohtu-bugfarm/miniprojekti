@@ -1,6 +1,6 @@
-package tietokanta;
+package bugtex.tietokanta;
 
-import viite.Viite;
+import bugtex.viite.Viite;
 
 /**
  * Rajapinta viiteolioita säilövälle tietokannalle

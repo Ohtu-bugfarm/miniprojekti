@@ -1,11 +1,11 @@
-package tietokanta;
+package bugtex.tietokanta;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import viite.Kirja;
-import viite.Viite;
+import bugtex.viite.Kirja;
+import bugtex.viite.Viite;
 
 public class MuistiTietokantaTest {
     

@@ -1,4 +1,4 @@
-package viite;
+package bugtex.viite;
 
 /**
  * Kirjaviite

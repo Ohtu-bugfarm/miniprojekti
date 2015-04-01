@@ -1,5 +1,6 @@
-package viite;
+package bugtex.viite;
 
+import bugtex.viite.Kirja;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
