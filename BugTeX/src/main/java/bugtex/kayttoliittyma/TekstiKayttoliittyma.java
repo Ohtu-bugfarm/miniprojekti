@@ -1,13 +1,17 @@
 package bugtex.kayttoliittyma;
 
+import bugtex.komento.Komentotehdas;
+import bugtex.lukija.Syotteenlukija;
+
 public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
 
-    public TekstiKayttoliittyma() {
+    private Syotteenlukija lukija = new Syotteenlukija();
 
-    }
-
-    @Override
     public void run() {
-
+        Komentotehdas komennot = new Komentotehdas(lukija);
+        while (true) {
+            komennot.hae(lukija.lueRivi(">")).suorita();
+        }
     }
+
 }

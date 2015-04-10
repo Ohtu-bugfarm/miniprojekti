@@ -40,5 +40,11 @@ public class MuistiTietokanta implements TietokantaRajapinta {
     public boolean poistaTunnuksella(int id) {
         throw new UnsupportedOperationException("Ei toteutettu vielä");
     }
+
+    @Override
+    public List<Viite> annaViitteet() {
+        return this.viitteet;
+    }
+    
     
 }
