@@ -7,8 +7,7 @@ public class Kirja implements Viite {
 
     private final int id;
 
-    private String tekija, nimi, julkaisija;
-    private int vuosi;
+    private String tekija, nimi, julkaisija, vuosi;
 
     /**
      * Luo uuden Kirja olion
@@ -19,7 +18,7 @@ public class Kirja implements Viite {
      * @param julkaisija kirjan julkaisija
      * @param vuosi kirjan julkaisuvuosi
      */
-    public Kirja(int id, String tekija, String nimi, String julkaisija, int vuosi) {
+    public Kirja(int id, String tekija, String nimi, String julkaisija, String vuosi) {
         this.id = id;
         this.tekija = tekija;
         this.nimi = nimi;
@@ -56,11 +55,11 @@ public class Kirja implements Viite {
         this.julkaisija = julkaisija;
     }
 
-    public int getVuosi() {
+    public String getVuosi() {
         return vuosi;
     }
 
-    public void setVuosi(int vuosi) {
+    public void setVuosi(String vuosi) {
         this.vuosi = vuosi;
     }
     

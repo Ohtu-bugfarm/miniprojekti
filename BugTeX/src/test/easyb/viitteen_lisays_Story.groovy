@@ -2,7 +2,7 @@
 description 'Käyttäjä voi lisätä viitteen järjestelmään'
 
 scenario 'oikealla komennolla käyttäjä pääsee lisäämään viitteen', {
-    given 'annettu komento lisaa'
+    given 'annettu komento Lisaa'
     then 'käyttäjälle näytetään järjestelmän tuntemat viitetyypit'
     and 'käyttäjältä kysytään lisättävän viitteen tyyppi'
 }

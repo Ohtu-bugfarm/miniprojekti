@@ -15,7 +15,7 @@ public class MuistiTietokantaTest {
     @Before
     public void setUp() {      
         this.db = new MuistiTietokanta();
-        this.kirja = new Kirja(1, "Kirjailija", "Kirja", "Julkaisija", 2015);
+        this.kirja = new Kirja(1, "Kirjailija", "Kirja", "Julkaisija", "2015");
     }
 
     @Test

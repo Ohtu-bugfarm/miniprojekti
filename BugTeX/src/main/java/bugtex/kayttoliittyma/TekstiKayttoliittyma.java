@@ -5,7 +5,7 @@ import bugtex.lukija.Syotteenlukija;
 
 public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
 
-    private Syotteenlukija lukija = new Syotteenlukija();
+    private final Syotteenlukija lukija = new Syotteenlukija();
 
     public void run() {
         Komentotehdas komennot = new Komentotehdas(lukija);
