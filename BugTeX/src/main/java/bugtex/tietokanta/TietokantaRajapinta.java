@@ -1,6 +1,7 @@
 package bugtex.tietokanta;
 
 import bugtex.viite.Viite;
+import java.util.List;
 
 /**
  * Rajapinta viiteolioita säilövälle tietokannalle
@@ -32,4 +33,9 @@ public interface TietokantaRajapinta {
      */
     boolean poistaTunnuksella(int id);
     
+    /**
+     * Antaa listan viitteistä
+     * @return 
+     */
+    List<Viite> annaViitteet();
 }
