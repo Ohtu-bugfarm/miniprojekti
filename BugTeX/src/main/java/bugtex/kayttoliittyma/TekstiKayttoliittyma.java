@@ -2,8 +2,12 @@ package bugtex.kayttoliittyma;
 
 public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
 
-    public void run() {
-        
+    public TekstiKayttoliittyma() {
+
     }
-    
+
+    @Override
+    public void run() {
+
+    }
 }
