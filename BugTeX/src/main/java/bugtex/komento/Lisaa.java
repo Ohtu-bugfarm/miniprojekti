@@ -12,7 +12,7 @@ public class Lisaa implements Komento {
 
     @Override
     public void suorita() {
-        System.out.println("Lisattiin tyhma");
+        System.out.println("Lisättiin jotakin");
     }
 
 }

@@ -18,7 +18,6 @@ public class Komentotehdas {
     public Komento hae(String operaatio) {
         Komento komento = komennot.get(operaatio);
         if (komento == null) {
-            System.out.println("Ei ole olemassa");
             komento = komennot.get("Help");
         }
         return komento;

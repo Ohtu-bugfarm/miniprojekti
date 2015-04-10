@@ -12,6 +12,6 @@ public class Poista implements Komento {
 
     @Override
     public void suorita() {
-        System.out.println("Poistettiin tyhmä");
+        System.out.println("Poistettiin jotakin");
     }
 }
