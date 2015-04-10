@@ -11,8 +11,8 @@ public class Komentotehdas {
         this.komennot = new HashMap<String, Komento>();
         komennot.put("Lisaa", new Lisaa(lukija));
         komennot.put("Poista", new Poista(lukija));
-        komennot.put("Poistu", new Poistu(lukija));
-        komennot.put("Help", new Tuntemattomat(lukija));
+        komennot.put("Poistu", new Poistu());
+        komennot.put("Help", new Tuntemattomat());
     }
 
     public Komento hae(String operaatio) {
