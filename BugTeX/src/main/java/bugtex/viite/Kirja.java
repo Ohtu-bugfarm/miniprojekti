@@ -1,12 +1,16 @@
 package bugtex.viite;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * Kirjaviite
  */
 public class Kirja implements Viite {
 
+    private final static String tyyppi = "book";
+    
     private final int id;
-
     private String tekija, nimi, julkaisija, vuosi;
 
     /**
@@ -24,6 +28,11 @@ public class Kirja implements Viite {
         this.nimi = nimi;
         this.julkaisija = julkaisija;
         this.vuosi = vuosi;
+    }
+    
+    @Override
+    public String getTyyppi() {
+        return tyyppi;
     }
 
     @Override
@@ -70,6 +79,18 @@ public class Kirja implements Viite {
                 + "Nimi: "       + this.nimi       + "\n"
                 + "Julkaisija: " + this.julkaisija + "\n"
                 + "Vuosi: "      + this.vuosi      + "\n";
+    }
+
+    @Override
+    public Map<String, String> koodaus() {
+        Map<String, String> koodit = new TreeMap<String, String>();
+        
+        koodit.put("author", this.tekija);
+        koodit.put("title", this.nimi);
+        koodit.put("publisher", this.julkaisija);
+        koodit.put("year", this.vuosi);
+        
+        return koodit;
     }
 
 }
