@@ -16,7 +16,11 @@ private Lukija lukija;
         Komentotehdas komennot = new Komentotehdas(lukija);
         System.out.println("Tervetuloa käyttämään bugTexiä.");
         while (true) {
-            komennot.hae(lukija.lueRiviKysymyksella(">", "Anna komento")).suorita();
+            String syote = lukija.lueRiviKysymyksella(">", "Anna komento");
+            if (syote == "Poistu") {
+                break;
+            }
+            komennot.hae(syote).suorita();
         }
     }
 

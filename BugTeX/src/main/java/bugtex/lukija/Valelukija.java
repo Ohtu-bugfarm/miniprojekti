@@ -1,25 +1,36 @@
 
 package bugtex.lukija;
 
+import java.util.ArrayList;
+
 public class Valelukija implements Lukija {
 
-    String rivit[];
-    int i;
+    private String rivit[];
+    private int i;
+    private ArrayList<String> prints;
     
     public Valelukija(String... syotteet){
         this.rivit = syotteet;
-        i = 0;
+        prints = new ArrayList<String>();
     }
     
     @Override
     public String lueRivi(String etuTeksti) {
-       if (i < rivit.length){
+       print(etuTeksti);
+        if (i < rivit.length){
            return rivit[i++];
-       }else{        
+       }        
         return "";
        }
-    }
 
+     public ArrayList<String> getPrints() {
+        return prints;
+    }
+    
+      public void print(String toPrint) {
+        prints.add(toPrint);
+    }
+      
     @Override
     public String lueRiviKysymyksella(String etuTeksti, String kysymys) {
     return lueRivi(etuTeksti);
