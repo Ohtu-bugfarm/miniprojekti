@@ -1,5 +1,7 @@
 package bugtex.kayttoliittyma;
 
+import bugtex.lukija.Lukija;
+import bugtex.lukija.Valelukija;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -11,7 +13,8 @@ public class KayttoliittymaTest {
     
     @Before
     public void setUp() {
-        liittyma = new TekstiKayttoliittyma();
+        Lukija lukija = new Valelukija(); 
+        liittyma = new TekstiKayttoliittyma(lukija);
     }
     
     @Test

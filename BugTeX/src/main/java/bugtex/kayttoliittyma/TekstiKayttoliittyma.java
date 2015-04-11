@@ -1,11 +1,16 @@
 package bugtex.kayttoliittyma;
 
 import bugtex.komento.Komentotehdas;
+import bugtex.lukija.Lukija;
 import bugtex.lukija.Syotteenlukija;
 
 public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
-
-    private final Syotteenlukija lukija = new Syotteenlukija();
+private Lukija lukija;
+    
+    public TekstiKayttoliittyma(Lukija lukija){
+    this.lukija = lukija;
+}
+    
 
     public void run() {
         Komentotehdas komennot = new Komentotehdas(lukija);

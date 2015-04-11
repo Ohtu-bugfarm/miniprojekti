@@ -2,10 +2,11 @@ package bugtex.lukija;
 
 import java.util.Scanner;
 
-public class Syotteenlukija {
+public class Syotteenlukija implements Lukija {
 
     private Scanner lukija = new Scanner(System.in);
    
+    @Override
     public String lueRivi(String etuTeksti) {
         System.out.print(etuTeksti + " ");
         return lukija.nextLine();

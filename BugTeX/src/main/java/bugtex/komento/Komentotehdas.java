@@ -1,5 +1,6 @@
 package bugtex.komento;
 
+import bugtex.lukija.Lukija;
 import bugtex.lukija.Syotteenlukija;
 import java.util.HashMap;
 
@@ -7,7 +8,7 @@ public class Komentotehdas {
 
     private HashMap<String, Komento> komennot;
 
-    public Komentotehdas(Syotteenlukija lukija) {
+    public Komentotehdas(Lukija lukija) {
         this.komennot = new HashMap<String, Komento>();
         komennot.put("Lisaa", new Lisaa(lukija));
         komennot.put("Poista", new Poista(lukija));

@@ -1,12 +1,12 @@
 package bugtex.komento;
 
-import bugtex.lukija.Syotteenlukija;
+import bugtex.lukija.Lukija;
 
 public class Poista implements Komento {
 
-    private Syotteenlukija lukija;
+    private Lukija lukija;
 
-    public Poista(Syotteenlukija lukija) {
+    public Poista(Lukija lukija) {
         this.lukija = lukija;
     }
 
