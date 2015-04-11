@@ -34,4 +34,15 @@ public class MuistiTietokantaTest {
         assertNull(db.haeTunnuksella(2));
     }
     
+    @Test
+    public void antaaOikeanMaaranViitteitaKunViitteitaEiOle() {
+        assertEquals(0, db.annaViitteet().size());
+    }
+    
+    @Test
+    public void antaaOikeanMaaranViitteitaKunOnYksiViite() {
+        db.lisaa(kirja);
+        assertEquals(1, db.annaViitteet().size());
+    }
+    
 }

@@ -3,7 +3,6 @@ package bugtex.komento;
 import bugtex.idgen.Generaattori;
 import bugtex.idgen.IdGeneraattori;
 import bugtex.lukija.Lukija;
-import bugtex.tietokanta.MuistiTietokanta;
 import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Kirja;
 import bugtex.viite.Viite;
@@ -15,10 +14,10 @@ public class Lisaa implements Komento {
     private final TietokantaRajapinta db;
     private Viite viite;
 
-    public Lisaa(Lukija lukija) {
+    public Lisaa(Lukija lukija, TietokantaRajapinta db) {
         this.lukija = lukija;
+        this.db = db;
         this.idgen = new IdGeneraattori();
-        this.db = new MuistiTietokanta();
     }
 
     @Override

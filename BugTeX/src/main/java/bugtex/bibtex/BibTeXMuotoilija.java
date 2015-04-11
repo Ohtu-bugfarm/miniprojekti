@@ -1,4 +1,4 @@
-package bibtex;
+package bugtex.bibtex;
 
 import java.util.Map;
 
