@@ -1,7 +1,7 @@
 package bugtex.main;
 
 import bugtex.kayttoliittyma.TekstiKayttoliittyma;
-import bugtex.lukija.Syotteenlukija;
+import bugtex.IO.Syotteenlukija;
 import bugtex.tietokanta.MuistiTietokanta;
 import bugtex.tietokanta.TietokantaRajapinta;
 

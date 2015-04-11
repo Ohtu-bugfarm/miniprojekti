@@ -2,19 +2,19 @@ package bugtex.komento;
 
 import java.util.HashMap;
 
-import bugtex.lukija.Lukija;
+import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
 
 public class Komentotehdas {
 
     private HashMap<String, Komento> komennot;
 
-    public Komentotehdas(Lukija lukija, TietokantaRajapinta db) {
+    public Komentotehdas(IO io, TietokantaRajapinta db) {
         this.komennot = new HashMap<String, Komento>();
-        komennot.put("Lisaa", new Lisaa(lukija, db));
-        komennot.put("Poista", new Poista(lukija, db));
+        komennot.put("Lisaa", new Lisaa(io, db));
+        komennot.put("Poista", new Poista(io, db));
         komennot.put("Poistu", new Poistu());
-        komennot.put("Help", new Tuntemattomat());
+        komennot.put("Help", new Tuntemattomat(io));
     }
 
     public Komento hae(String operaatio) {

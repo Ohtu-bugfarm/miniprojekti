@@ -1,26 +1,31 @@
 package bugtex.kayttoliittyma;
 
 import bugtex.komento.Komentotehdas;
-import bugtex.lukija.Lukija;
+import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
+import java.util.NoSuchElementException;
 
 public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
 
-    private final Lukija lukija;
+    private final IO io;
     private final TietokantaRajapinta db;
     
-    public TekstiKayttoliittyma(Lukija lukija, TietokantaRajapinta db){
-        this.lukija = lukija;
+    public TekstiKayttoliittyma(IO io, TietokantaRajapinta db){
+        this.io = io;
         this.db = db;
     }
     
     @Override
     public void run() {
-        Komentotehdas komennot = new Komentotehdas(lukija, db);
-        System.out.println("Tervetuloa käyttämään bugTexiä.");
+        Komentotehdas komennot = new Komentotehdas(io, db);
+        io.tulostaRivi("Tervetuloa käyttämään bugTexiä.");
         
         while (true) {
-            komennot.hae(lukija.lueRiviKysymyksella(">", "Anna komento")).suorita();
+            try {
+                komennot.hae(io.lueRiviKysymyksella(">", "Anna komento")).suorita();
+            } catch (NoSuchElementException ex) {
+                break;
+            }
         }
     }
 

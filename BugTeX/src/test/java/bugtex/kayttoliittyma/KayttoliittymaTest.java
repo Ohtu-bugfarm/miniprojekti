@@ -1,7 +1,7 @@
 package bugtex.kayttoliittyma;
 
-import bugtex.lukija.Lukija;
-import bugtex.lukija.Valelukija;
+import bugtex.IO.IO;
+import bugtex.IO.Valelukija;
 import bugtex.tietokanta.MuistiTietokanta;
 import bugtex.tietokanta.TietokantaRajapinta;
 
@@ -16,7 +16,7 @@ public class KayttoliittymaTest {
     
     @Before
     public void setUp() {
-        Lukija lukija = new Valelukija(); 
+        IO lukija = new Valelukija(); 
         TietokantaRajapinta db = new MuistiTietokanta();
         liittyma = new TekstiKayttoliittyma(lukija, db);
     }
