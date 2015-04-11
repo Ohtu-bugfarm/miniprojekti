@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Syotteenlukija implements Lukija {
 
-    private Scanner lukija = new Scanner(System.in);
+    private final Scanner lukija = new Scanner(System.in);
    
     @Override
     public String lueRivi(String etuTeksti) {
@@ -12,6 +12,7 @@ public class Syotteenlukija implements Lukija {
         return lukija.nextLine();
     }
     
+    @Override
     public String lueRiviKysymyksella(String etuTeksti, String kysymys) {
         System.out.println(kysymys);
         System.out.print(etuTeksti + " ");

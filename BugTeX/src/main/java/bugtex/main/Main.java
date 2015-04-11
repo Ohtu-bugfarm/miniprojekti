@@ -3,15 +3,16 @@ package bugtex.main;
 import bugtex.kayttoliittyma.TekstiKayttoliittyma;
 import bugtex.lukija.Lukija;
 import bugtex.lukija.Syotteenlukija;
+import bugtex.tietokanta.MuistiTietokanta;
+import bugtex.tietokanta.TietokantaRajapinta;
 
 public class Main {
 
-    private static Lukija lukija;
-    private static TekstiKayttoliittyma UI;
+    private TekstiKayttoliittyma UI;
 
     public Main(Lukija lukija) {
-        this.lukija = lukija;
-        UI = new TekstiKayttoliittyma(lukija);
+        TietokantaRajapinta db = new MuistiTietokanta();
+        UI = new TekstiKayttoliittyma(lukija, db);
     }
 
     public void run() {
@@ -19,8 +20,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        lukija = new Syotteenlukija();
-        UI = new TekstiKayttoliittyma(lukija);
+        Syotteenlukija lukija = new Syotteenlukija();
+        TietokantaRajapinta db = new MuistiTietokanta();
+        TekstiKayttoliittyma UI = new TekstiKayttoliittyma(lukija, db);
         UI.run();
     }
 

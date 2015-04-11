@@ -1,17 +1,18 @@
 package bugtex.komento;
 
-import bugtex.lukija.Lukija;
-import bugtex.lukija.Syotteenlukija;
 import java.util.HashMap;
+
+import bugtex.lukija.Lukija;
+import bugtex.tietokanta.TietokantaRajapinta;
 
 public class Komentotehdas {
 
     private HashMap<String, Komento> komennot;
 
-    public Komentotehdas(Lukija lukija) {
+    public Komentotehdas(Lukija lukija, TietokantaRajapinta db) {
         this.komennot = new HashMap<String, Komento>();
-        komennot.put("Lisaa", new Lisaa(lukija));
-        komennot.put("Poista", new Poista(lukija));
+        komennot.put("Lisaa", new Lisaa(lukija, db));
+        komennot.put("Poista", new Poista(lukija, db));
         komennot.put("Help", new Tuntemattomat());
     }
 
