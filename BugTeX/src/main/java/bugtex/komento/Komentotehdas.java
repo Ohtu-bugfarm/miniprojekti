@@ -1,7 +1,6 @@
 package bugtex.komento;
 
 import bugtex.lukija.Lukija;
-import bugtex.lukija.Syotteenlukija;
 import java.util.HashMap;
 
 public class Komentotehdas {

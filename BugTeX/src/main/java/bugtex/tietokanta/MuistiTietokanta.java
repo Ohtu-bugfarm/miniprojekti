@@ -46,5 +46,4 @@ public class MuistiTietokanta implements TietokantaRajapinta {
         return this.viitteet;
     }
     
-    
 }

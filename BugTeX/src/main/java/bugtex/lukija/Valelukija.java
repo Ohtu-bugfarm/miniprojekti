@@ -15,14 +15,14 @@ public class Valelukija implements Lukija {
     public String lueRivi(String etuTeksti) {
        if (i < rivit.length){
            return rivit[i++];
-       }else{        
-        return "";
+       } else{        
+           return "";
        }
     }
 
     @Override
     public String lueRiviKysymyksella(String etuTeksti, String kysymys) {
-    return lueRivi(etuTeksti);
+        return lueRivi(etuTeksti);
     }
     
 }

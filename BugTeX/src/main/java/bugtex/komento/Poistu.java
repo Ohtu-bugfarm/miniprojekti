@@ -6,4 +6,5 @@ public class Poistu implements Komento {
     public void suorita() {
         System.exit(0);
     }
+    
 }
