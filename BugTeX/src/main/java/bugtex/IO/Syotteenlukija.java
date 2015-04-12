@@ -1,8 +1,8 @@
-package bugtex.lukija;
+package bugtex.IO;
 
 import java.util.Scanner;
 
-public class Syotteenlukija implements Lukija {
+public class Syotteenlukija implements IO {
 
     private final Scanner lukija = new Scanner(System.in);
    
@@ -17,6 +17,11 @@ public class Syotteenlukija implements Lukija {
         System.out.println(kysymys);
         System.out.print(etuTeksti + " ");
         return lukija.nextLine();
+    }
+
+    @Override
+    public void tulostaRivi(String teksti) {
+        System.out.println(teksti);
     }
 
 }

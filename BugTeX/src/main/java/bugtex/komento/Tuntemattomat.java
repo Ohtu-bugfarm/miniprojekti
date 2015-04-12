@@ -1,10 +1,18 @@
 package bugtex.komento;
 
+import bugtex.IO.IO;
+
 public class Tuntemattomat implements Komento {
 
+    private final IO io;
+    
+    public Tuntemattomat(IO io) {
+        this.io = io;
+    }
+    
     @Override
     public void suorita() {
-        System.out.println("Ohjelma tuntee komennot Lisaa, Poista, Poistu, Help");
+        io.tulostaRivi("Ohjelma tuntee komennot Lisaa, Poista, Poistu, Help");
     }
     
 }
