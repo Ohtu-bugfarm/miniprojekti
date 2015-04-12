@@ -1,7 +1,6 @@
 package bugtex.komento;
 
 import java.util.HashMap;
-
 import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
 

@@ -13,7 +13,6 @@ public class Valelukija implements Lukija {
         prints = new ArrayList<String>();
     }
 
-    @Override
     public String lueRivi(String etuTeksti) {
         print(etuTeksti);
         if (i < rivit.length) {
@@ -30,7 +29,6 @@ public class Valelukija implements Lukija {
         prints.add(toPrint);
     }
 
-    @Override
     public String lueRiviKysymyksella(String etuTeksti, String kysymys) {
         return lueRivi(etuTeksti);
     }
