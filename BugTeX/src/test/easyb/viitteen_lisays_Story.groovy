@@ -1,15 +1,16 @@
+import bugtex.idgen.*
+import bugtex.kayttoliittyma.*
+import bugtex.komento.*
+import bugtex.lukija.*
+import bugtex.tietokanta.*
+import bugtex.viite.*
 
 description 'Käyttäjä voi lisätä viitteen järjestelmään'
 
 scenario 'oikealla komennolla käyttäjä pääsee lisäämään viitteen', {
     given 'annettu komento Lisaa'
-    then 'käyttäjälle näytetään järjestelmän tuntemat viitetyypit'
-    and 'käyttäjältä kysytään lisättävän viitteen tyyppi'
-}
-
-scenario 'käyttäjältä kysytään viitteen tyypin mukaiset tiedot', {
-    given 'annettu hyväksyttävä viitetyyppi'
-    then 'käyttäjää pyydetään syöttämään viitteen tiedot'
+    then 'käyttäjältä kysytään syotettävät tiedot'
+    and 'käyttäjän syöttämien tietojen pohjalta luodaan viite'
 }
 
 scenario 'virheellisellä komennolla käyttäjälle listataan käytettävät komennot', {
