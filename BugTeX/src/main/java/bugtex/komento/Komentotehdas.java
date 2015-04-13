@@ -24,19 +24,13 @@ public class Komentotehdas {
         komennot.put(Lisaa.KOMENTO, new Lisaa(io, db));
         komennot.put(Poista.KOMENTO, new Poista(io, db));
         komennot.put(Tarkastele.KOMENTO, new Tarkastele(io, db));
+        komennot.put(TarkasteleBibtex.KOMENTO, new TarkasteleBibtex(io, db));
         komennot.put(Help.KOMENTO, new Help(io));
-        komennot.put(Poistu.KOMENTO, new Poistu());
         komennot.put(Listaa.KOMENTO, new Listaa(io, db));
-
     }
 
     private String luoOperaatio(String syote) {
-        syote = syote.toLowerCase();
-        String ekamerkki = "";
-        ekamerkki += syote.charAt(0);
-        ekamerkki = ekamerkki.toUpperCase();
-        syote = ekamerkki + syote.substring(1, syote.length());
-        return syote;
+        return Character.toUpperCase(syote.charAt(0)) + syote.substring(1);
     }
 
     /**
@@ -48,6 +42,7 @@ public class Komentotehdas {
     public Komento hae(String syote) {
         String operaatio = luoOperaatio(syote);
         Komento komento = komennot.get(operaatio);
+        
         if (komento == null) {
             komento = komennot.get("Help");
         }

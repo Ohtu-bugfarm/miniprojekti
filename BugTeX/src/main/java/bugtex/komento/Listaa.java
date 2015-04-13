@@ -5,8 +5,7 @@ import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Viite;
 import java.util.List;
 
-
-public class Listaa implements Komento{
+public class Listaa implements Komento {
     
     public final static String KOMENTO = "Listaa";
     
@@ -26,7 +25,6 @@ public class Listaa implements Komento{
 
     @Override
     public void suorita() {
-        
         List<Viite> tulostettava = db.annaViitteet();
         
         if (tulostettava.isEmpty()) {
