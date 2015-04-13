@@ -13,6 +13,7 @@ public class Komentotehdas {
 
         komennot.put("Lisaa", new Lisaa(io, db));
         komennot.put("Poista", new Poista(io, db));
+        komennot.put("Tarkastele", new Tarkastele(io, db));
         komennot.put("Poistu", new Poistu());
         komennot.put("Help", new Tuntemattomat(io));
 
