@@ -6,6 +6,8 @@ import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Kirja;
 import bugtex.viite.Viite;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Komento viitteen lisäämiselle
@@ -13,11 +15,10 @@ import bugtex.viite.Viite;
 public class Lisaa implements Komento {
 
     public final static String KOMENTO = "Lisaa";
-    
+
     private final IO io;
     private final Generaattori idgen;
     private final TietokantaRajapinta db;
-    private Viite viite;
 
     /**
      * Alustaa lisää-komennon
@@ -35,16 +36,20 @@ public class Lisaa implements Komento {
     public void suorita() {
         int id = idgen.getId();
         System.out.println(id);
+        Map<String, String> kyselyt = new TreeMap<>();
         String[] table = {"tekijä", "nimi", "julkaisija", "vuosi"};
-        for (int i = 0; i < table.length; ++i) {
-            table[i] = io.lueRiviKysymyksella(">", table[i]);
-            if (table[i].equalsIgnoreCase("keskeyta")) {
+        for (String kenttä : table) {
+            String vastaus = io.lueRiviKysymyksella(">", kenttä);
+            if (vastaus.equalsIgnoreCase("keskeytä")) {
                 io.tulostaRivi("Keskeytettiin lisäys");
                 return;
             }
-        }
-        
-        viite = new Kirja(id, table[0], table[1], table[2], table[3]);
+            kyselyt.put(kenttä, vastaus);
+        }       
+       
+
+        Viite viite = new Kirja(id, kyselyt.get("tekijä"), kyselyt.get("nimi"),
+                          kyselyt.get("julkaisija"), kyselyt.get("vuosi"));
         if (db.lisaa(viite)) {
             io.tulostaRivi("Kirjan lisäys onnistui");
             io.tulostaRivi("Kirjan id on: " + id);
@@ -52,7 +57,7 @@ public class Lisaa implements Komento {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
     }
-    
+
     @Override
     public String toString() {
         return KOMENTO;
