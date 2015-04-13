@@ -19,7 +19,7 @@ public class Lisaa implements Komento {
 
     /**
      * Alustaa lisää-komennon
-     * 
+     *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka
      */
@@ -32,12 +32,18 @@ public class Lisaa implements Komento {
     @Override
     public void suorita() {
         int id = idgen.getId();
-        String tekija = io.lueRiviKysymyksella(">", "tekijä?");
-        String nimi = io.lueRiviKysymyksella(">", "nimi?");
-        String julkaisija = io.lueRiviKysymyksella(">", "julkaisija?");
-        String vuosi = io.lueRiviKysymyksella(">", "vuosi?");
-
-        viite = new Kirja(id, tekija, nimi, julkaisija, vuosi);
+        int i = 0;
+        System.out.println(id);
+        String[] table = {"tekijä", "nimi", "julkaisija", "vuosi"};
+        while (table.length > i) {
+            table[i] = io.lueRiviKysymyksella(">", table[i]);
+            if (table[i].equalsIgnoreCase("keskeyta")) {
+                io.tulostaRivi("Keskeytettiin lisäys");
+                return;
+            }
+            i++;
+        }
+        viite = new Kirja(id, table[0], table[1], table[2], table[3]);
         if (db.lisaa(viite)) {
             io.tulostaRivi("Kirjan lisäys onnistui");
             io.tulostaRivi("Kirjan id on: " + id);
@@ -45,5 +51,4 @@ public class Lisaa implements Komento {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
     }
-
 }
