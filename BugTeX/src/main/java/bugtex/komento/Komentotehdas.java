@@ -14,7 +14,7 @@ public class Komentotehdas {
 
     /**
      * Alustaa komentotehtaan
-     * 
+     *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka
      */
@@ -28,19 +28,28 @@ public class Komentotehdas {
         komennot.put("Help", new Help(io));
     }
 
+    private String luoOperaatio(String syote) {
+        syote = syote.toLowerCase();
+        String ekamerkki = "";
+        ekamerkki += syote.charAt(0);
+        ekamerkki = ekamerkki.toUpperCase();
+        syote = ekamerkki + syote.substring(1, syote.length());
+        return syote;
+    }
+
     /**
      * Hae komennon nimeä vastaava komentoluokka
-     * 
-     * @param operaatio komennon nimi
+     *
+     * @param syote komennon nimi
      * @return komentoa vastaava luokka
      */
-    public Komento hae(String operaatio) {
+    public Komento hae(String syote) {
+        String operaatio = luoOperaatio(syote);
         Komento komento = komennot.get(operaatio);
-        
         if (komento == null) {
             komento = komennot.get("Help");
         }
-        
+
         return komento;
     }
 
