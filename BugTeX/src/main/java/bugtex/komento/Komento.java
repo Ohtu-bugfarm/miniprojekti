@@ -9,5 +9,5 @@ public interface Komento {
      * Aja komento
      */
     public void suorita();
-    
+        
 }

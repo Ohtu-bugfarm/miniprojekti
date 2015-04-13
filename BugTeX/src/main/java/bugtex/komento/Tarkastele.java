@@ -9,6 +9,8 @@ import bugtex.viite.Viite;
  */
 public class Tarkastele implements Komento {
 
+    public final static String KOMENTO = "Tarkastele";
+    
     private final IO io;
     private final TietokantaRajapinta db;
 
@@ -35,6 +37,11 @@ public class Tarkastele implements Komento {
             io.tulostaRivi(tarkasteltava.toString());
             
         }
+    }
+        
+    @Override
+    public String toString() {
+        return KOMENTO;
     }
 
 }

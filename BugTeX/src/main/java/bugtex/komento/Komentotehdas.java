@@ -21,11 +21,10 @@ public class Komentotehdas {
     public Komentotehdas(IO io, TietokantaRajapinta db) {
         this.komennot = new HashMap<String, Komento>();
 
-        komennot.put("Lisaa", new Lisaa(io, db));
-        komennot.put("Poista", new Poista(io, db));
-        komennot.put("Tarkastele", new Tarkastele(io, db));
-        komennot.put("Poistu", new Poistu());
-        komennot.put("Help", new Help(io));
+        komennot.put(Lisaa.KOMENTO, new Lisaa(io, db));
+        komennot.put(Poista.KOMENTO, new Poista(io, db));
+        komennot.put(Tarkastele.KOMENTO, new Tarkastele(io, db));
+        komennot.put(Help.KOMENTO, new Help(io));
     }
 
     /**

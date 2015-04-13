@@ -12,6 +12,8 @@ import bugtex.viite.Viite;
  */
 public class Lisaa implements Komento {
 
+    public final static String KOMENTO = "Lisaa";
+    
     private final IO io;
     private final Generaattori idgen;
     private final TietokantaRajapinta db;
@@ -44,6 +46,11 @@ public class Lisaa implements Komento {
         } else {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
+    }
+    
+    @Override
+    public String toString() {
+        return KOMENTO;
     }
 
 }

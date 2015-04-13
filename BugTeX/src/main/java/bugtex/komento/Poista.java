@@ -8,6 +8,8 @@ import bugtex.tietokanta.TietokantaRajapinta;
  */
 public class Poista implements Komento {
 
+    public final static String KOMENTO = "Poista";
+    
     private final IO io;
     private final TietokantaRajapinta db;
 
@@ -25,6 +27,11 @@ public class Poista implements Komento {
     @Override
     public void suorita() {
         io.tulostaRivi("Poistettiin jotakin");
+    }
+        
+    @Override
+    public String toString() {
+        return KOMENTO;
     }
     
 }
