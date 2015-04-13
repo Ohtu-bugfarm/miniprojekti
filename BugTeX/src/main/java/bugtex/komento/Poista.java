@@ -3,11 +3,20 @@ package bugtex.komento;
 import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
 
+/**
+ * Komento viitteen poistamiselle
+ */
 public class Poista implements Komento {
 
     private final IO io;
     private final TietokantaRajapinta db;
 
+    /**
+     * Alustaa poista-komennon
+     * 
+     * @param io Käytettävä IO-luokka
+     * @param db Käytettävä tietokanta-luokka
+     */
     public Poista(IO io, TietokantaRajapinta db) {
         this.io = io;
         this.db = db;

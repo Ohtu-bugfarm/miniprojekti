@@ -2,11 +2,19 @@ package bugtex.komento;
 
 import bugtex.IO.IO;
 
-public class Tuntemattomat implements Komento {
+/**
+ * Aputekstin näyttävä komento 
+ */
+public class Help implements Komento {
 
     private final IO io;
     
-    public Tuntemattomat(IO io) {
+    /**
+     * Alustaa Help-komennon 
+     * 
+     * @param io Käytettävä IO-luokka
+     */
+    public Help(IO io) {
         this.io = io;
     }
     

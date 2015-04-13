@@ -4,12 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * Testaamista helpottava luokka, joka lukee parametreina annettuja syötteitä
+ */
 public class Valelukija implements IO {
 
     List<String> tulostukset;
     String rivit[];
     int i;
     
+    /**
+     * Alustaa valelukijan
+     * 
+     * @param syotteet lista syötteistä, jotka valelukija myöhemmin lukee
+     */
     public Valelukija(String... syotteet){
         this.tulostukset = new ArrayList<String>();
         this.rivit = syotteet;
@@ -20,7 +28,7 @@ public class Valelukija implements IO {
     public String lueRivi(String etuTeksti) {
        if (i < rivit.length){
            return rivit[i++];
-       } else{        
+       } else {        
            throw new NoSuchElementException();
        }
     }

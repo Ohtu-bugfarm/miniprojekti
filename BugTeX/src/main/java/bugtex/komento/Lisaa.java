@@ -7,6 +7,9 @@ import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Kirja;
 import bugtex.viite.Viite;
 
+/**
+ * Komento viitteen lisäämiselle
+ */
 public class Lisaa implements Komento {
 
     private final IO io;
@@ -14,6 +17,12 @@ public class Lisaa implements Komento {
     private final TietokantaRajapinta db;
     private Viite viite;
 
+    /**
+     * Alustaa lisää-komennon
+     * 
+     * @param io Käytettävä IO-luokka
+     * @param db Käytettävä tietokanta-luokka
+     */
     public Lisaa(IO io, TietokantaRajapinta db) {
         this.io = io;
         this.db = db;

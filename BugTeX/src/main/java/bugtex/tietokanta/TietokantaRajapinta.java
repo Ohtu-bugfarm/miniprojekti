@@ -39,4 +39,5 @@ public interface TietokantaRajapinta {
      * @return lista viitteistä
      */
     List<Viite> annaViitteet();
+    
 }

@@ -2,6 +2,9 @@ package bugtex.IO;
 
 import java.util.Scanner;
 
+/**
+ * Luokka standardisyötteen lukemiseen
+ */
 public class Syotteenlukija implements IO {
 
     private final Scanner lukija = new Scanner(System.in);
@@ -15,8 +18,7 @@ public class Syotteenlukija implements IO {
     @Override
     public String lueRiviKysymyksella(String etuTeksti, String kysymys) {
         System.out.println(kysymys);
-        System.out.print(etuTeksti + " ");
-        return lukija.nextLine();
+        return lueRivi(etuTeksti);
     }
 
     @Override
