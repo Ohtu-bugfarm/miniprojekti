@@ -33,7 +33,7 @@ scenario 'virheellisellä komennolla käyttäjälle listataan käytettävät kom
     }
     
     then 'käyttäjälle näytetään lista käytössä olevista komennoista', {
-        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot Lisaa, Poista, Poistu, Help")
+        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot Lisaa, Poista, Tarkastele, Poistu, Help")
     }
 }
 
