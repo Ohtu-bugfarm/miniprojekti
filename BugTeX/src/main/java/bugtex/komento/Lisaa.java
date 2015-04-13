@@ -35,18 +35,16 @@ public class Lisaa implements Komento {
     @Override
     public void suorita() {
         int id = idgen.getId();
-        System.out.println(id);
         Map<String, String> kyselyt = new TreeMap<>();
         String[] table = {"tekijä", "nimi", "julkaisija", "vuosi"};
         for (String kenttä : table) {
             String vastaus = io.lueRiviKysymyksella(">", kenttä);
-            if (vastaus.equalsIgnoreCase("keskeytä")) {
+            if (vastaus.equalsIgnoreCase("keskeyta")) {
                 io.tulostaRivi("Keskeytettiin lisäys");
                 return;
             }
             kyselyt.put(kenttä, vastaus);
         }       
-       
 
         Viite viite = new Kirja(id, kyselyt.get("tekijä"), kyselyt.get("nimi"),
                           kyselyt.get("julkaisija"), kyselyt.get("vuosi"));
