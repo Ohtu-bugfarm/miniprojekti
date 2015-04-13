@@ -31,6 +31,7 @@ public class Lisaa implements Komento {
         viite = new Kirja(id, tekija, nimi, julkaisija, vuosi);
         if (db.lisaa(viite)) {
             io.tulostaRivi("Kirjan lisäys onnistui");
+            io.tulostaRivi("Kirjan id on: " + id);
         } else {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
