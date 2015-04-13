@@ -21,7 +21,23 @@ scenario 'oikealla komennolla käyttäjä pääsee lisäämään viitteen', {
     }
 }
 
-scenario 'virheellisellä komennolla käyttäjälle listataan käytettävät komennot', {
+scenario 'kirjaa ei lisätä jos käyttäjä keskeyttää toiminnon', {
+    given 'käyttäjä keskeyttää toiminnan kesken lisäyksen', {
+        db = new MuistiTietokanta()
+        lukija = new Valelukija("Lisaa", "Tekija", "Keskeyta")
+        ui = new TekstiKayttoliittyma(lukija, db)
+    }
+    
+    when 'toiminta keskeytetään', {
+        ui.run()
+    }
+    
+    then 'kirjan lisäys ei onnistu', {
+        lukija.getTulostukset().shouldNotHave("Kirjan lisäys onnistui")
+    }
+}
+
+scenario 'virheellisellä komennolla käyttäjälle listataan mahdolliset komennot', {
     given 'käyttäjä antaa komennon jota järjestelmä ei tunne', {
         db = new MuistiTietokanta()
         lukija = new Valelukija("Foo")
@@ -36,6 +52,3 @@ scenario 'virheellisellä komennolla käyttäjälle listataan käytettävät kom
         lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot Lisaa, Poista, Tarkastele, Bibtex, Listaa, Poistu, Help")
     }
 }
-
-
-
