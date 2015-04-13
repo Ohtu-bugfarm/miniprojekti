@@ -33,7 +33,7 @@ public class Komentotehdas {
         if (syote.length()==0){
             return "";
         }
-        return Character.toUpperCase(syote.charAt(0)) + syote.substring(1);
+        return (Character.toUpperCase(syote.charAt(0)) + syote.substring(1).toLowerCase());
     }
 
     /**
