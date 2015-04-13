@@ -30,6 +30,9 @@ public class Komentotehdas {
     }
 
     private String luoOperaatio(String syote) {
+        if (syote.length()==0){
+            return "";
+        }
         return Character.toUpperCase(syote.charAt(0)) + syote.substring(1);
     }
 
