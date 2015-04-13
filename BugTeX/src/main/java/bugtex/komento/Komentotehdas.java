@@ -26,6 +26,7 @@ public class Komentotehdas {
         komennot.put(Tarkastele.KOMENTO, new Tarkastele(io, db));
         komennot.put(TarkasteleBibtex.KOMENTO, new TarkasteleBibtex(io, db));
         komennot.put(Help.KOMENTO, new Help(io));
+        komennot.put(Listaa.KOMENTO, new Listaa(io, db));
     }
 
     private String luoOperaatio(String syote) {
