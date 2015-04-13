@@ -34,7 +34,6 @@ public class Lisaa implements Komento {
     @Override
     public void suorita() {
         int id = idgen.getId();
-        System.out.println(id);
         String[] table = {"tekijä", "nimi", "julkaisija", "vuosi"};
         for (int i = 0; i < table.length; ++i) {
             table[i] = io.lueRiviKysymyksella(">", table[i]);

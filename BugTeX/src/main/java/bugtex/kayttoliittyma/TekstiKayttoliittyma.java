@@ -31,16 +31,18 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
         io.tulostaRivi("Tervetuloa käyttämään bugTexiä.");
 
         while (true) {
-            String rivi = io.lueRiviKysymyksella(">", "Anna komento");
+            String rivi;
+            try {
+                rivi = io.lueRiviKysymyksella(">", "Anna komento");
+            } catch (NoSuchElementException ex) {
+                break;
+            }
+            
             if (rivi.equalsIgnoreCase("poistu")) {
                 break;
             }
             
-            try {
-                komennot.hae(rivi).suorita();
-            } catch (NoSuchElementException ex) {
-                break;
-            }
+            komennot.hae(rivi).suorita();
         }
     }
 

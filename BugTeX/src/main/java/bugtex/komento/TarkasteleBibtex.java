@@ -36,7 +36,6 @@ public class TarkasteleBibtex implements Komento {
             io.tulostaRivi("Hakemaasi viitettä ei löytynyt!");
         } else {
             io.tulostaRivi(BibTeXMuotoilija.muotoile(tarkasteltava));
-            
         }
     }
         

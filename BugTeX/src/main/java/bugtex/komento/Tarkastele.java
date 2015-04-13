@@ -35,7 +35,6 @@ public class Tarkastele implements Komento {
             io.tulostaRivi("Hakemaasi viitettä ei löytynyt!");
         } else {
             io.tulostaRivi(tarkasteltava.toString());
-            
         }
     }
         
