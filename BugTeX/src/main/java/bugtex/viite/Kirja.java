@@ -1,12 +1,13 @@
 package bugtex.viite;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
 /**
  * Kirjaviite
  */
-public class Kirja implements Viite {
+public class Kirja implements Viite, Serializable {
 
     private final static String tyyppi = "book";
     
