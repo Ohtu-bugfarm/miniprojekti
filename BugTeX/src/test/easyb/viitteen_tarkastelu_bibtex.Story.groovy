@@ -3,12 +3,12 @@ import bugtex.kayttoliittyma.*;
 import bugtex.tietokanta.*;
 import bugtex.IO.*;
 
-description 'Käyttäjä voi tarkastella lisättyä viitettä järjestelmässä'
+description 'Käyttäjä voi tarkastella lisättyä viitettä BibTeX-muodossa'
 
-scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä', {
-    given 'annettu komento Tarkastele viitteen lisäyksen jälkeen', {
+scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä BibTeX-muodossa', {
+    given 'annettu komento Bibtex viitteen lisäyksen jälkeen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("Lisaa", "Tekija", "Nimi", "Julkaisija", "Vuosi", "Tarkastele", "1")
+        lukija = new Valelukija("Lisaa", "Tekija1", "Nimi", "Julkaisija", "Vuosi", "Bibtex", "1")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -17,16 +17,14 @@ scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä', {
     }
 
     then 'viitteen tiedot tulostuvat käyttäjän tarkasteltavaksi', {
-        lukija.getTulostukset().shouldHave("Tunnus: 1" + "\n" + "Tekijä: Tekija" + "\n" +
-                                           "Nimi: Nimi" + "\n" + "Julkaisija: Julkaisija" + "\n" +
-                                           "Vuosi: Vuosi" + "\n")
+        lukija.getTulostukset().shouldHave("author = {Tekija1},")
     }
 }
 
 scenario 'väärällä id:llä tarkastelu tuottaa virheilmoituksen', {
     given 'annettu komento Tarkastele id:llä jota ei ole olemassa', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("Tarkastele", "3")
+        lukija = new Valelukija("Bibtex", "3")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
