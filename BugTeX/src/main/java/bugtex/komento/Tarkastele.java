@@ -10,13 +10,13 @@ import bugtex.viite.Viite;
 public class Tarkastele implements Komento {
 
     public final static String KOMENTO = "Tarkastele";
-    
+
     private final IO io;
     private final TietokantaRajapinta db;
 
     /**
      * Alustaa tarkastele-komennon
-     * 
+     *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka
      */
@@ -27,17 +27,15 @@ public class Tarkastele implements Komento {
 
     @Override
     public void suorita() {
-        String id = io.lueRiviKysymyksella(">", "viitteen id?");
-
-        Viite tarkasteltava = db.haeTunnuksella(Integer.parseInt(id));
-
+        int tunnus = io.lueNumeroKysymyksella(">", "viitteen id?");
+        Viite tarkasteltava = db.haeTunnuksella(tunnus);
         if (tarkasteltava == null) {
             io.tulostaRivi("Hakemaasi viitettä ei löytynyt!");
         } else {
             io.tulostaRivi(tarkasteltava.toString());
         }
     }
-        
+
     @Override
     public String toString() {
         return KOMENTO;

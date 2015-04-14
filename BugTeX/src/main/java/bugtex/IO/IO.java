@@ -22,6 +22,8 @@ public interface IO {
      */
     String lueRiviKysymyksella(String etuTeksti, String kysymys);
     
+    int lueNumeroKysymyksella(String etuTeksti, String kysymys);
+    
     /**
      * Tulosta rivi rivivaihdolla
      * 

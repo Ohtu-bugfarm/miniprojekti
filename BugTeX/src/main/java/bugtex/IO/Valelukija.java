@@ -46,5 +46,10 @@ public class Valelukija implements IO {
     public List<String> getTulostukset() {
         return this.tulostukset;
     }
+
+    @Override
+    public int lueNumeroKysymyksella(String etuTeksti, String kysymys) {
+       return Integer.parseInt(lueRivi(etuTeksti));
+    }
     
 }

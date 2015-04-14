@@ -20,6 +20,22 @@ public class Syotteenlukija implements IO {
         System.out.println(kysymys);
         return lueRivi(etuTeksti);
     }
+    
+    @Override
+    public int lueNumeroKysymyksella(String etuTeksti, String kysymys) {
+    boolean luetaan = true;
+        int numero = 0;
+        while (luetaan) {
+            String id = lueRiviKysymyksella(etuTeksti,kysymys);
+            try {
+                numero = Integer.parseInt(id);
+                luetaan = false;
+            } catch (NumberFormatException e) {
+                tulostaRivi("et antanut numeroa");
+            }
+        }
+        return numero;
+    }
 
     @Override
     public void tulostaRivi(String teksti) {

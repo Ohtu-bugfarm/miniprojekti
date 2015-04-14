@@ -28,10 +28,8 @@ public class TarkasteleBibtex implements Komento {
 
     @Override
     public void suorita() {
-        String id = io.lueRiviKysymyksella(">", "viitteen id?");
-
-        Viite tarkasteltava = db.haeTunnuksella(Integer.parseInt(id));
-
+        int tunnus = io.lueNumeroKysymyksella(">", "viitteen id?");
+        Viite tarkasteltava = db.haeTunnuksella(tunnus);
         if (tarkasteltava == null) {
             io.tulostaRivi("Hakemaasi viitettä ei löytynyt!");
         } else {
