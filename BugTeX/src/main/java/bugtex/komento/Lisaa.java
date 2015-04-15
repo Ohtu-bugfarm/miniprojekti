@@ -4,8 +4,8 @@ import bugtex.idgen.Generaattori;
 import bugtex.idgen.IdGeneraattori;
 import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
-import bugtex.viite.Kirja;
-import bugtex.viite.Viite;
+import bugtex.viite.*;
+
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -91,7 +91,13 @@ public class Lisaa implements Komento {
     }
     
     private Viite lisaaArtikkeli() {
-        return null;
+        Map<String, String> kyselyt = kysyKentat(Artikkeli.getKentat());
+        if (kyselyt == null) {
+            return null;
+        }
+        
+        int id = idgen.getId();
+        return new Artikkeli(id, kyselyt);
     }
 
     @Override

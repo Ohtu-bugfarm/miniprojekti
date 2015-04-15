@@ -4,43 +4,45 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Kirjaviite
+ * Artikkeliviite
  */
-public class Kirja implements Viite {
+public class Artikkeli implements Viite {
 
-    private final static String tyyppi = "book";
+    private final static String tyyppi = "article";
     
     private final int id;
     private final Map<String, String> kyselyt;
     
     private final static String[] kentat
-            = {"tekijä", "nimi", "julkaisija", "vuosi"};
+            = {"tekijä", "nimi", "lehti", "vuosi", "nide"};
 
     /**
-     * Luo uuden Kirja olion
+     * Luo uuden Artikkeli olion
      * 
      * @param id viitteen tunnus
-     * @param tekija kirjan tekijä(t)
-     * @param nimi kirjan nimi
-     * @param julkaisija kirjan julkaisija
-     * @param vuosi kirjan julkaisuvuosi
+     * @param tekija artikkelin tekijä(t)
+     * @param nimi artikkelin nimi
+     * @param lehti lehti, jossa artikkeli julkaistu
+     * @param vuosi artikkelin julkaisuvuosi
+     * @param nide artikkelin nide
      */
-    public Kirja(int id, String tekija, String nimi, String julkaisija, String vuosi) {
+    public Artikkeli(int id, String tekija, String nimi, String lehti, String vuosi, String nide) {
         this.id = id;
         this.kyselyt = new TreeMap<String, String>();
         
         this.kyselyt.put("tekijä", tekija);
         this.kyselyt.put("nimi", nimi);
-        this.kyselyt.put("julkaisija", julkaisija);
+        this.kyselyt.put("lehti", lehti);
         this.kyselyt.put("vuosi", vuosi);
+        this.kyselyt.put("nide", nide);
     }
     
     /**
-     * Luo uuden Kirja olion
+     * Luo uuden Artikkeli olion
      * 
      * @param id viitteen tunnus
      */
-    public Kirja(int id, Map<String, String> kyselyt) {
+    public Artikkeli(int id, Map<String, String> kyselyt) {
         this.id = id;
         this.kyselyt = kyselyt;
     }
@@ -75,12 +77,12 @@ public class Kirja implements Viite {
         kyselyt.put("nimi", nimi);
     }
 
-    public String getJulkaisija() {
-        return kyselyt.get("julkaisija");
+    public String getLehti() {
+        return kyselyt.get("lehti");
     }
 
-    public void setJulkaisija(String julkaisija) {
-        kyselyt.put("julkaisija", julkaisija);
+    public void setLehti(String julkaisija) {
+        kyselyt.put("lehti", julkaisija);
     }
 
     public String getVuosi() {
@@ -89,6 +91,14 @@ public class Kirja implements Viite {
 
     public void setVuosi(String vuosi) {
         kyselyt.put("vuosi", vuosi);
+    }
+    
+    public String getNide() {
+        return kyselyt.get("nide");
+    }
+    
+    public void setNide(String nide) {
+        kyselyt.put("nide", nide);
     }
     
     @Override
@@ -109,8 +119,9 @@ public class Kirja implements Viite {
         
         koodit.put("author", kyselyt.get("tekijä"));
         koodit.put("title", kyselyt.get("nimi"));
-        koodit.put("publisher", kyselyt.get("julkaisija"));
+        koodit.put("journal", kyselyt.get("lehti"));
         koodit.put("year", kyselyt.get("vuosi"));
+        koodit.put("volume", kyselyt.get("nide"));
         
         return koodit;
     }
