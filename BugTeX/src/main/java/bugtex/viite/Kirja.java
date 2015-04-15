@@ -11,7 +11,10 @@ public class Kirja implements Viite {
     private final static String tyyppi = "book";
     
     private final int id;
-    private String tekija, nimi, julkaisija, vuosi;
+    private final Map<String, String> kyselyt;
+    
+    private final static String[] kentat
+            = {"tekijä", "nimi", "julkaisija", "vuosi"};
 
     /**
      * Luo uuden Kirja olion
@@ -24,10 +27,25 @@ public class Kirja implements Viite {
      */
     public Kirja(int id, String tekija, String nimi, String julkaisija, String vuosi) {
         this.id = id;
-        this.tekija = tekija;
-        this.nimi = nimi;
-        this.julkaisija = julkaisija;
-        this.vuosi = vuosi;
+        this.kyselyt = new TreeMap<String, String>();
+        this.kyselyt.put("tekijä", tekija);
+        this.kyselyt.put("nimi", nimi);
+        this.kyselyt.put("julkaisija", julkaisija);
+        this.kyselyt.put("vuosi", vuosi);
+    }
+    
+    /**
+     * Luo uuden Kirja olion
+     * 
+     * @param id viitteen tunnus
+     */
+    public Kirja(int id, Map<String, String> kyselyt) {
+        this.id = id;
+        this.kyselyt = kyselyt;
+    }
+    
+    public static String[] getKentat() {
+        return kentat;
     }
     
     @Override
@@ -41,54 +59,57 @@ public class Kirja implements Viite {
     }
 
     public String getTekija() {
-        return tekija;
+        return kyselyt.get("tekijä");
     }
 
     public void setTekija(String tekija) {
-        this.tekija = tekija;
+        kyselyt.put("tekijä", tekija);
     }
 
     public String getNimi() {
-        return nimi;
+        return kyselyt.get("nimi");
     }
 
     public void setNimi(String nimi) {
-        this.nimi = nimi;
+        kyselyt.put("nimi", nimi);
     }
 
     public String getJulkaisija() {
-        return julkaisija;
+        return kyselyt.get("julkaisija");
     }
 
     public void setJulkaisija(String julkaisija) {
-        this.julkaisija = julkaisija;
+        kyselyt.put("julkaisija", julkaisija);
     }
 
     public String getVuosi() {
-        return vuosi;
+        return kyselyt.get("vuosi");
     }
 
     public void setVuosi(String vuosi) {
-        this.vuosi = vuosi;
+        kyselyt.put("vuosi", vuosi);
     }
     
     @Override
     public String toString() {
-        return "Tunnus: "        + this.id         + "\n"
-                + "Tekijä: "     + this.tekija     + "\n"
-                + "Nimi: "       + this.nimi       + "\n"
-                + "Julkaisija: " + this.julkaisija + "\n"
-                + "Vuosi: "      + this.vuosi      + "\n";
+        String s = "tunnus: " + this.id + "\n";
+        for (String kentta : kentat) {
+            if (kyselyt.get(kentta) != null) {
+                s += kentta + ": " + kyselyt.get(kentta) + "\n";
+            }
+        }
+        
+        return s;
     }
 
     @Override
     public Map<String, String> koodaus() {
         Map<String, String> koodit = new TreeMap<String, String>();
         
-        koodit.put("author", this.tekija);
-        koodit.put("title", this.nimi);
-        koodit.put("publisher", this.julkaisija);
-        koodit.put("year", this.vuosi);
+        koodit.put("author", kyselyt.get("tekijä"));
+        koodit.put("title", kyselyt.get("nimi"));
+        koodit.put("publisher", kyselyt.get("julkaisija"));
+        koodit.put("year", kyselyt.get("vuosi"));
         
         return koodit;
     }

@@ -8,7 +8,7 @@ description 'Käyttäjä voi tarkastella lisättyä viitettä järjestelmässä'
 scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä', {
     given 'annettu komento Tarkastele viitteen lisäyksen jälkeen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("Lisaa", "Tekija", "Nimi", "Julkaisija", "Vuosi", "Tarkastele", "1")
+        lukija = new Valelukija("Lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi", "Tarkastele", "1")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -17,9 +17,9 @@ scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä', {
     }
 
     then 'viitteen tiedot tulostuvat käyttäjän tarkasteltavaksi', {
-        lukija.getTulostukset().shouldHave("Tunnus: 1" + "\n" + "Tekijä: Tekija" + "\n" +
-                                           "Nimi: Nimi" + "\n" + "Julkaisija: Julkaisija" + "\n" +
-                                           "Vuosi: Vuosi" + "\n")
+        lukija.getTulostukset().shouldHave("tunnus: 1" + "\n" + "tekijä: Tekija" + "\n" +
+                                           "nimi: Nimi" + "\n" + "julkaisija: Julkaisija" + "\n" +
+                                           "vuosi: Vuosi" + "\n")
     }
 }
 

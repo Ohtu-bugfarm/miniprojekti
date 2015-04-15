@@ -34,26 +34,64 @@ public class Lisaa implements Komento {
 
     @Override
     public void suorita() {
-        int id = idgen.getId();
-        Map<String, String> kyselyt = new TreeMap<>();
-        String[] table = {"tekijä", "nimi", "julkaisija", "vuosi"};
-        for (String kenttä : table) {
-            String vastaus = io.lueRiviKysymyksella(">", kenttä);
-            if (vastaus.equalsIgnoreCase("keskeyta")) {
-                io.tulostaRivi("Keskeytettiin lisäys");
+        String tyyppi = io.lueRiviKysymyksella(">", "viitteen tyyppi? (kirja/artikkeli)");
+        
+        Viite viite;
+        switch (tyyppi) {
+            case "kirja":
+                viite = lisaaKirja();
+                break;
+            case "artikkeli":
+                viite = lisaaArtikkeli();
+                break;
+            default:
+                io.tulostaRivi("virheellinen viitetyyppi");
                 return;
-            }
-            kyselyt.put(kenttä, vastaus);
-        }       
-
-        Viite viite = new Kirja(id, kyselyt.get("tekijä"), kyselyt.get("nimi"),
-                          kyselyt.get("julkaisija"), kyselyt.get("vuosi"));
+        }
+        
+        if (viite == null) {
+            return;
+        }
+        
         if (db.lisaa(viite)) {
-            io.tulostaRivi("Kirjan lisäys onnistui");
-            io.tulostaRivi("Kirjan id on: " + id);
+            io.tulostaRivi("Viitteen lisäys onnistui");
+            io.tulostaRivi("Viitteen id on: " + viite.getID());
         } else {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
+    }
+    
+    private Map<String, String> kysyKentat(String[] kentat) {
+        Map<String, String> kyselyt = new TreeMap<>();
+        for (String kentta : kentat) {
+            String vastaus = io.lueRiviKysymyksella(">", kentta);
+            if (vastaus.equalsIgnoreCase("keskeyta")) {
+                io.tulostaRivi("Keskeytettiin lisäys");
+                return null;
+            }
+            
+            if (vastaus.isEmpty()) {
+                kyselyt.put(kentta, null);
+            } else {
+                kyselyt.put(kentta, vastaus);
+            }
+        }    
+        
+        return kyselyt;
+    }
+    
+    private Viite lisaaKirja() {
+        Map<String, String> kyselyt = kysyKentat(Kirja.getKentat());
+        if (kyselyt == null) {
+            return null;
+        }
+        
+        int id = idgen.getId();
+        return new Kirja(id, kyselyt);
+    }
+    
+    private Viite lisaaArtikkeli() {
+        return null;
     }
 
     @Override

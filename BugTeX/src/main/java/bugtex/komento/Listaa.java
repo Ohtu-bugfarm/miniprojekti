@@ -3,8 +3,12 @@ package bugtex.komento;
 import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Viite;
+
 import java.util.List;
 
+/**
+ * Komento kaikkien viitteiden listaamiselle
+ */
 public class Listaa implements Komento {
     
     public final static String KOMENTO = "Listaa";

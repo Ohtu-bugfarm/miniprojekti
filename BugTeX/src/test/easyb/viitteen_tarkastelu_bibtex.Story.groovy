@@ -8,7 +8,7 @@ description 'Käyttäjä voi tarkastella lisättyä viitettä BibTeX-muodossa'
 scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä BibTeX-muodossa', {
     given 'annettu komento Bibtex viitteen lisäyksen jälkeen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("Lisaa", "Tekija1", "Nimi", "Julkaisija", "Vuosi", "Bibtex", "1")
+        lukija = new Valelukija("Lisaa", "kirja", "Tekija1", "Nimi", "Julkaisija", "Vuosi", "Bibtex", "1")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
