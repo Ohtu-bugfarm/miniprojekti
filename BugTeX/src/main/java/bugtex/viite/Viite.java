@@ -1,11 +1,12 @@
 package bugtex.viite;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * Rajapinta viitteelle
  */
-public interface Viite {
+public interface Viite extends Serializable {
 
     int getID();
     
