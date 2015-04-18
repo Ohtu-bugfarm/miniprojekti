@@ -49,6 +49,6 @@ scenario 'virheellisellä komennolla käyttäjälle listataan mahdolliset komenn
     }
     
     then 'käyttäjälle näytetään lista käytössä olevista komennoista', {
-        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot lisaa, poista, tarkastele, bibtex, listaa, poistu, help")
+        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot lisaa, poista, muokkaa, tarkastele, bibtex, listaa, poistu, help")
     }
 }

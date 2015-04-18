@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bugtex.viite.Viite;
+import java.util.Iterator;
 
 /**
  * Viitteitä tallettava tietokanta, joka pidetään muistissa
@@ -38,7 +39,17 @@ public class MuistiTietokanta implements TietokantaRajapinta {
 
     @Override
     public boolean poistaTunnuksella(int id) {
-        throw new UnsupportedOperationException("Ei toteutettu vielä");
+        Iterator it = this.viitteet.iterator();
+        
+        while (it.hasNext()) {
+            Viite viite = (Viite) it.next();
+            if (viite.getID() == id) {
+                it.remove();
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     @Override
