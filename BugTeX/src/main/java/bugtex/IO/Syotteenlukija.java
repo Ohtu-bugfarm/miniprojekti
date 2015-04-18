@@ -23,17 +23,17 @@ public class Syotteenlukija implements IO {
     
     @Override
     public int lueNumeroKysymyksella(String etuTeksti, String kysymys) {
-    boolean luetaan = true;
         int numero = 0;
-        while (luetaan) {
-            String id = lueRiviKysymyksella(etuTeksti,kysymys);
+        while (true) {
+            String id = lueRiviKysymyksella(etuTeksti, kysymys);
             try {
                 numero = Integer.parseInt(id);
-                luetaan = false;
+                break;
             } catch (NumberFormatException e) {
                 tulostaRivi("et antanut numeroa");
             }
         }
+        
         return numero;
     }
 

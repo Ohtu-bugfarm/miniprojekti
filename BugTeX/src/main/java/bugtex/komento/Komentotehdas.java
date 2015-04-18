@@ -28,14 +28,7 @@ public class Komentotehdas {
         komennot.put(Help.KOMENTO, new Help(io));
         komennot.put(Listaa.KOMENTO, new Listaa(io, db));
     }
-
-    private String luoOperaatio(String syote) {
-        if (syote.length()==0){
-            return "";
-        }
-        return (Character.toUpperCase(syote.charAt(0)) + syote.substring(1).toLowerCase());
-    }
-
+    
     /**
      * Hae komennon nimeä vastaava komentoluokka
      *
@@ -43,11 +36,11 @@ public class Komentotehdas {
      * @return komentoa vastaava luokka
      */
     public Komento hae(String syote) {
-        String operaatio = luoOperaatio(syote);
+        String operaatio = syote.toLowerCase();
         Komento komento = komennot.get(operaatio);
         
         if (komento == null) {
-            komento = komennot.get("Help");
+            komento = komennot.get("help");
         }
 
         return komento;

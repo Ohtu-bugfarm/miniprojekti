@@ -14,7 +14,7 @@ import java.util.TreeMap;
  */
 public class Lisaa implements Komento {
 
-    public final static String KOMENTO = "Lisaa";
+    public final static String KOMENTO = "lisaa";
 
     private final IO io;
     private final Generaattori idgen;
@@ -45,7 +45,7 @@ public class Lisaa implements Komento {
                 viite = lisaaArtikkeli();
                 break;
             default:
-                io.tulostaRivi("virheellinen viitetyyppi");
+                io.tulostaRivi("Virheellinen viitetyyppi\n");
                 return;
         }
         
@@ -59,12 +59,14 @@ public class Lisaa implements Komento {
         } else {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
+        
+        io.tulostaRivi("");
     }
     
     private Map<String, String> kysyKentat(String[] kentat) {
         Map<String, String> kyselyt = new TreeMap<>();
         for (String kentta : kentat) {
-            String vastaus = io.lueRiviKysymyksella(">", kentta);
+            String vastaus = io.lueRiviKysymyksella(">", kentta + "?");
             if (vastaus.equalsIgnoreCase("keskeyta")) {
                 io.tulostaRivi("Keskeytettiin lisäys");
                 return null;

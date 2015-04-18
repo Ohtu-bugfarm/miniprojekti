@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Listaa implements Komento {
     
-    public final static String KOMENTO = "Listaa";
+    public final static String KOMENTO = "listaa";
     
     private final IO io;
     private final TietokantaRajapinta db;

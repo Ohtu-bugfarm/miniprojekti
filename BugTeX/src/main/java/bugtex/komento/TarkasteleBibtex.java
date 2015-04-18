@@ -10,7 +10,7 @@ import bugtex.viite.Viite;
  */
 public class TarkasteleBibtex implements Komento {
 
-    public final static String KOMENTO = "Bibtex";
+    public final static String KOMENTO = "bibtex";
     
     private final IO io;
     private final TietokantaRajapinta db;
@@ -30,11 +30,14 @@ public class TarkasteleBibtex implements Komento {
     public void suorita() {
         int tunnus = io.lueNumeroKysymyksella(">", "viitteen id?");
         Viite tarkasteltava = db.haeTunnuksella(tunnus);
+        
         if (tarkasteltava == null) {
             io.tulostaRivi("Hakemaasi viitettä ei löytynyt!");
         } else {
             io.tulostaRivi(BibTeXMuotoilija.muotoile(tarkasteltava));
         }
+        
+        io.tulostaRivi("");
     }
         
     @Override

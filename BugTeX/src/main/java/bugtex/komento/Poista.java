@@ -8,7 +8,7 @@ import bugtex.tietokanta.TietokantaRajapinta;
  */
 public class Poista implements Komento {
 
-    public final static String KOMENTO = "Poista";
+    public final static String KOMENTO = "poista";
     
     private final IO io;
     private final TietokantaRajapinta db;

@@ -55,6 +55,11 @@ public class Artikkeli implements Viite {
     public String getTyyppi() {
         return tyyppi;
     }
+    
+    @Override
+    public Map<String, String> getKyselyt() {
+        return this.kyselyt;
+    }
 
     @Override
     public int getID() {

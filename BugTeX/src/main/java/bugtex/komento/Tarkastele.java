@@ -9,7 +9,7 @@ import bugtex.viite.Viite;
  */
 public class Tarkastele implements Komento {
 
-    public final static String KOMENTO = "Tarkastele";
+    public final static String KOMENTO = "tarkastele";
 
     private final IO io;
     private final TietokantaRajapinta db;

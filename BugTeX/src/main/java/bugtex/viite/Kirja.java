@@ -48,10 +48,15 @@ public class Kirja implements Viite {
     public static String[] getKentat() {
         return kentat;
     }
-    
+
     @Override
     public String getTyyppi() {
         return tyyppi;
+    }
+    
+    @Override
+    public Map<String, String> getKyselyt() {
+        return this.kyselyt;
     }
 
     @Override

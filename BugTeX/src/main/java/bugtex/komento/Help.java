@@ -7,7 +7,7 @@ import bugtex.IO.IO;
  */
 public class Help implements Komento {
 
-    public final static String KOMENTO = "Help";
+    public final static String KOMENTO = "help";
     
     private final IO io;
     
@@ -22,7 +22,7 @@ public class Help implements Komento {
     
     @Override
     public void suorita() {
-        io.tulostaRivi("Ohjelma tuntee komennot Lisaa, Poista, Tarkastele, Bibtex, Listaa, Poistu, Help");
+        io.tulostaRivi("Ohjelma tuntee komennot lisaa, poista, tarkastele, bibtex, listaa, poistu, help\n");
     }
     
     @Override

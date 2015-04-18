@@ -9,6 +9,8 @@ public interface Viite {
 
     int getID();
     
+    Map<String, String> getKyselyt();
+    
     /**
      * Palauttaa viitteen BiBTeX-formaatissa käytetyn tyypin
      * 
