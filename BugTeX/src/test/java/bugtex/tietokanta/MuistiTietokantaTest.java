@@ -72,8 +72,19 @@ public class MuistiTietokantaTest {
         }
 
         List<Viite> tulokset = db.annaViitteet();
-
-        assert (tulokset.containsAll(kirjoja));
+        assertTrue(tulokset.containsAll(kirjoja));
+    }
+    
+    @Test
+    public void poistaminenOnnistuuKunViiteOnTietokannssa() {
+        db.lisaa(kirja);
+        assertTrue(db.poistaTunnuksella(kirja.getID()));
+        assertFalse(db.annaViitteet().contains(kirja));
+    }
+    
+    @Test
+    public void poistaminenEpaonnistuuKunViiteEiOleTietokannassa() {
+        assertFalse(db.poistaTunnuksella(kirja.getID()));
     }
 
 }

@@ -2,9 +2,9 @@ package bugtex.tietokanta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 import bugtex.viite.Viite;
-import java.util.Iterator;
 
 /**
  * Viitteitä tallettava tietokanta, joka pidetään muistissa
