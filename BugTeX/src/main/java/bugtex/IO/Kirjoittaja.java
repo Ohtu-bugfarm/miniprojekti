@@ -12,8 +12,13 @@ public class Kirjoittaja {
     private File file;
     Viite viite;
 
-    public Kirjoittaja() {
-        this.file = new File("viitteet.bib");
+    /**
+     * Konstrukroi kirjoittaja luokan
+     * 
+     * @param tiedostonNimi tiedoston nimi
+     */
+    public Kirjoittaja(String tiedostonNimi) {
+        this.file = new File(tiedostonNimi);
         try {
             writer = new FileWriter(this.file);
         } catch (IOException ex) {
@@ -24,12 +29,12 @@ public class Kirjoittaja {
     /**
      * Kirjoittaa konstruktorissa määriteltyyn tiedostoon parametrinä annetun Stringin.
      * 
-     * @param String tiedostoon kirjoitettava teksti.
+     * @param teksti tiedostoon kirjoitettava teksti.
      * @throws java.io.IOException 
      */
-    public void kirjoita(String viite) {
+    public void kirjoita(String teksti) {
         try {
-            writer.write(viite);
+            writer.write(teksti);
         } catch (IOException ex) {
             io.tulostaRivi("Tiedostoon kirjoittaessa tapahtui virhe: " + ex.getMessage());
         }

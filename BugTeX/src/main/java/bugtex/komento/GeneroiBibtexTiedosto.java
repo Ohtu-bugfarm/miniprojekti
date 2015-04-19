@@ -13,12 +13,12 @@ public class GeneroiBibtexTiedosto implements Komento {
     private final TietokantaRajapinta db;
     BibTeXMuotoilija muoto = new BibTeXMuotoilija();
     private final IO io;
-    private final Kirjoittaja kirjoittaja;
+    private Kirjoittaja kirjoittaja;
 
     public GeneroiBibtexTiedosto(IO io, TietokantaRajapinta db) {
         this.io = io;
         this.db = db;
-        kirjoittaja = new Kirjoittaja();
+       
     }
 
     /**
@@ -26,6 +26,8 @@ public class GeneroiBibtexTiedosto implements Komento {
      */
     @Override
     public void suorita() {
+       
+        kirjoittaja = new Kirjoittaja(io.lueRiviKysymyksella(">","Anna generoitavan tiedoston nimi") + ".bib");
         List<Viite> kirjoitettavat = db.annaViitteet();
         if (kirjoitettavat.isEmpty()) {
             io.tulostaRivi("Sinulla ei ole yhtään viitettä talletettuna");
