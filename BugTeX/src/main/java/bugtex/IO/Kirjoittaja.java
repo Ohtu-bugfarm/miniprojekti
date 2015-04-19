@@ -13,9 +13,9 @@ public class Kirjoittaja {
     Viite viite;
 
     /**
-     * Konstrukroi kirjoittaja luokan
+     * Alustaa kirjoittaja luokan
      * 
-     * @param tiedostonNimi tiedoston nimi
+     * @param tiedostonNimi 
      */
     public Kirjoittaja(String tiedostonNimi) {
         this.file = new File(tiedostonNimi);
