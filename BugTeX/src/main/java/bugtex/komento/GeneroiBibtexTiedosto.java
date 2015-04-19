@@ -21,6 +21,9 @@ public class GeneroiBibtexTiedosto implements Komento {
         kirjoittaja = new Kirjoittaja();
     }
 
+    /**
+     * Generoi tiedoston ohjelman tuntemista viitteistä
+     */
     @Override
     public void suorita() {
         List<Viite> kirjoitettavat = db.annaViitteet();

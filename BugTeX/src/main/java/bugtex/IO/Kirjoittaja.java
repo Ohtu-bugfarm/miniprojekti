@@ -1,4 +1,3 @@
-
 package bugtex.IO;
 
 import bugtex.viite.Viite;
@@ -21,15 +20,26 @@ public class Kirjoittaja {
             io.tulostaRivi("Avattaessa tapahtui virhe: " + ex.getMessage());
         }
     }
-
+    
+    /**
+     * Kirjoittaa konstruktorissa määriteltyyn tiedostoon parametrinä annetun Stringin.
+     * 
+     * @param String tiedostoon kirjoitettava teksti.
+     * @throws java.io.IOException 
+     */
     public void kirjoita(String viite) {
         try {
             writer.write(viite);
-            } catch (IOException ex) {
+        } catch (IOException ex) {
             io.tulostaRivi("Tiedostoon kirjoittaessa tapahtui virhe: " + ex.getMessage());
         }
     }
 
+    /**
+     * Sulkee kirjoitettavan tiedoston
+     * 
+     * @throws java.io.Exception
+     */
     public void suljeKirjoittaja() {
         try {
             writer.close();
