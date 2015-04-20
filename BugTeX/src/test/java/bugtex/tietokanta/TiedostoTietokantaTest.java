@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 
 import bugtex.viite.Kirja;
 import bugtex.viite.Viite;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -20,13 +19,13 @@ public class TiedostoTietokantaTest {
     @Before
     public void setUp() throws ClassNotFoundException {
         this.db = new TiedostoTietokanta("tiedosto.txt");
-        this.kirja = new Kirja(1, "Kirjailija", "Kirja", "Julkaisija", "2015");
-        this.kirja2 = new Kirja(2, "Kirjailija2", "Kirja2", "Julkaisija2", "2015");
+        this.kirja = new Kirja("1", "Kirjailija", "Kirja", "Julkaisija", "2015");
+        this.kirja2 = new Kirja("2", "Kirjailija2", "Kirja2", "Julkaisija2", "2015");
         kirjoja = new ArrayList<>();
         kirjoja.add(kirja);
         kirjoja.add(kirja2);
     }
-    
+
     @After
     public void tearDown() {
         db.tiedosto().delete();
@@ -36,7 +35,7 @@ public class TiedostoTietokantaTest {
     public void tiedostoSyntyy() {
         assertTrue(db.tiedosto().exists());
     }
-    
+
     @Test
     public void tiedostoaVoiLukeaJaKirjoittaa() {
         assertTrue(db.tiedosto().canRead());
@@ -51,19 +50,19 @@ public class TiedostoTietokantaTest {
     @Test
     public void hakuLoytaaOlemassaOlevanViitteen() {
         db.lisaa(kirja);
-        assertEquals(kirja, db.haeTunnuksella(1));
+        assertEquals(kirja, db.haeTunnuksella("1"));
     }
 
     @Test
     public void hakuLoytaaOikeanViitteen() {
         db.lisaa(kirja);
         db.lisaa(kirja2);
-        assertEquals(kirja2, db.haeTunnuksella(2));
+        assertEquals(kirja2, db.haeTunnuksella("2"));
     }
 
     @Test
     public void hakuEiLoydaOlematontaViitetta() {
-        assertNull(db.haeTunnuksella(1));
+        assertNull(db.haeTunnuksella("1"));
     }
 
     @Test

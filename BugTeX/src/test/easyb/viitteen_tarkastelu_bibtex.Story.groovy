@@ -8,7 +8,7 @@ description 'Käyttäjä voi tarkastella lisättyä viitettä BibTeX-muodossa'
 scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä BibTeX-muodossa', {
     given 'annettu komento Bibtex viitteen lisäyksen jälkeen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("Lisaa", "kirja", "Tekija1", "Nimi", "Julkaisija", "Vuosi", "Bibtex", "1")
+        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija1", "Nimi", "Julkaisija", "Vuosi", "Bibtex", "1")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -24,7 +24,7 @@ scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä BibT
 scenario 'väärällä id:llä tarkastelu tuottaa virheilmoituksen', {
     given 'annettu komento Tarkastele id:llä jota ei ole olemassa', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("Bibtex", "3")
+        lukija = new Valelukija("bibtex", "3")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 

@@ -28,12 +28,13 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
     @Override
     public void run() {
         Komentotehdas komennot = new Komentotehdas(io, db);
-        io.tulostaRivi("Tervetuloa käyttämään bugTexiä.");
+        io.tulostaRivi("Tervetuloa käyttämään BugTeXiä");
+        komennot.hae("help").suorita();
 
         while (true) {
             String rivi;
             try {
-                rivi = io.lueRiviKysymyksella(">", "Anna komento");
+                rivi = io.lueRiviKysymyksella(">", "Anna komento:");
             } catch (NoSuchElementException ex) {
                 break;
             }

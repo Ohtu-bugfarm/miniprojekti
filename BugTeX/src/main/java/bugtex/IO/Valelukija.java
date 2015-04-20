@@ -12,25 +12,25 @@ public class Valelukija implements IO {
     List<String> tulostukset;
     String rivit[];
     int i;
-    
+
     /**
      * Alustaa valelukijan
-     * 
+     *
      * @param syotteet lista syötteistä, jotka valelukija myöhemmin lukee
      */
-    public Valelukija(String... syotteet){
+    public Valelukija(String... syotteet) {
         this.tulostukset = new ArrayList<String>();
         this.rivit = syotteet;
         i = 0;
     }
-    
+
     @Override
     public String lueRivi(String etuTeksti) {
-       if (i < rivit.length){
-           return rivit[i++];
-       } else {        
-           throw new NoSuchElementException();
-       }
+        if (i < rivit.length) {
+            return rivit[i++];
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
     @Override
@@ -42,14 +42,29 @@ public class Valelukija implements IO {
     public void tulostaRivi(String teksti) {
         this.tulostukset.add(teksti);
     }
-    
+
     public List<String> getTulostukset() {
         return this.tulostukset;
     }
 
     @Override
     public int lueNumeroKysymyksella(String etuTeksti, String kysymys) {
-       return Integer.parseInt(lueRivi(etuTeksti));
+        return Integer.parseInt(lueRivi(etuTeksti));
     }
-    
+
+    @Override
+    public void asetaTiedosto(String tiedostonNimi) {
+
+    }
+
+    @Override
+    public void kirjoita(String teksti) {
+
+    }
+
+    @Override
+    public void suljeKirjoittaja() {
+
+    }
+
 }

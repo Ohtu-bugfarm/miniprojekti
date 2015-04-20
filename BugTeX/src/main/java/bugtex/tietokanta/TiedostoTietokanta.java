@@ -23,11 +23,11 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     private FileInputStream fin;
     private ObjectOutputStream objWriter;
     private ObjectInputStream objReader;
-
     private File myRefs;
 
     /**
-     *Luo uuden tiedoston jos ei sitä ole, muuten avaa olemassaolevan
+     * Luo uuden tiedoston jos ei sitä ole, muuten avaa olemassaolevan
+     *
      * @param tiedosto
      * @throws ClassNotFoundException
      */
@@ -47,9 +47,10 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
             Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * lisää uuden viitteen tiedostoon
+     *
      * @param viite
      * @return true jos lisäys onnistui, muuten false
      */
@@ -71,36 +72,23 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
         return false;
     }
 
-    /**
-     * hakee viitteen id-numeron perusteella
-     * @param id
-     * @return viite jos löytyy, muuten null
-     */
     @Override
-    public Viite haeTunnuksella(int id) {
+    public Viite haeTunnuksella(String tunnus) {
         for (Viite viite : viitteet) {
-            if (viite.getID() == id) {
+            if (viite.getTunnus().equals(tunnus)) {
                 return viite;
             }
         }
+
         return null;
     }
 
-    /**
-     * poistaa viitteen id-numeron perusteella
-     * @param id
-     * @return true jos poisto onnistui, muuten false
-     */
     @Override
-    public boolean poistaTunnuksella(int id) {
-        Viite viite = haeTunnuksella(id);
+    public boolean poistaTunnuksella(String tunnus) {
+        Viite viite = haeTunnuksella(tunnus);
         return viitteet.remove(viite);
     }
 
-    /**
-     * listaa laikki viitteet
-     * @return lista kaikista viitteistä
-     */
     @Override
     public List<Viite> annaViitteet() {
         return viitteet;
@@ -108,12 +96,11 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
 
     /**
      * hae viitetiedosto
+     *
      * @return tallennukseen käytettävää tiedostoa vastaava File-olio
      */
     public File tiedosto() {
         return myRefs;
     }
-    
-    
 
 }

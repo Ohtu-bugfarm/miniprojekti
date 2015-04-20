@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Listaa implements Komento {
     
-    public final static String KOMENTO = "Listaa";
+    public final static String KOMENTO = "listaa";
     
     private final IO io;
     private final TietokantaRajapinta db;
@@ -32,7 +32,7 @@ public class Listaa implements Komento {
         List<Viite> tulostettava = db.annaViitteet();
         
         if (tulostettava.isEmpty()) {
-            io.tulostaRivi("Viitteitä ei löytynyt");
+            io.tulostaRivi("Viitteitä ei löytynyt\n");
         }
         
         for (Viite viite: tulostettava) {

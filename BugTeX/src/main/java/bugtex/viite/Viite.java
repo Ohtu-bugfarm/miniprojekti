@@ -8,21 +8,22 @@ import java.util.Map;
  */
 public interface Viite extends Serializable {
 
-    int getID();
-    
+    String getTunnus();
+
+    Map<String, String> getKyselyt();
+
     /**
      * Palauttaa viitteen BiBTeX-formaatissa käytetyn tyypin
-     * 
+     *
      * @return BiBTeX-tyyppi merkkijonona
      */
     String getTyyppi();
 
-    
     /**
      * Palauttaa map-rakenteessa BiBTeX-koodaukessa tarvittavat kentät
-     * 
+     *
      * @return kentat map-rakenteessa
      */
     Map<String, String> koodaus();
-    
+
 }

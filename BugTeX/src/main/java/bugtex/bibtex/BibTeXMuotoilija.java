@@ -15,21 +15,21 @@ public class BibTeXMuotoilija {
      * @param viite
      * @return viite BiBTeX-muotoisena merkkijonona
      */
-    public static String muotoile(Viite viite) {
-        Map<String, String> koodaus = viite.koodaus();
-        
+    public static String muotoile(Viite viite) {        
         StringBuilder sb = new StringBuilder();
-        muotoileOtsake(sb, viite.getTyyppi());
-        muotoileKentat(sb, koodaus);
+        muotoileOtsake(sb, viite.getTunnus(), viite.getTyyppi());
+        muotoileKentat(sb, viite.koodaus());
 
         sb.append("}");
         return sb.toString();
     }
     
-    private static void muotoileOtsake(StringBuilder sb, String tyyppi) {
+    private static void muotoileOtsake(StringBuilder sb, String tunnus, String tyyppi) {
         sb.append("@");
         sb.append(tyyppi);
-        sb.append("{\n");
+        sb.append("{");
+        sb.append(tunnus);
+        sb.append(",\n");
     }
     
     private static void muotoileKentat(StringBuilder sb, Map<String, String> koodaus) {

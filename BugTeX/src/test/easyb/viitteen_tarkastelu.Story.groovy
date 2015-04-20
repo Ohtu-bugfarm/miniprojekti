@@ -8,7 +8,7 @@ description 'Käyttäjä voi tarkastella lisättyä viitettä järjestelmässä'
 scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä', {
     given 'annettu komento Tarkastele viitteen lisäyksen jälkeen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("Lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi", "Tarkastele", "1")
+        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Nimi", "Julkaisija", "Vuosi", "Tarkastele", "1")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -26,7 +26,7 @@ scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä', {
 scenario 'väärällä id:llä tarkastelu tuottaa virheilmoituksen', {
     given 'annettu komento Tarkastele id:llä jota ei ole olemassa', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("Tarkastele", "3")
+        lukija = new Valelukija("tarkastele", "3")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 

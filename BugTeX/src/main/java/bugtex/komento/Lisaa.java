@@ -1,7 +1,5 @@
 package bugtex.komento;
 
-import bugtex.idgen.Generaattori;
-import bugtex.idgen.IdGeneraattori;
 import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.*;
@@ -14,10 +12,9 @@ import java.util.TreeMap;
  */
 public class Lisaa implements Komento {
 
-    public final static String KOMENTO = "Lisaa";
+    public final static String KOMENTO = "lisaa";
 
     private final IO io;
-    private final Generaattori idgen;
     private final TietokantaRajapinta db;
 
     /**
@@ -29,7 +26,6 @@ public class Lisaa implements Komento {
     public Lisaa(IO io, TietokantaRajapinta db) {
         this.io = io;
         this.db = db;
-        this.idgen = new IdGeneraattori();
     }
 
     @Override
@@ -45,7 +41,7 @@ public class Lisaa implements Komento {
                 viite = lisaaArtikkeli();
                 break;
             default:
-                io.tulostaRivi("virheellinen viitetyyppi");
+                io.tulostaRivi("Virheellinen viitetyyppi\n");
                 return;
         }
         
@@ -55,16 +51,17 @@ public class Lisaa implements Komento {
         
         if (db.lisaa(viite)) {
             io.tulostaRivi("Viitteen lisäys onnistui");
-            io.tulostaRivi("Viitteen id on: " + viite.getID());
         } else {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
+        
+        io.tulostaRivi("");
     }
     
     private Map<String, String> kysyKentat(String[] kentat) {
         Map<String, String> kyselyt = new TreeMap<>();
         for (String kentta : kentat) {
-            String vastaus = io.lueRiviKysymyksella(">", kentta);
+            String vastaus = io.lueRiviKysymyksella(">", kentta + "?");
             if (vastaus.equalsIgnoreCase("keskeyta")) {
                 io.tulostaRivi("Keskeytettiin lisäys");
                 return null;
@@ -86,8 +83,7 @@ public class Lisaa implements Komento {
             return null;
         }
         
-        int id = idgen.getId();
-        return new Kirja(id, kyselyt);
+        return new Kirja(kyselyt);
     }
     
     private Viite lisaaArtikkeli() {
@@ -96,8 +92,7 @@ public class Lisaa implements Komento {
             return null;
         }
         
-        int id = idgen.getId();
-        return new Artikkeli(id, kyselyt);
+        return new Artikkeli(kyselyt);
     }
 
     @Override

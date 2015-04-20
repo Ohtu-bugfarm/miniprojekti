@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class ListaaBibtex implements Komento {
 
-    public final static String KOMENTO = "Bibtexlist";
+    public final static String KOMENTO = "listaabibtex";
 
     private final IO io;
     private final TietokantaRajapinta db;
@@ -36,7 +36,7 @@ public class ListaaBibtex implements Komento {
         }
 
         for (Viite viite : tulostettava) {
-            io.tulostaRivi(BibTeXMuotoilija.muotoile(viite));
+            io.tulostaRivi(BibTeXMuotoilija.muotoile(viite) + "\n");
         }
     }
 

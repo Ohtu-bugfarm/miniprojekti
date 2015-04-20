@@ -1,35 +1,35 @@
 package bugtex.viite;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
 /**
  * Artikkeliviite
  */
-public class Artikkeli implements Viite {
+public class Artikkeli implements Viite, Serializable {
 
     private final static String tyyppi = "article";
     
-    private final int id;
     private final Map<String, String> kyselyt;
     
     private final static String[] kentat
-            = {"tekijä", "nimi", "lehti", "vuosi", "nide"};
+            = {"tunnus", "tekijä", "nimi", "lehti", "vuosi", "nide"};
 
     /**
      * Luo uuden Artikkeli olion
      * 
-     * @param id viitteen tunnus
+     * @param tunnus viitteen tunnus
      * @param tekija artikkelin tekijä(t)
      * @param nimi artikkelin nimi
      * @param lehti lehti, jossa artikkeli julkaistu
      * @param vuosi artikkelin julkaisuvuosi
      * @param nide artikkelin nide
      */
-    public Artikkeli(int id, String tekija, String nimi, String lehti, String vuosi, String nide) {
-        this.id = id;
+    public Artikkeli(String tunnus, String tekija, String nimi, String lehti, String vuosi, String nide) {
         this.kyselyt = new TreeMap<String, String>();
         
+        this.kyselyt.put("tunnus", tunnus);
         this.kyselyt.put("tekijä", tekija);
         this.kyselyt.put("nimi", nimi);
         this.kyselyt.put("lehti", lehti);
@@ -40,10 +40,8 @@ public class Artikkeli implements Viite {
     /**
      * Luo uuden Artikkeli olion
      * 
-     * @param id viitteen tunnus
      */
-    public Artikkeli(int id, Map<String, String> kyselyt) {
-        this.id = id;
+    public Artikkeli(Map<String, String> kyselyt) {
         this.kyselyt = kyselyt;
     }
     
@@ -55,10 +53,15 @@ public class Artikkeli implements Viite {
     public String getTyyppi() {
         return tyyppi;
     }
+    
+    @Override
+    public Map<String, String> getKyselyt() {
+        return this.kyselyt;
+    }
 
     @Override
-    public int getID() {
-        return this.id;
+    public String getTunnus() {
+        return kyselyt.get("tunnus");
     }
 
     public String getTekija() {
@@ -103,7 +106,7 @@ public class Artikkeli implements Viite {
     
     @Override
     public String toString() {
-        String s = "tunnus: " + this.id + "\n";
+        String s = "";
         for (String kentta : kentat) {
             if (kyselyt.get(kentta) != null) {
                 s += kentta + ": " + kyselyt.get(kentta) + "\n";
