@@ -22,7 +22,8 @@ public class Help implements Komento {
     
     @Override
     public void suorita() {
-        io.tulostaRivi("Ohjelma tuntee komennot Lisaa, Poista, Tarkastele, Bibtex, Listaa, Poistu, Help");
+        // kovakoodauksen sijaan tunnetut komennot voisi tulostaa jostain
+        io.tulostaRivi("Ohjelma tuntee komennot Lisaa, Poista, Tarkastele, Bibtex, Listaa, Bibtexlist, Poistu, Help");
     }
     
     @Override
