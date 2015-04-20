@@ -1,7 +1,6 @@
 package bugtex.komento;
 
 import bugtex.IO.IO;
-import bugtex.IO.Kirjoittaja;
 import bugtex.bibtex.BibTeXMuotoilija;
 import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Viite;
@@ -13,12 +12,10 @@ public class GeneroiBibtexTiedosto implements Komento {
     private final TietokantaRajapinta db;
     BibTeXMuotoilija muoto = new BibTeXMuotoilija();
     private final IO io;
-    private Kirjoittaja kirjoittaja;
 
     public GeneroiBibtexTiedosto(IO io, TietokantaRajapinta db) {
         this.io = io;
         this.db = db;
-       this.kirjoittaja = new Kirjoittaja();
     }
 
     /**
@@ -26,17 +23,17 @@ public class GeneroiBibtexTiedosto implements Komento {
      */
     @Override
     public void suorita() {
-       
-        kirjoittaja.asetaTiedosto(io.lueRiviKysymyksella(">","Anna generoitavan tiedoston nimi") + ".bib");
+
+        io.asetaTiedosto(io.lueRiviKysymyksella(">", "Anna generoitavan tiedoston nimi") + ".bib");
         List<Viite> kirjoitettavat = db.annaViitteet();
         if (kirjoitettavat.isEmpty()) {
             io.tulostaRivi("Sinulla ei ole yhtään viitettä talletettuna");
             return;
         }
         for (Viite viite : kirjoitettavat) {
-            kirjoittaja.kirjoita(BibTeXMuotoilija.muotoile(viite) + "\n" + "\n");
+            io.kirjoita(BibTeXMuotoilija.muotoile(viite) + "\n" + "\n");
         }
-        kirjoittaja.suljeKirjoittaja();
+        io.suljeKirjoittaja();
         io.tulostaRivi("Gen onnistui");
     }
 
