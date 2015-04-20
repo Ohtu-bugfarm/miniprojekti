@@ -11,7 +11,7 @@ public class ArtikkeliTest {
     
     @Before
     public void setUp() {
-        this.artikkeli = new Artikkeli(1, "Tekija", "Artikkeli", "Julkaisu", "2015", "1");
+        this.artikkeli = new Artikkeli("1", "Tekija", "Artikkeli", "Julkaisu", "2015", "1");
     }
 
     @Test

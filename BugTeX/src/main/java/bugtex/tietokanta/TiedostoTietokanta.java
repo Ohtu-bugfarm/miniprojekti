@@ -72,9 +72,9 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     }
 
     @Override
-    public Viite haeTunnuksella(int id) {
+    public Viite haeTunnuksella(String tunnus) {
         for (Viite viite : viitteet) {
-            if (viite.getID() == id) {
+            if (viite.getTunnus().equals(tunnus)) {
                 return viite;
             }
         }
@@ -83,8 +83,8 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     }
 
     @Override
-    public boolean poistaTunnuksella(int id) {
-        Viite viite = haeTunnuksella(id);
+    public boolean poistaTunnuksella(String tunnus) {
+        Viite viite = haeTunnuksella(tunnus);
         return viitteet.remove(viite);
     }
 

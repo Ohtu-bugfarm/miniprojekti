@@ -28,7 +28,7 @@ public class TarkasteleBibtex implements Komento {
 
     @Override
     public void suorita() {
-        int tunnus = io.lueNumeroKysymyksella(">", "viitteen id?");
+        String tunnus = io.lueRiviKysymyksella(">", "viitteen tunnus?");
         Viite tarkasteltava = db.haeTunnuksella(tunnus);
         
         if (tarkasteltava == null) {

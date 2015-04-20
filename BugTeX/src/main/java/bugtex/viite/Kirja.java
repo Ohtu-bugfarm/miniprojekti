@@ -11,25 +11,24 @@ public class Kirja implements Viite, Serializable {
 
     private final static String tyyppi = "book";
     
-    private final int id;
     private final Map<String, String> kyselyt;
     
     private final static String[] kentat
-            = {"tekijä", "nimi", "julkaisija", "vuosi"};
+            = {"tunnus", "tekijä", "nimi", "julkaisija", "vuosi"};
 
     /**
      * Luo uuden Kirja olion
      * 
-     * @param id viitteen tunnus
+     * @param tunnus viitteen tunnus
      * @param tekija kirjan tekijä(t)
      * @param nimi kirjan nimi
      * @param julkaisija kirjan julkaisija
      * @param vuosi kirjan julkaisuvuosi
      */
-    public Kirja(int id, String tekija, String nimi, String julkaisija, String vuosi) {
-        this.id = id;
+    public Kirja(String tunnus, String tekija, String nimi, String julkaisija, String vuosi) {
         this.kyselyt = new TreeMap<String, String>();
         
+        this.kyselyt.put("tunnus", tunnus);
         this.kyselyt.put("tekijä", tekija);
         this.kyselyt.put("nimi", nimi);
         this.kyselyt.put("julkaisija", julkaisija);
@@ -39,10 +38,8 @@ public class Kirja implements Viite, Serializable {
     /**
      * Luo uuden Kirja olion
      * 
-     * @param id viitteen tunnus
      */
-    public Kirja(int id, Map<String, String> kyselyt) {
-        this.id = id;
+    public Kirja(Map<String, String> kyselyt) {
         this.kyselyt = kyselyt;
     }
     
@@ -61,8 +58,8 @@ public class Kirja implements Viite, Serializable {
     }
 
     @Override
-    public int getID() {
-        return this.id;
+    public String getTunnus() {
+        return kyselyt.get("tunnus");
     }
 
     public String getTekija() {
@@ -99,7 +96,7 @@ public class Kirja implements Viite, Serializable {
     
     @Override
     public String toString() {
-        String s = "tunnus: " + this.id + "\n";
+        String s = "";
         for (String kentta : kentat) {
             if (kyselyt.get(kentta) != null) {
                 s += kentta + ": " + kyselyt.get(kentta) + "\n";

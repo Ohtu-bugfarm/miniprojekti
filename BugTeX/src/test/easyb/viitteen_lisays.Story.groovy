@@ -8,7 +8,7 @@ description 'Käyttäjä voi lisätä viitteen järjestelmään'
 scenario 'oikealla komennolla käyttäjä pääsee lisäämään viitteen', {
     given 'annettu komento Lisaa', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi")
+        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Nimi", "Julkaisija", "Vuosi")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -24,7 +24,7 @@ scenario 'oikealla komennolla käyttäjä pääsee lisäämään viitteen', {
 scenario 'kirjaa ei lisätä jos käyttäjä keskeyttää toiminnon', {
     given 'käyttäjä keskeyttää toiminnan kesken lisäyksen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Keskeyta")
+        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Keskeyta")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
     

@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public interface Viite extends Serializable {
 
-    int getID();
+    String getTunnus();
     
     Map<String, String> getKyselyt();
     

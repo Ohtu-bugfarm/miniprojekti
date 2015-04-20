@@ -8,7 +8,7 @@ description 'Käyttäjä voi tarkastella lisättyä viitettä järjestelmässä'
 scenario 'oikealla komennolla käyttäjä pääsee tarkastelemaan viitettä', {
     given 'annettu komento Tarkastele viitteen lisäyksen jälkeen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi", "Tarkastele", "1")
+        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Nimi", "Julkaisija", "Vuosi", "Tarkastele", "1")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 

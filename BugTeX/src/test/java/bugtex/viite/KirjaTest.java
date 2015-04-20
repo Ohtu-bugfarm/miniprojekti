@@ -11,7 +11,7 @@ public class KirjaTest {
     
     @Before
     public void setUp() {
-        this.kirja = new Kirja(1, "Kirjailija", "Kirja", "Julkaisija", "2015");
+        this.kirja = new Kirja("1", "Kirjailija", "Kirja", "Julkaisija", "2015");
     }
 
     @Test

@@ -8,8 +8,8 @@ description 'Käyttäjä voi listata kaikki viitteet järjestelmässä'
 scenario 'oikealla komennolla käyttäjä pääsee listaamaan lisätyt viitteet BibTeX-muodossa', {
     given 'annettu komento Lisaa', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "Tekija1", "Nimi", "Julkaisija", "Vuosi",
-                                "lisaa", "kirja", "Tekija2", "Nimi2", "Julkaisija2", "Vuosi2", "listaaBibtex")
+        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija1", "Nimi", "Julkaisija", "Vuosi",
+                                "lisaa", "kirja", "2", "Tekija2", "Nimi2", "Julkaisija2", "Vuosi2", "listaaBibtex")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 

@@ -23,7 +23,7 @@ scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa ilman viitteitä ohje
 scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa generoi ohjelma tiedoston onnistuneesti', {
     given 'Käyttäjän pyytäessä ohjelmaa generoimaan .bib tiedoston', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "", "", "", "", "lisaa", "kirja", "", "", "", "", "generoiBibtex", "test", "poistu")
+        lukija = new Valelukija("lisaa", "kirja", "1", "", "", "", "", "lisaa", "kirja", "2", "", "", "", "", "generoiBibtex", "test", "poistu")
          ui = new TekstiKayttoliittyma(lukija, db)
     }
     

@@ -19,19 +19,19 @@ public interface TietokantaRajapinta {
     /**
      * Hae numerotunnusta vastaava viiteolio tietokannasta
      * 
-     * @param id Haettavan viitteen numerotunnus
+     * @param tunnus Haettavan viitteen tunnus
      * @return Tunnusta vastaava viiteolio, null jos tunnusta vastaavaa
      *         viitettä ei ole olemassa
      */
-    Viite haeTunnuksella(int id);
+    Viite haeTunnuksella(String tunnus);
     
     /**
-     * Poista numerotunnusta vastaava viiteolio tietokannasta
+     * Poista tunnusta vastaava viiteolio tietokannasta
      * 
-     * @param id Haettavan viitteen numerotunnus
+     * @param tunnus Haettavan viitteen tunnus
      * @return true jos poisto onnistuu, false muuten
      */
-    boolean poistaTunnuksella(int id);
+    boolean poistaTunnuksella(String tunnus);
     
     /**
      * Antaa listan viitteistä
