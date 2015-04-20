@@ -106,4 +106,14 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
         return viitteet;
     }
 
+    /**
+     * hae viitetiedosto
+     * @return tallennukseen käytettävää tiedostoa vastaava File-olio
+     */
+    public File tiedosto() {
+        return myRefs;
+    }
+    
+    
+
 }
