@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException {
         Syotteenlukija lukija = new Syotteenlukija();
-        TietokantaRajapinta db = new TiedostoTietokanta("src/main/resources/viitteet.db");
+        TietokantaRajapinta db = new TiedostoTietokanta("tietokanta/viitteet.db");
         TekstiKayttoliittyma UI = new TekstiKayttoliittyma(lukija, db);
         UI.run();
     }

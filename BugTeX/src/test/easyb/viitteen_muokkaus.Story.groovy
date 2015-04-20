@@ -17,13 +17,13 @@ scenario 'oikealla komennolla käyttäjä pääsee muokkaamaan viitettä', {
         ui.run()
     }
 
-    then 'viitteen lisäys onnistuu', {
+    then 'viitteen muokkaus onnistuu', {
         lukija.getTulostukset().shouldHave("tunnus: 2")
     }
 }
 
 scenario 'viitettä ei muokata jos annetun kentän numero on virheellinen', {
-    given 'käyttäjä keskeyttää toiminnan kesken lisäyksen', {
+    given 'käyttäjä keskeyttää toiminnan kesken muokkauksen', {
         db = new MuistiTietokanta()
         lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Nimi", "Julkaisija", "Vuosi",
                                 "muokkaa", "1", "0", "2")
