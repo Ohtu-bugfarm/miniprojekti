@@ -2,6 +2,10 @@ package bugtex.IO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import org.junit.After;
 import org.junit.Test;
@@ -12,13 +16,14 @@ public class SyoteenLukuTest {
 
     private Syotteenlukija lukija;
     private Scanner tiedostolukija;
+    private final String tiedostonnimi = "test.bib";
 
     @Before
     public void setUp() {
         lukija = new Syotteenlukija();
-        lukija.asetaTiedosto("test.bib");
+        lukija.asetaTiedosto(tiedostonnimi);
         try {
-            tiedostolukija = new Scanner(new File("test.bib"));
+            tiedostolukija = new Scanner(new File(tiedostonnimi));
         } catch (FileNotFoundException e) {
 
         }
@@ -35,6 +40,11 @@ public class SyoteenLukuTest {
     @After
     public void setDown() {
         tiedostolukija.close();
-    }
+        Path polku = Paths.get(tiedostonnimi);
+        try {
+            Files.deleteIfExists(polku);
+        } catch (IOException ex) {
 
+        }
+    }
 }
