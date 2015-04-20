@@ -11,14 +11,14 @@ public class Kirjoittaja {
     private IO io;
     private File file;
     Viite viite;
-
+    
     /**
-     * Alustaa kirjoittaja luokan
+     * asettaa tiedoston johon kirjoitetaan parametrin osoittamaan tiedotoon
      * 
      * @param tiedostonNimi 
      */
-    public Kirjoittaja(String tiedostonNimi) {
-        this.file = new File(tiedostonNimi);
+    public void asetaTiedosto(String tiedostonNimi){
+          this.file = new File(tiedostonNimi);
         try {
             writer = new FileWriter(this.file);
         } catch (IOException ex) {

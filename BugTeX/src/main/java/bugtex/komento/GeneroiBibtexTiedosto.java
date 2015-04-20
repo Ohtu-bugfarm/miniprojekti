@@ -18,7 +18,7 @@ public class GeneroiBibtexTiedosto implements Komento {
     public GeneroiBibtexTiedosto(IO io, TietokantaRajapinta db) {
         this.io = io;
         this.db = db;
-       
+       this.kirjoittaja = new Kirjoittaja();
     }
 
     /**
@@ -27,7 +27,7 @@ public class GeneroiBibtexTiedosto implements Komento {
     @Override
     public void suorita() {
        
-        kirjoittaja = new Kirjoittaja(io.lueRiviKysymyksella(">","Anna generoitavan tiedoston nimi") + ".bib");
+        kirjoittaja.asetaTiedosto(io.lueRiviKysymyksella(">","Anna generoitavan tiedoston nimi") + ".bib");
         List<Viite> kirjoitettavat = db.annaViitteet();
         if (kirjoitettavat.isEmpty()) {
             io.tulostaRivi("Sinulla ei ole yhtään viitettä talletettuna");
