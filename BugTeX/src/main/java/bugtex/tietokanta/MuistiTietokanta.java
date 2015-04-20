@@ -28,7 +28,7 @@ public class MuistiTietokanta implements TietokantaRajapinta {
     @Override
     public Viite haeTunnuksella(String tunnus) {
         for (Viite viite: this.viitteet) {
-            if (viite.getTunnus().equals(tunnus)) {
+            if (viite.getTunnus() != null && viite.getTunnus().equals(tunnus)) {
                 return viite;
             }
         }

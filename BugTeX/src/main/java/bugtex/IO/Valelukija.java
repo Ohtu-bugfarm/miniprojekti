@@ -35,6 +35,7 @@ public class Valelukija implements IO {
 
     @Override
     public String lueRiviKysymyksella(String etuTeksti, String kysymys) {
+        this.tulostukset.add(kysymys);
         return lueRivi(etuTeksti);
     }
 
@@ -50,21 +51,6 @@ public class Valelukija implements IO {
     @Override
     public int lueNumeroKysymyksella(String etuTeksti, String kysymys) {
         return Integer.parseInt(lueRivi(etuTeksti));
-    }
-
-    @Override
-    public void asetaTiedosto(String tiedostonNimi) {
-
-    }
-
-    @Override
-    public void kirjoita(String teksti) {
-
-    }
-
-    @Override
-    public void suljeKirjoittaja() {
-
     }
 
 }

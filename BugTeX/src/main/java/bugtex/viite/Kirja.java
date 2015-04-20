@@ -66,32 +66,16 @@ public class Kirja implements Viite, Serializable {
         return kyselyt.get("tekijä");
     }
 
-    public void setTekija(String tekija) {
-        kyselyt.put("tekijä", tekija);
-    }
-
     public String getNimi() {
         return kyselyt.get("nimi");
-    }
-
-    public void setNimi(String nimi) {
-        kyselyt.put("nimi", nimi);
     }
 
     public String getJulkaisija() {
         return kyselyt.get("julkaisija");
     }
 
-    public void setJulkaisija(String julkaisija) {
-        kyselyt.put("julkaisija", julkaisija);
-    }
-
     public String getVuosi() {
         return kyselyt.get("vuosi");
-    }
-
-    public void setVuosi(String vuosi) {
-        kyselyt.put("vuosi", vuosi);
     }
     
     @Override

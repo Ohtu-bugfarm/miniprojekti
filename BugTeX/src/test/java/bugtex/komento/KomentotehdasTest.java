@@ -11,7 +11,6 @@ import org.junit.Before;
 public class KomentotehdasTest {
     
     private Komentotehdas komennot;
-    private Komento lisaa, help;
     
     public KomentotehdasTest() {
     }
@@ -21,7 +20,6 @@ public class KomentotehdasTest {
         IO lukija = new Valelukija(); 
         TietokantaRajapinta db = new MuistiTietokanta();
         komennot = new Komentotehdas(lukija, db);
-        lisaa = new Help(lukija);
     }
     
     @Test

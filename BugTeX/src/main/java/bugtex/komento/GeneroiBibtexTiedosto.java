@@ -1,10 +1,12 @@
 package bugtex.komento;
 
 import bugtex.IO.IO;
+import bugtex.IO.TiedostoonKirjoittaja;
 import bugtex.bibtex.BibTeXMuotoilija;
 import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Viite;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,20 +29,41 @@ public class GeneroiBibtexTiedosto implements Komento {
      */
     @Override
     public void suorita() {
-        io.asetaTiedosto(io.lueRiviKysymyksella(">", "Anna generoitavan tiedoston nimi") + ".bib");
+        String tiedostoNimi = io.lueRiviKysymyksella(">", "Anna generoitavan tiedoston nimi") + ".bib";
+        
+        TiedostoonKirjoittaja kirjoittaja;
+        try {
+            kirjoittaja = new TiedostoonKirjoittaja(tiedostoNimi);
+        } catch (IOException ex) {
+            io.tulostaRivi("Tiedoston avaaminen epäonnistui");
+            return;
+        }
         
         List<Viite> kirjoitettavat = db.annaViitteet();
         if (kirjoitettavat.isEmpty()) {
             io.tulostaRivi("Sinulla ei ole yhtään viitettä talletettuna");
             return;
         }
-        
+
+        if (kirjoitaViitteet(kirjoittaja, kirjoitettavat)) {
+            io.tulostaRivi("Generointi onnistui\n");
+        }
+    }
+    
+    private boolean kirjoitaViitteet(TiedostoonKirjoittaja kirjoittaja, List<Viite> kirjoitettavat) {
         for (Viite viite : kirjoitettavat) {
-            io.kirjoita(BibTeXMuotoilija.muotoile(viite) + "\n\n");
+            if (!kirjoittaja.kirjoita(BibTeXMuotoilija.muotoile(viite) + "\n\n")) {
+                io.tulostaRivi("Tiedostoon kirjoittaminen epäonnistui");
+                return false;
+            }
         }
         
-        io.suljeKirjoittaja();
-        io.tulostaRivi("Generointi onnistui\n");
+        if (!kirjoittaja.suljeKirjoittaja()) {
+            io.tulostaRivi("Tiedoston sulkeminen epäonnistui");
+            return false;
+        }
+        
+        return true;
     }
 
     @Override

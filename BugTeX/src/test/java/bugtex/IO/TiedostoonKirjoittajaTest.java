@@ -12,18 +12,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
-public class SyoteenLukuTest {
+public class TiedostoonKirjoittajaTest {
 
-    private Syotteenlukija lukija;
+    private TiedostoonKirjoittaja kirjoittaja;
     private Scanner tiedostolukija;
-    private final String tiedostonnimi = "test.bib";
+    private final String tiedostoNimi = "test.bib";
 
     @Before
-    public void setUp() {
-        lukija = new Syotteenlukija();
-        lukija.asetaTiedosto(tiedostonnimi);
+    public void setUp() throws IOException {
+        kirjoittaja = new TiedostoonKirjoittaja(tiedostoNimi);
         try {
-            tiedostolukija = new Scanner(new File(tiedostonnimi));
+            tiedostolukija = new Scanner(new File(tiedostoNimi));
         } catch (FileNotFoundException e) {
 
         }
@@ -31,20 +30,21 @@ public class SyoteenLukuTest {
 
     @Test
     public void kirjoitaTiedostoon() {
-        lukija.kirjoita("moro test");
-        lukija.suljeKirjoittaja();
+        kirjoittaja.kirjoita("moro test");
+        kirjoittaja.suljeKirjoittaja();
         String testi = "moro test";
-        assert (testi.equals(tiedostolukija.nextLine()));
+        assertEquals(testi, tiedostolukija.nextLine());
     }
 
     @After
     public void setDown() {
         tiedostolukija.close();
-        Path polku = Paths.get(tiedostonnimi);
+        Path polku = Paths.get(tiedostoNimi);
         try {
             Files.deleteIfExists(polku);
         } catch (IOException ex) {
 
         }
     }
+    
 }

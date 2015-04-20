@@ -6,19 +6,21 @@ import static org.junit.Assert.*;
 
 import bugtex.viite.Kirja;
 import bugtex.viite.Viite;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 
 public class TiedostoTietokantaTest {
 
-    private TiedostoTietokanta db;
+    private TiedostoTietokanta db, tyhjaDB;
     private Viite kirja, kirja2;
     private List<Viite> kirjoja;
 
     @Before
-    public void setUp() throws ClassNotFoundException {
+    public void setUp() throws ClassNotFoundException, IOException {
         this.db = new TiedostoTietokanta("src/test/resources/test.txt");
+        this.tyhjaDB = new TiedostoTietokanta("src/test/resources/tyhja.txt");
         this.kirja = new Kirja("1", "Kirjailija", "Kirja", "Julkaisija", "2015");
         this.kirja2 = new Kirja("2", "Kirjailija2", "Kirja2", "Julkaisija2", "2015");
         kirjoja = new ArrayList<>();
@@ -29,11 +31,31 @@ public class TiedostoTietokantaTest {
     @After
     public void tearDown() {
         db.tiedosto().delete();
+        tyhjaDB.tiedosto().delete();
     }
 
     @Test
     public void tiedostoSyntyy() {
         assertTrue(db.tiedosto().exists());
+    }
+    
+    @Test
+    public void tyhjaTiedostoPalauttaaTyhjanListan() {
+        assertTrue(tyhjaDB.annaViitteet().isEmpty());
+    }
+    
+    @Test
+    public void epatyhjaTiedostoPalauttaaEpatyhjanListan() {
+        tyhjaDB.lisaa(kirja);
+        TiedostoTietokanta s = null;
+        try {
+            s = new TiedostoTietokanta(tyhjaDB.tiedosto().getAbsolutePath());
+        } catch (ClassNotFoundException ex) {
+            fail();
+        }
+        
+        assertNotNull(s);
+        assertEquals(1, s.annaViitteet().size());
     }
 
     @Test
@@ -89,8 +111,13 @@ public class TiedostoTietokantaTest {
         }
 
         List<Viite> tulokset = db.annaViitteet();
-
-        assert (tulokset.containsAll(kirjoja));
+        assertTrue(tulokset.containsAll(kirjoja));
+    }
+    
+    @Test
+    public void poistaaViitteen() {
+        db.lisaa(kirja);
+        assertTrue(db.poistaTunnuksella(kirja.getTunnus()));
     }
 
 }

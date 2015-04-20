@@ -1,8 +1,5 @@
 package bugtex.IO;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -11,7 +8,6 @@ import java.util.Scanner;
 public class Syotteenlukija implements IO {
 
     private final Scanner lukija = new Scanner(System.in);
-    private FileWriter kirjoittaja;
 
     @Override
     public String lueRivi(String etuTeksti) {
@@ -39,49 +35,6 @@ public class Syotteenlukija implements IO {
         }
 
         return numero;
-    }
-
-    /**
-     * asettaa tiedoston johon kirjoitetaan parametrin osoittamaan tiedotoon
-     *
-     * @param tiedostonNimi
-     */
-    @Override
-    public void asetaTiedosto(String tiedostonNimi) {
-        File tiedosto = new File(tiedostonNimi);
-        try {
-            kirjoittaja = new FileWriter(tiedosto);
-        } catch (IOException ex) {
-            System.out.println("Avattaessa tapahtui virhe: " + ex.getMessage());
-        }
-    }
-
-    /**
-     * Kirjoittaa konstruktorissa määriteltyyn tiedostoon parametrinä annetun
-     * Stringin.
-     *
-     * @param teksti tiedostoon kirjoitettava teksti.
-     */
-    @Override
-    public void kirjoita(String teksti) {
-        try {
-            kirjoittaja.write(teksti);
-        } catch (IOException ex) {
-            System.out.println("Tiedostoon kirjoittaessa tapahtui virhe: " + ex.getMessage());
-        }
-    }
-
-    /**
-     * Sulkee kirjoitettavan tiedoston
-     *
-     */
-    @Override
-    public void suljeKirjoittaja() {
-        try {
-            kirjoittaja.close();
-        } catch (IOException ex) {
-            System.out.println("Tiedoston sulkeminen ei onnistunut: " + ex.getMessage());
-        }
     }
 
     @Override

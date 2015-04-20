@@ -31,9 +31,4 @@ public interface IO {
      */
     void tulostaRivi(String teksti);
 
-    public void asetaTiedosto(String tiedostonNimi);
-
-    public void kirjoita(String teksti);
-
-    public void suljeKirjoittaja();
 }

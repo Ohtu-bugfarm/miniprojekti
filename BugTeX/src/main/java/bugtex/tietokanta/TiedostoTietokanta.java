@@ -74,7 +74,7 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     @Override
     public Viite haeTunnuksella(String tunnus) {
         for (Viite viite : viitteet) {
-            if (viite.getTunnus().equals(tunnus)) {
+            if (viite.getTunnus() != null && viite.getTunnus().equals(tunnus)) {
                 return viite;
             }
         }
@@ -94,7 +94,7 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     }
 
     /**
-     * hae viitetiedosto
+     * Hae tietokannan tallennustiedosto
      *
      * @return tallennukseen käytettävää tiedostoa vastaava File-olio
      */

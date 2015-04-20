@@ -72,7 +72,7 @@ public class Lisaa implements Komento {
             } else {
                 kyselyt.put(kentta, vastaus);
             }
-        }    
+        }
         
         return kyselyt;
     }
