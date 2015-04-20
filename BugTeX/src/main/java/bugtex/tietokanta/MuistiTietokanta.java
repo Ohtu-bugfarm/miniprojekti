@@ -2,7 +2,6 @@ package bugtex.tietokanta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Iterator;
 
 import bugtex.viite.Viite;
 
@@ -39,17 +38,8 @@ public class MuistiTietokanta implements TietokantaRajapinta {
 
     @Override
     public boolean poistaTunnuksella(int id) {
-        Iterator it = this.viitteet.iterator();
-        
-        while (it.hasNext()) {
-            Viite viite = (Viite) it.next();
-            if (viite.getID() == id) {
-                it.remove();
-                return true;
-            }
-        }
-        
-        return false;
+        Viite viite = haeTunnuksella(id);
+        return viitteet.remove(viite);
     }
 
     @Override

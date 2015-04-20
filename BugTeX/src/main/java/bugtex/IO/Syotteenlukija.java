@@ -1,11 +1,9 @@
 package bugtex.IO;
 
-import java.util.Scanner;
-
-import bugtex.viite.Viite;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Luokka standardisyötteen lukemiseen
@@ -13,10 +11,7 @@ import java.io.IOException;
 public class Syotteenlukija implements IO {
 
     private final Scanner lukija = new Scanner(System.in);
-    private FileWriter writer;
-    private IO io;
-    private File file;
-    Viite viite;
+    private FileWriter kirjoittaja;
 
     @Override
     public String lueRivi(String etuTeksti) {
@@ -53,11 +48,11 @@ public class Syotteenlukija implements IO {
      */
     @Override
     public void asetaTiedosto(String tiedostonNimi) {
-        this.file = new File(tiedostonNimi);
+        File tiedosto = new File(tiedostonNimi);
         try {
-            writer = new FileWriter(this.file);
+            kirjoittaja = new FileWriter(tiedosto);
         } catch (IOException ex) {
-            io.tulostaRivi("Avattaessa tapahtui virhe: " + ex.getMessage());
+            System.out.println("Avattaessa tapahtui virhe: " + ex.getMessage());
         }
     }
 
@@ -66,28 +61,26 @@ public class Syotteenlukija implements IO {
      * Stringin.
      *
      * @param teksti tiedostoon kirjoitettava teksti.
-     * @throws java.io.IOException
      */
     @Override
     public void kirjoita(String teksti) {
         try {
-            writer.write(teksti);
+            kirjoittaja.write(teksti);
         } catch (IOException ex) {
-            io.tulostaRivi("Tiedostoon kirjoittaessa tapahtui virhe: " + ex.getMessage());
+            System.out.println("Tiedostoon kirjoittaessa tapahtui virhe: " + ex.getMessage());
         }
     }
 
     /**
      * Sulkee kirjoitettavan tiedoston
      *
-     * @throws java.io.Exception
      */
     @Override
     public void suljeKirjoittaja() {
         try {
-            writer.close();
+            kirjoittaja.close();
         } catch (IOException ex) {
-            io.tulostaRivi("Tiedoston sulkeminen ei onnistunut: " + ex.getMessage());
+            System.out.println("Tiedoston sulkeminen ei onnistunut: " + ex.getMessage());
         }
     }
 

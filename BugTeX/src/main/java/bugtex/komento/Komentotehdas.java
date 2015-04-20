@@ -28,8 +28,9 @@ public class Komentotehdas {
         komennot.put(Help.KOMENTO, new Help(io));
         komennot.put(Listaa.KOMENTO, new Listaa(io, db));
         komennot.put(Muokkaa.KOMENTO, new Muokkaa(io, db));
+        komennot.put(ListaaBibtex.KOMENTO, new ListaaBibtex(io, db));
     }
-
+    
     /**
      * Hae komennon nimeä vastaava komentoluokka
      *

@@ -7,7 +7,7 @@ import bugtex.IO.*;
 scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa ilman viitteitä ohjelma huomaa tämän ja ilmoittaa viitteiden puuttumisesta', {
     given 'Käyttäjän pyytäessä ohjelmaa generoimaan .bib tiedoston', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("gen", "test", "poistu")
+        lukija = new Valelukija("generoiBibtex", "test", "poistu")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
     
@@ -23,7 +23,7 @@ scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa ilman viitteitä ohje
 scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa generoi ohjelma tiedoston onnistuneesti', {
     given 'Käyttäjän pyytäessä ohjelmaa generoimaan .bib tiedoston', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "", "", "", "", "lisaa", "kirja", "", "", "", "","gen", "test", "poistu")
+        lukija = new Valelukija("lisaa", "kirja", "", "", "", "", "lisaa", "kirja", "", "", "", "", "generoiBibtex", "test", "poistu")
          ui = new TekstiKayttoliittyma(lukija, db)
     }
     
@@ -32,7 +32,7 @@ scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa generoi ohjelma tiedo
     }
     
     then 'Onnistuessaan generoimaan .bib tiedoston ohjelma ilmoittaa siitä', {
-        lukija.getTulostukset().shouldHave("Gen onnistui")
+        lukija.getTulostukset().shouldHave("Generointi onnistui")
     }
 }
 
