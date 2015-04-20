@@ -18,7 +18,7 @@ public class TiedostoTietokantaTest {
 
     @Before
     public void setUp() throws ClassNotFoundException {
-        this.db = new TiedostoTietokanta("tiedosto.txt");
+        this.db = new TiedostoTietokanta("src/test/resources/test.txt");
         this.kirja = new Kirja("1", "Kirjailija", "Kirja", "Julkaisija", "2015");
         this.kirja2 = new Kirja("2", "Kirjailija2", "Kirja2", "Julkaisija2", "2015");
         kirjoja = new ArrayList<>();
