@@ -37,7 +37,7 @@ public class ListaaBibtex implements Komento {
         }
 
         for (Viite viite : tulostettava) {
-            io.tulostaRivi(BibTeXMuotoilija.muotoile(viite));
+            io.tulostaRivi(BibTeXMuotoilija.muotoile(viite) + "\n");
         }
     }
 

@@ -40,7 +40,7 @@ public class GeneroiBibtexTiedosto implements Komento {
         }
         
         io.suljeKirjoittaja();
-        io.tulostaRivi("Generointi onnistui");
+        io.tulostaRivi("Generointi onnistui\n");
     }
 
     @Override

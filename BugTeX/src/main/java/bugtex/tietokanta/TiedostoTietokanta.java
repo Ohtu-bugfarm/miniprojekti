@@ -1,6 +1,7 @@
 package bugtex.tietokanta;
 
 import bugtex.viite.Viite;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,17 +32,18 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
      * @throws ClassNotFoundException
      */
     public TiedostoTietokanta(String tiedosto) throws ClassNotFoundException {
-        viitteet = new ArrayList<Viite>();
+        viitteet = new ArrayList<>();
         myRefs = new File(tiedosto);
         
         try {
-            if (myRefs.createNewFile()) {
-                viitteet = new ArrayList<>();
-            } else {
+            myRefs.getParentFile().mkdirs();
+            if (!myRefs.createNewFile()) {
                 fin = new FileInputStream(myRefs);
-                objReader = new ObjectInputStream(fin);
-                viitteet = (ArrayList<Viite>) objReader.readObject();
-                objReader.close();
+                if (fin.available() > 0) {
+                    objReader = new ObjectInputStream(fin);
+                    viitteet = (ArrayList<Viite>) objReader.readObject();
+                    objReader.close();
+                }
                 fin.close();
             }
         } catch (IOException ex) {
