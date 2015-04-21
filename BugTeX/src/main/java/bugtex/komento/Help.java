@@ -22,7 +22,7 @@ public class Help implements Komento {
 
     @Override
     public void suorita() {
-        io.tulostaRivi("Ohjelma tuntee komennot lisaa, poista, tarkastele, bibtex, "
+        io.tulostaRivi("Ohjelma tuntee komennot lisaa, poista, tarkastele, muokkaa, bibtex, "
                 + "listaa, listaaBibtex, generoiBibtex, poistu, help\n");
     }
 
