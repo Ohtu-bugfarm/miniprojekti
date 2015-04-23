@@ -30,7 +30,7 @@ public class Lisaa implements Komento {
 
     @Override
     public void suorita() {
-        String tyyppi = io.lueRiviKysymyksella(">", "viitteen tyyppi? (kirja/artikkeli)");
+        String tyyppi = io.lueRiviKysymyksella(">", "viitteen tyyppi? (kirja/artikkeli/julkaisu)");
         
         Viite viite;
         switch (tyyppi) {
@@ -39,6 +39,9 @@ public class Lisaa implements Komento {
                 break;
             case "artikkeli":
                 viite = lisaaArtikkeli();
+                break;
+            case "julkaisu":
+                viite = lisaaJulkaisu();
                 break;
             default:
                 io.tulostaRivi("Virheellinen viitetyyppi\n");
@@ -94,7 +97,16 @@ public class Lisaa implements Komento {
         
         return new Artikkeli(kyselyt);
     }
-
+    
+    private Viite lisaaJulkaisu() {
+        Map<String, String> kyselyt = kysyKentat(Julkaisu.getKentat());
+        if (kyselyt == null) {
+            return null;
+        }
+        
+        return new Julkaisu(kyselyt);
+    }
+    
     @Override
     public String toString() {
         return KOMENTO;
