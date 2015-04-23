@@ -6,14 +6,14 @@ import java.util.List;
 import bugtex.viite.Viite;
 
 /**
- * Viitteitä tallettava tietokanta, joka pidetään muistissa
+ * Viitteitä tallettava tietokanta, joka pidetään muistissa.
  */
 public class MuistiTietokanta implements TietokantaRajapinta {
-    
+
     private final List<Viite> viitteet;
-    
+
     /**
-     * Luo uuden muistissa pidettävän tietokannan
+     * Luo uuden muistissa pidettävän tietokannan.
      */
     public MuistiTietokanta() {
         this.viitteet = new ArrayList<>();
@@ -32,7 +32,7 @@ public class MuistiTietokanta implements TietokantaRajapinta {
                 return viite;
             }
         }
-        
+
         return null;
     }
 
@@ -46,5 +46,5 @@ public class MuistiTietokanta implements TietokantaRajapinta {
     public List<Viite> annaViitteet() {
         return this.viitteet;
     }
-    
+
 }

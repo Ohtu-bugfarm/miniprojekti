@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Komento BiBTeX-tiedoston generoinnille
+ * Komento BiBTeX-tiedoston generoinnille.
  */
 public class GeneroiBibtexTiedosto implements Komento {
 
     public final static String KOMENTO = "generoibibtex";
-    
+
     private final TietokantaRajapinta db;
     private final IO io;
 
@@ -25,12 +25,12 @@ public class GeneroiBibtexTiedosto implements Komento {
     }
 
     /**
-     * Generoi tiedoston ohjelman tuntemista viitteistä
+     * Generoi tiedoston ohjelman tuntemista viitteistä.
      */
     @Override
     public void suorita() {
         String tiedostoNimi = io.lueRiviKysymyksella(">", "Anna generoitavan tiedoston nimi") + ".bib";
-        
+
         TiedostoonKirjoittaja kirjoittaja;
         try {
             kirjoittaja = new TiedostoonKirjoittaja(tiedostoNimi);
@@ -38,7 +38,7 @@ public class GeneroiBibtexTiedosto implements Komento {
             io.tulostaRivi("Tiedoston avaaminen epäonnistui");
             return;
         }
-        
+
         List<Viite> kirjoitettavat = db.annaViitteet();
         if (kirjoitettavat.isEmpty()) {
             io.tulostaRivi("Sinulla ei ole yhtään viitettä talletettuna");
@@ -49,7 +49,7 @@ public class GeneroiBibtexTiedosto implements Komento {
             io.tulostaRivi("Generointi onnistui\n");
         }
     }
-    
+
     private boolean kirjoitaViitteet(TiedostoonKirjoittaja kirjoittaja, List<Viite> kirjoitettavat) {
         for (Viite viite : kirjoitettavat) {
             if (!kirjoittaja.kirjoita(BibTeXMuotoilija.muotoile(viite) + "\n\n")) {
@@ -57,12 +57,12 @@ public class GeneroiBibtexTiedosto implements Komento {
                 return false;
             }
         }
-        
+
         if (!kirjoittaja.suljeKirjoittaja()) {
             io.tulostaRivi("Tiedoston sulkeminen epäonnistui");
             return false;
         }
-        
+
         return true;
     }
 

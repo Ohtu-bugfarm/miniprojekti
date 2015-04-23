@@ -3,7 +3,7 @@ package bugtex.IO;
 import java.util.Scanner;
 
 /**
- * Luokka standardisyötteen lukemiseen
+ * Luokka standardisyötteen lukemiseen.
  */
 public class Syotteenlukija implements IO {
 

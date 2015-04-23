@@ -5,7 +5,7 @@ import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Viite;
 
 /**
- * Komento yksittäisen viitteen tarkasteluun viitteen id:n perusteella
+ * Komento yksittäisen viitteen tarkasteluun viitteen id:n perusteella.
  */
 public class Tarkastele implements Komento {
 
@@ -15,7 +15,7 @@ public class Tarkastele implements Komento {
     private final TietokantaRajapinta db;
 
     /**
-     * Alustaa tarkastele-komennon
+     * Alustaa tarkastele-komennon.
      *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka
@@ -29,7 +29,7 @@ public class Tarkastele implements Komento {
     public void suorita() {
         String tunnus = io.lueRiviKysymyksella(">", "viitteen tunnus?");
         Viite tarkasteltava = db.haeTunnuksella(tunnus);
-        
+
         if (tarkasteltava == null) {
             io.tulostaRivi("Hakemaasi viitettä ei löytynyt!");
         } else {

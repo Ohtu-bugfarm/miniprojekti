@@ -3,7 +3,7 @@ package bugtex.komento;
 import bugtex.IO.IO;
 
 /**
- * Aputekstin näyttävä komento
+ * Aputekstin näyttävä komento.
  */
 public class Help implements Komento {
 
@@ -12,7 +12,7 @@ public class Help implements Komento {
     private final IO io;
 
     /**
-     * Alustaa Help-komennon
+     * Alustaa Help-komennon.
      *
      * @param io Käytettävä IO-luokka
      */

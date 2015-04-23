@@ -1,22 +1,22 @@
 package bugtex.IO;
 
 /**
- * Rajapinta syötteen lukemisesta ja tulostamisesta vastaaville luokille
+ * Rajapinta syötteen lukemisesta ja tulostamisesta vastaaville luokille.
  */
 public interface IO {
 
     /**
-     * Lue rivi syötteestä
+     * Lue rivi syötteestä.
      *
-     * @param etuTeksti
+     * @param etuTeksti lukemista ennen tulostettava teksti
      * @return luettu rivi
      */
     String lueRivi(String etuTeksti);
 
     /**
-     * Esitä annettu kysymys ja lue rivi syötteestä
+     * Esitä annettu kysymys ja lue rivi syötteestä.
      *
-     * @param etuTeksti
+     * @param etuTeksti lukemista ennen tulostettava teksti
      * @param kysymys esitettävä kysymys
      * @return luettu rivi
      */
@@ -25,7 +25,7 @@ public interface IO {
     int lueNumeroKysymyksella(String etuTeksti, String kysymys);
 
     /**
-     * Tulosta rivi rivivaihdolla
+     * Tulosta rivi rivivaihdolla.
      *
      * @param teksti tulostettava teksti
      */

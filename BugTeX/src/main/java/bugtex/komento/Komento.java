@@ -1,13 +1,13 @@
 package bugtex.komento;
 
 /**
- * Rajapinta ohjelman tukemalle komennolla
+ * Rajapinta ohjelman tukemalle komennolla.
  */
 public interface Komento {
 
     /**
-     * Aja komento
+     * Aja komento.
      */
-    public void suorita();
-        
+    void suorita();
+
 }
