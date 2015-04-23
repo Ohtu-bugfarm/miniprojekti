@@ -14,21 +14,19 @@ public class Kirja implements Viite, Serializable {
     private final Map<String, String> kyselyt;
     
     private final static String[] kentat
-            = {"tunnus", "tekijä", "nimi", "julkaisija", "vuosi"};
+            = {"tekijä", "nimi", "julkaisija", "vuosi"};
 
     /**
      * Luo uuden Kirja olion
      * 
-     * @param tunnus viitteen tunnus
      * @param tekija kirjan tekijä(t)
      * @param nimi kirjan nimi
      * @param julkaisija kirjan julkaisija
      * @param vuosi kirjan julkaisuvuosi
      */
-    public Kirja(String tunnus, String tekija, String nimi, String julkaisija, String vuosi) {
+    public Kirja(String tekija, String nimi, String julkaisija, String vuosi) {
         this.kyselyt = new TreeMap<String, String>();
         
-        this.kyselyt.put("tunnus", tunnus);
         this.kyselyt.put("tekijä", tekija);
         this.kyselyt.put("nimi", nimi);
         this.kyselyt.put("julkaisija", julkaisija);
@@ -59,7 +57,12 @@ public class Kirja implements Viite, Serializable {
 
     @Override
     public String getTunnus() {
-        return kyselyt.get("tunnus");
+        if (kyselyt.get("tunnus") != null) {
+            return kyselyt.get("tunnus");
+        }
+        
+        return ViiteUtils.ensimmainenSana(getTekija(), ",") + getVuosi() +
+               ViiteUtils.ensimmainenSana(getNimi(), " ");
     }
 
     public String getTekija() {
@@ -80,7 +83,7 @@ public class Kirja implements Viite, Serializable {
     
     @Override
     public String toString() {
-        String s = "";
+        String s = "tunnus: " + getTunnus() + "\n";
         for (String kentta : kentat) {
             if (kyselyt.get(kentta) != null) {
                 s += kentta + ": " + kyselyt.get(kentta) + "\n";

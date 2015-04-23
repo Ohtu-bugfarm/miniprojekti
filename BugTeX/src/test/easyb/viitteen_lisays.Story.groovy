@@ -8,7 +8,7 @@ description 'Käyttäjä voi lisätä viitteen järjestelmään'
 scenario 'oikealla komennolla käyttäjä pääsee lisäämään viitteen', {
     given 'annettu komento Lisaa', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Nimi", "Julkaisija", "Vuosi")
+        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -24,7 +24,7 @@ scenario 'oikealla komennolla käyttäjä pääsee lisäämään viitteen', {
 scenario 'Käyttäjä voi lisätä artikkeli viitteen', {
     given 'Käyttäjän antaessa lisää komennon artikkelille', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "artikkeli", "2", "Marko", "Seikkailut", "Modern Times", "2000", "3", "poistu")
+        lukija = new Valelukija("lisaa", "artikkeli", "Marko", "Seikkailut", "Modern Times", "2000", "3", "poistu")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -40,7 +40,7 @@ scenario 'Käyttäjä voi lisätä artikkeli viitteen', {
 scenario 'Käyttäjä voi keskeyttää artikkeli viitteen lisäyksen', {
     given 'Käyttäjän antaessa lisää komennon artikkelille', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "artikkeli", "2", "Marko", "Seikkailut", "keskeyta", "poistu")
+        lukija = new Valelukija("lisaa", "artikkeli", "Marko", "Seikkailut", "keskeyta", "poistu")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -56,7 +56,7 @@ scenario 'Käyttäjä voi keskeyttää artikkeli viitteen lisäyksen', {
 scenario 'kirjaa ei lisätä jos käyttäjä keskeyttää toiminnon', {
     given 'käyttäjä keskeyttää toiminnan kesken lisäyksen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Keskeyta")
+        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Keskeyta")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
     

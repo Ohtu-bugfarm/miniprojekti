@@ -15,13 +15,13 @@ public class BibTeXMuotoilijaTest {
 
     @Before
     public void setUp() {
-        this.kirja = new Kirja("1", "Kirjailija", "Kirjä", "Julkaisija", "2015");
+        this.kirja = new Kirja("Kirjailija", "Kirjä", "Julkaisija", "2015");
     }
 
     @Test
     public void muotoileeKirjanEnsimmaisenRivinOikein() {
         String[] rivit = BibTeXMuotoilija.muotoile(kirja).split("\n");
-        assertEquals("@book{1,", rivit[0]);
+        assertEquals("@book{kirjailija2015kirjä,", rivit[0]);
     }
     
     @Test

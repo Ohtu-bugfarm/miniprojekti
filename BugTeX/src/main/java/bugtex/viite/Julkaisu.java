@@ -14,18 +14,17 @@ public class Julkaisu implements Viite, Serializable {
     private final Map<String, String> kyselyt;
     
     private final static String[] kentat
-            = {"tunnus", "tekijä", "nimi", "kirjan nimi", "vuosi"};
+            = {"tekijä", "nimi", "kirjan nimi", "vuosi"};
 
     /**
      * Luo uuden Julkaisu olion
      * 
-     * @param tunnus viitteen tunnus
      * @param tekija julkaisun tekijä(t)
      * @param nimi julkaisun nimi
      * @param kirjanNimi kirjan nimi
      * @param vuosi julkaisun julkaisuvuosi
      */
-    public Julkaisu(String tunnus, String tekija, String nimi, String kirjanNimi, String vuosi) {
+    public Julkaisu(String tekija, String nimi, String kirjanNimi, String vuosi) {
         this.kyselyt = new TreeMap<String, String>();
         
         this.kyselyt.put("tekija", tekija);
@@ -59,7 +58,12 @@ public class Julkaisu implements Viite, Serializable {
 
     @Override
     public String getTunnus() {
-        return kyselyt.get("tunnus");
+        if (kyselyt.get("tunnus") != null) {
+            return kyselyt.get("tunnus");
+        }
+        
+        return ViiteUtils.ensimmainenSana(getTekija(), ",") + getVuosi() +
+               ViiteUtils.ensimmainenSana(getNimi(), " ");
     }
 
     public String getTekija() {
@@ -80,7 +84,7 @@ public class Julkaisu implements Viite, Serializable {
     
     @Override
     public String toString() {
-        String s = "";
+        String s = "tunnus: " + getTunnus() + "\n";
         for (String kentta : kentat) {
             if (kyselyt.get(kentta) != null) {
                 s += kentta + ": " + kyselyt.get(kentta) + "\n";

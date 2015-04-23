@@ -8,8 +8,8 @@ description 'Käyttäjä voi muokata viitettä'
 scenario 'oikealla komennolla käyttäjä pääsee muokkaamaan viitettä', {
     given 'annettu komento Lisaa', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Nimi", "Julkaisija", "Vuosi",
-                                "muokkaa", "1", "1", "2", "listaa")
+        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi",
+                                "muokkaa", "tekijaVuosinimi", "1", "2", "listaa")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -25,8 +25,8 @@ scenario 'oikealla komennolla käyttäjä pääsee muokkaamaan viitettä', {
 scenario 'viitettä ei muokata jos annetun kentän numero on virheellinen', {
     given 'käyttäjä keskeyttää toiminnan kesken muokkauksen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Nimi", "Julkaisija", "Vuosi",
-                                "muokkaa", "1", "0", "2")
+        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi",
+                                "muokkaa", "tekijaVuosinimi", "0", "2")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
     
@@ -42,8 +42,8 @@ scenario 'viitettä ei muokata jos annetun kentän numero on virheellinen', {
 scenario 'viitettä ei muokata jos annettu viitteen tunnus on virheellinen', {
     given 'käyttäjä keskeyttää toiminnan kesken lisäyksen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "1", "Tekija", "Nimi", "Julkaisija", "Vuosi",
-                                "muokkaa", "2", "1")
+        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi",
+                                "muokkaa", "1")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
     

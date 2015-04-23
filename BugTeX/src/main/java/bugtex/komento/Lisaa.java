@@ -54,6 +54,7 @@ public class Lisaa implements Komento {
         
         if (db.lisaa(viite)) {
             io.tulostaRivi("Viitteen lisäys onnistui");
+            io.tulostaRivi("Viitteen tunnus on " + viite.getTunnus());
         } else {
             io.tulostaRivi("Lisäys ei onnistunut");
         }

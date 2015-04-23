@@ -21,8 +21,8 @@ public class TiedostoTietokantaTest {
     public void setUp() throws ClassNotFoundException, IOException {
         this.db = new TiedostoTietokanta("src/test/resources/test.txt");
         this.tyhjaDB = new TiedostoTietokanta("src/test/resources/tyhja.txt");
-        this.kirja = new Kirja("1", "Kirjailija", "Kirja", "Julkaisija", "2015");
-        this.kirja2 = new Kirja("2", "Kirjailija2", "Kirja2", "Julkaisija2", "2015");
+        this.kirja = new Kirja("Kirjailija", "Kirja", "Julkaisija", "2015");
+        this.kirja2 = new Kirja("Kirjailija2", "Kirja2", "Julkaisija2", "2015");
         kirjoja = new ArrayList<>();
         kirjoja.add(kirja);
         kirjoja.add(kirja2);
@@ -72,19 +72,19 @@ public class TiedostoTietokantaTest {
     @Test
     public void hakuLoytaaOlemassaOlevanViitteen() {
         db.lisaa(kirja);
-        assertEquals(kirja, db.haeTunnuksella("1"));
+        assertEquals(kirja, db.haeTunnuksella("kirjailija2015kirja"));
     }
 
     @Test
     public void hakuLoytaaOikeanViitteen() {
         db.lisaa(kirja);
         db.lisaa(kirja2);
-        assertEquals(kirja2, db.haeTunnuksella("2"));
+        assertEquals(kirja2, db.haeTunnuksella("kirjailija22015kirja2"));
     }
 
     @Test
     public void hakuEiLoydaOlematontaViitetta() {
-        assertNull(db.haeTunnuksella("1"));
+        assertNull(db.haeTunnuksella("kirjailija2015kirja"));
     }
 
     @Test
