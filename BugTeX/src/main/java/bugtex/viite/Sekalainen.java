@@ -5,15 +5,15 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Sekalainen viite
+ * Sekalainen viite.
  */
 public class Sekalainen implements Viite, Serializable {
 
-    private final static String tyyppi = "misc";
+    private final static String TYYPPI = "misc";
 
     private final Map<String, String> kyselyt;
 
-    private final static String[] kentat
+    private final static String[] KENTAT
             = {"tunnus", "tekijä", "nimi", "julkaisutyyppi", "kuukausi", "vuosi", "huomautus"};
 
     /**
@@ -49,7 +49,7 @@ public class Sekalainen implements Viite, Serializable {
     }
     
     public static String[] getKentat() {
-        return kentat;
+        return KENTAT;
     }
     
     @Override
@@ -59,12 +59,17 @@ public class Sekalainen implements Viite, Serializable {
 
     @Override
     public String getTyyppi() {
-        return tyyppi;
+        return TYYPPI;
     }
     
     @Override
     public String getTunnus() {
-        return kyselyt.get("tunnus");
+        if (kyselyt.get("tunnus") != null) {
+            return kyselyt.get("tunnus");
+        }
+
+        return ViiteUtils.ensimmainenSana(getTekija(), ",") + getVuosi() +
+               ViiteUtils.ensimmainenSana(getNimi(), " ");
     }
     
     public String getTekija() {
@@ -83,7 +88,7 @@ public class Sekalainen implements Viite, Serializable {
         return kyselyt.get("kuukausi");
     }
     
-    public String getVuosii() {
+    public String getVuosi() {
         return kyselyt.get("vuosi");
     }
     
@@ -94,7 +99,7 @@ public class Sekalainen implements Viite, Serializable {
     @Override
     public String toString() {
         String s = "";
-        for (String kentta : kentat) {
+        for (String kentta : KENTAT) {
             if (kyselyt.get(kentta) != null) {
                 s += kentta + ": " + kyselyt.get(kentta) + "\n";
             }
