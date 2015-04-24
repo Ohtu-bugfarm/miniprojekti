@@ -5,39 +5,40 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Kirjaviite.
+ * Viitetyyppi konferenssijulkaisulle.
  */
-public class Kirja implements Viite, Serializable {
+public class Julkaisu implements Viite, Serializable {
 
-    private final static String TYYPPI = "book";
+    private final static String TYYPPI = "inproceedings";
 
     private final Map<String, String> kyselyt;
 
     private final static String[] KENTAT
-            = {"tekijä", "nimi", "julkaisija", "vuosi"};
+            = {"tekijä", "nimi", "kirjan nimi", "vuosi"};
 
     /**
-     * Luo uuden Kirja olion.
+     * Luo uuden Julkaisu olion.
      *
-     * @param tekija kirjan tekijä(t)
-     * @param nimi kirjan nimi
-     * @param julkaisija kirjan julkaisija
-     * @param vuosi kirjan julkaisuvuosi
+     * @param tekija julkaisun tekijä(t)
+     * @param nimi julkaisun nimi
+     * @param kirjanNimi kirjan nimi
+     * @param vuosi julkaisun julkaisuvuosi
      */
-    public Kirja(String tekija, String nimi, String julkaisija, String vuosi) {
+    public Julkaisu(String tekija, String nimi, String kirjanNimi, String vuosi) {
         this.kyselyt = new TreeMap<String, String>();
 
-        this.kyselyt.put("tekijä", tekija);
+        this.kyselyt.put("tekija", tekija);
         this.kyselyt.put("nimi", nimi);
-        this.kyselyt.put("julkaisija", julkaisija);
+        this.kyselyt.put("kirjan nimi", kirjanNimi);
         this.kyselyt.put("vuosi", vuosi);
     }
 
     /**
-     * Luo uuden Kirja olion
+     * Luo uuden Julkaisu olion
      *
+     * @param kyselyt
      */
-    public Kirja(Map<String, String> kyselyt) {
+    public Julkaisu(Map<String, String> kyselyt) {
         this.kyselyt = kyselyt;
     }
 
@@ -73,8 +74,8 @@ public class Kirja implements Viite, Serializable {
         return kyselyt.get("nimi");
     }
 
-    public String getJulkaisija() {
-        return kyselyt.get("julkaisija");
+    public String getKirjanNimi() {
+        return kyselyt.get("kirjan nimi");
     }
 
     public String getVuosi() {
@@ -99,7 +100,7 @@ public class Kirja implements Viite, Serializable {
 
         koodit.put("author", kyselyt.get("tekijä"));
         koodit.put("title", kyselyt.get("nimi"));
-        koodit.put("publisher", kyselyt.get("julkaisija"));
+        koodit.put("booktitle", kyselyt.get("kirjan nimi"));
         koodit.put("year", kyselyt.get("vuosi"));
 
         return koodit;

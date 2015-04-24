@@ -7,7 +7,7 @@ import bugtex.bibtex.BibTeXMuotoilija;
 import java.util.List;
 
 /**
- * listaa kaikki viitteet bibtex-muodossa
+ * listaa kaikki viitteet bibtex-muodossa.
  */
 public class ListaaBibtex implements Komento {
 
@@ -17,7 +17,7 @@ public class ListaaBibtex implements Komento {
     private final TietokantaRajapinta db;
 
     /**
-     * Alustaa ListaaBibtex-komennon
+     * Alustaa ListaaBibtex-komennon.
      *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka

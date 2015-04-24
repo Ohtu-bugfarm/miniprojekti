@@ -5,16 +5,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Luokka tiedostoon kirjoittamista varten
+ * Luokka tiedostoon kirjoittamista varten.
  */
 public class TiedostoonKirjoittaja {
-    
+
     private FileWriter kirjoittaja = null;
-    
+
     /**
-     * Asettaa tiedoston johon kirjoitetaan
+     * Asettaa tiedoston johon kirjoitetaan.
      *
-     * @param tiedostonNimi
+     * @param tiedostonNimi tiedostopolku kirjoitettavalle tiedostolle
      * @throws java.io.IOException
      */
     public TiedostoonKirjoittaja(String tiedostonNimi) throws IOException {
@@ -23,7 +23,7 @@ public class TiedostoonKirjoittaja {
     }
 
     /**
-     * Kirjoittaa konstruktorissa määriteltyyn tiedostoon parametrina annetun
+     * Kirjoittaa konstruktorissa määriteltyyn tiedostoon parametrina annetun.
      * Stringin
      *
      * @param teksti tiedostoon kirjoitettava teksti.
@@ -35,12 +35,12 @@ public class TiedostoonKirjoittaja {
         } catch (IOException ex) {
             return false;
         }
-        
+
         return true;
     }
 
     /**
-     * Sulkee kirjoitettavan tiedoston
+     * Sulkee kirjoitettavan tiedoston.
      *
      * @return true jos sulkeminen onnistuu, false muuten
      */
@@ -50,8 +50,8 @@ public class TiedostoonKirjoittaja {
         } catch (IOException ex) {
             return false;
         }
-        
+
         return true;
     }
-    
+
 }

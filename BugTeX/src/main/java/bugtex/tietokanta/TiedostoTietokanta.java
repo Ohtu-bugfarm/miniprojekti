@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * talleta viitteet tiedostoon
+ * talleta viitteet tiedostoon.
  */
 public class TiedostoTietokanta implements TietokantaRajapinta {
 
@@ -27,14 +27,14 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     private File myRefs;
 
     /**
-     *Luo uuden tiedoston jos ei sitä ole, muuten avaa olemassaolevan
+     *Luo uuden tiedoston jos ei sitä ole, muuten avaa olemassaolevan.
      * @param tiedosto
      * @throws ClassNotFoundException
      */
     public TiedostoTietokanta(String tiedosto) throws ClassNotFoundException {
         viitteet = new ArrayList<>();
         myRefs = new File(tiedosto);
-        
+
         try {
             myRefs.getParentFile().mkdirs();
             if (!myRefs.createNewFile()) {
@@ -50,11 +50,11 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
             Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
     public boolean lisaa(Viite viite) {
         viitteet.add(viite);
-        
+
         try {
             fout = new FileOutputStream(myRefs);
             objWriter = new ObjectOutputStream(fout);
@@ -67,7 +67,7 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
         } catch (IOException ex) {
             Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return false;
     }
 

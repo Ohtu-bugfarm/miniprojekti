@@ -7,7 +7,7 @@ import bugtex.tietokanta.TietokantaRajapinta;
 import java.util.NoSuchElementException;
 
 /**
- * Tekstikäyttöliittymä ohjelmalle
+ * Tekstikäyttöliittymä ohjelmalle.
  */
 public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
 
@@ -15,8 +15,8 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
     private final TietokantaRajapinta db;
 
     /**
-     * Alustaa tekstikäyttöliittymän
-     * 
+     * Alustaa tekstikäyttöliittymän.
+     *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka
      */
@@ -38,11 +38,11 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
             } catch (NoSuchElementException ex) {
                 break;
             }
-            
+
             if (rivi.equalsIgnoreCase("poistu")) {
                 break;
             }
-            
+
             komennot.hae(rivi).suorita();
         }
     }

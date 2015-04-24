@@ -4,7 +4,7 @@ import bugtex.tietokanta.*;
 import bugtex.IO.*;
 
 
-scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa ilman viitteitä ohjelma huomaa tämän ja ilmoittaa viitteiden puuttumisesta', {
+scenario 'Kun käyttäjä yrittää generoida .bib tiedostoa ilman viitteitä ohjelma huomaa tämän ja ilmoittaa viitteiden puuttumisesta', {
     given 'Käyttäjän pyytäessä ohjelmaa generoimaan .bib tiedoston', {
         db = new MuistiTietokanta()
         lukija = new Valelukija("generoiBibtex", "test", "poistu")
@@ -20,11 +20,11 @@ scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa ilman viitteitä ohje
     }
 }
 
-scenario 'Kun käyttäjä yrittä generoida .bib tiedostoa generoi ohjelma tiedoston onnistuneesti', {
+scenario 'Kun käyttäjä yrittää generoida .bib tiedostoa generoi ohjelma tiedoston onnistuneesti', {
     given 'Käyttäjän pyytäessä ohjelmaa generoimaan .bib tiedoston', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "1", "", "", "", "", "lisaa", "kirja", "2", "", "", "", "", "generoiBibtex", "test", "poistu")
-         ui = new TekstiKayttoliittyma(lukija, db)
+        lukija = new Valelukija("lisaa", "kirja", "a", "b", "c", "d", "generoiBibtex", "test", "poistu")
+        ui = new TekstiKayttoliittyma(lukija, db)
     }
     
     when 'Ohjelma pyrkii tekemään tiedoston', {

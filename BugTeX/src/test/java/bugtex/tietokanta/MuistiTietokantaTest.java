@@ -18,8 +18,8 @@ public class MuistiTietokantaTest {
     @Before
     public void setUp() {
         this.db = new MuistiTietokanta();
-        this.kirja = new Kirja("1", "Kirjailija", "Kirja", "Julkaisija", "2015");
-        this.kirja2 = new Kirja("2", "Kirjailija2", "Kirja2", "Julkaisija2", "2015");
+        this.kirja = new Kirja("Kirjailija", "Kirja", "Julkaisija", "2015");
+        this.kirja2 = new Kirja("Kirjailija2", "Kirja2", "Julkaisija2", "2015");
         kirjoja = new ArrayList<>();
         kirjoja.add(kirja);
         kirjoja.add(kirja2);
@@ -33,14 +33,14 @@ public class MuistiTietokantaTest {
     @Test
     public void hakuLoytaaOlemassaOlevanViitteen() {
         db.lisaa(kirja);
-        assertEquals(kirja, db.haeTunnuksella("1"));
+        assertEquals(kirja, db.haeTunnuksella("kirjailija2015kirja"));
     }
 
     @Test
     public void hakuLoytaaOikeanViitteen() {
         db.lisaa(kirja);
         db.lisaa(kirja2);
-        assertEquals(kirja2, db.haeTunnuksella("2"));
+        assertEquals(kirja2, db.haeTunnuksella("kirjailija22015kirja2"));
     }
 
     @Test

@@ -6,18 +6,18 @@ import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Viite;
 
 /**
- * Komento yksittäisen viitteen tarkasteluun BibTeX-muodossa viitteen id:n perusteella
+ * Komento yksittäisen viitteen tarkasteluun BibTeX-muodossa viitteen id:n perusteella.
  */
 public class TarkasteleBibtex implements Komento {
 
     public final static String KOMENTO = "bibtex";
-    
+
     private final IO io;
     private final TietokantaRajapinta db;
 
     /**
-     * Alustaa TarkasteleBibtex-komennon
-     * 
+     * Alustaa TarkasteleBibtex-komennon.
+     *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka
      */
@@ -30,16 +30,16 @@ public class TarkasteleBibtex implements Komento {
     public void suorita() {
         String tunnus = io.lueRiviKysymyksella(">", "viitteen tunnus?");
         Viite tarkasteltava = db.haeTunnuksella(tunnus);
-        
+
         if (tarkasteltava == null) {
             io.tulostaRivi("Hakemaasi viitettä ei löytynyt!");
         } else {
             io.tulostaRivi(BibTeXMuotoilija.muotoile(tarkasteltava));
         }
-        
+
         io.tulostaRivi("");
     }
-        
+
     @Override
     public String toString() {
         return KOMENTO;

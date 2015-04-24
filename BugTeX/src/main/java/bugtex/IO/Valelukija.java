@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * Testaamista helpottava luokka, joka lukee parametreina annettuja syötteitä
+ * Testaamista helpottava luokka, joka lukee parametreina annettuja syötteitä.
  */
 public class Valelukija implements IO {
 
-    List<String> tulostukset;
-    String rivit[];
-    int i;
+    private final List<String> tulostukset;
+    private final String[] rivit;
+    private int i;
 
     /**
-     * Alustaa valelukijan
+     * Alustaa valelukijan.
      *
      * @param syotteet lista syötteistä, jotka valelukija myöhemmin lukee
      */

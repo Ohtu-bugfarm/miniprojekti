@@ -6,14 +6,14 @@ import bugtex.tietokanta.TietokantaRajapinta;
 import java.util.HashMap;
 
 /**
- * Luokka ohjelmien komentojen hakemiselle
+ * Luokka ohjelmien komentojen hakemiselle.
  */
-public class Komentotehdas {
+public final class Komentotehdas {
 
     private HashMap<String, Komento> komennot;
 
     /**
-     * Alustaa komentotehtaan
+     * Alustaa komentotehtaan.
      *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka
@@ -32,7 +32,7 @@ public class Komentotehdas {
     }
 
     /**
-     * Hae komennon nimeä vastaava komentoluokka
+     * Hae komennon nimeä vastaava komentoluokka.
      *
      * @param syote komennon nimi
      * @return komentoa vastaava luokka

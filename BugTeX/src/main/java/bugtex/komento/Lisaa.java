@@ -2,13 +2,16 @@ package bugtex.komento;
 
 import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
-import bugtex.viite.*;
+import bugtex.viite.Artikkeli;
+import bugtex.viite.Julkaisu;
+import bugtex.viite.Kirja;
+import bugtex.viite.Viite;
 
 import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Komento viitteen lisäämiselle
+ * Komento viitteen lisäämiselle.
  */
 public class Lisaa implements Komento {
 
@@ -18,7 +21,7 @@ public class Lisaa implements Komento {
     private final TietokantaRajapinta db;
 
     /**
-     * Alustaa lisää-komennon
+     * Alustaa lisää-komennon.
      *
      * @param io Käytettävä IO-luokka
      * @param db Käytettävä tietokanta-luokka
@@ -30,8 +33,8 @@ public class Lisaa implements Komento {
 
     @Override
     public void suorita() {
-        String tyyppi = io.lueRiviKysymyksella(">", "viitteen tyyppi? (kirja/artikkeli)");
-        
+        String tyyppi = io.lueRiviKysymyksella(">", "viitteen tyyppi? (kirja/artikkeli/julkaisu)");
+
         Viite viite;
         switch (tyyppi) {
             case "kirja":
@@ -40,24 +43,28 @@ public class Lisaa implements Komento {
             case "artikkeli":
                 viite = lisaaArtikkeli();
                 break;
+            case "julkaisu":
+                viite = lisaaJulkaisu();
+                break;
             default:
                 io.tulostaRivi("Virheellinen viitetyyppi\n");
                 return;
         }
-        
+
         if (viite == null) {
             return;
         }
-        
+
         if (db.lisaa(viite)) {
             io.tulostaRivi("Viitteen lisäys onnistui");
+            io.tulostaRivi("Viitteen tunnus on " + viite.getTunnus());
         } else {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
-        
+
         io.tulostaRivi("");
     }
-    
+
     private Map<String, String> kysyKentat(String[] kentat) {
         Map<String, String> kyselyt = new TreeMap<>();
         for (String kentta : kentat) {
@@ -66,33 +73,42 @@ public class Lisaa implements Komento {
                 io.tulostaRivi("Keskeytettiin lisäys");
                 return null;
             }
-            
+
             if (vastaus.isEmpty()) {
                 kyselyt.put(kentta, null);
             } else {
                 kyselyt.put(kentta, vastaus);
             }
         }
-        
+
         return kyselyt;
     }
-    
+
     private Viite lisaaKirja() {
         Map<String, String> kyselyt = kysyKentat(Kirja.getKentat());
         if (kyselyt == null) {
             return null;
         }
-        
+
         return new Kirja(kyselyt);
     }
-    
+
     private Viite lisaaArtikkeli() {
         Map<String, String> kyselyt = kysyKentat(Artikkeli.getKentat());
         if (kyselyt == null) {
             return null;
         }
-        
+
         return new Artikkeli(kyselyt);
+    }
+
+    private Viite lisaaJulkaisu() {
+        Map<String, String> kyselyt = kysyKentat(Julkaisu.getKentat());
+        if (kyselyt == null) {
+            return null;
+        }
+
+        return new Julkaisu(kyselyt);
     }
 
     @Override
