@@ -14,12 +14,11 @@ public class Sekalainen implements Viite, Serializable {
     private final Map<String, String> kyselyt;
 
     private final static String[] KENTAT
-            = {"tunnus", "tekijä", "nimi", "julkaisutyyppi", "kuukausi", "vuosi", "huomautus"};
+            = {"tekijä", "nimi", "julkaisutyyppi", "kuukausi", "vuosi", "huomautus"};
 
     /**
      * Luo uuden Sekalainen-olion
      *
-     * @param tunnus viitteen tunnus
      * @param tekija tekijä(t)
      * @param nimi lähteen nimi
      * @param julkaisutyyppi miten lähde julkaistu
@@ -28,10 +27,9 @@ public class Sekalainen implements Viite, Serializable {
      * @param huomautus muuta infoa
      */
     
-    public Sekalainen(String tunnus, String tekija, String nimi, String julkaisutyyppi, String kuukausi, String vuosi, String huomautus) {
+    public Sekalainen(String tekija, String nimi, String julkaisutyyppi, String kuukausi, String vuosi, String huomautus) {
         this.kyselyt = new TreeMap<String, String>();
         
-        this.kyselyt.put("tunnus", tunnus);
         this.kyselyt.put("tekijä", tekija);
         this.kyselyt.put("nimi", nimi);
         this.kyselyt.put("julkaisutyyppi", julkaisutyyppi);
@@ -98,13 +96,13 @@ public class Sekalainen implements Viite, Serializable {
     
     @Override
     public String toString() {
-        String s = "";
+        String s = "tunnus: " + getTunnus() + "\n";
         for (String kentta : KENTAT) {
             if (kyselyt.get(kentta) != null) {
                 s += kentta + ": " + kyselyt.get(kentta) + "\n";
             }
         }
-        
+
         return s;
     }
 
