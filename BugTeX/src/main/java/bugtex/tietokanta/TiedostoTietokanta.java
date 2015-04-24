@@ -85,7 +85,23 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     @Override
     public boolean poistaTunnuksella(String tunnus) {
         Viite viite = haeTunnuksella(tunnus);
-        return viitteet.remove(viite);
+
+        viitteet.remove(viite);
+        
+        try {
+            fout = new FileOutputStream(myRefs);
+            objWriter = new ObjectOutputStream(fout);
+            objWriter.writeObject(viitteet);
+            objWriter.close();
+            fout.close();
+            return true;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
     }
 
     @Override
