@@ -6,6 +6,7 @@ import bugtex.viite.Artikkeli;
 import bugtex.viite.Julkaisu;
 import bugtex.viite.Kirja;
 import bugtex.viite.Viite;
+import bugtex.viite.Sekalainen;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -33,7 +34,7 @@ public class Lisaa implements Komento {
 
     @Override
     public void suorita() {
-        String tyyppi = io.lueRiviKysymyksella(">", "viitteen tyyppi? (kirja/artikkeli/julkaisu)");
+        String tyyppi = io.lueRiviKysymyksella(">", "viitteen tyyppi? (kirja/artikkeli/julkaisu/sekalainen)");
 
         Viite viite;
         switch (tyyppi) {
@@ -45,6 +46,9 @@ public class Lisaa implements Komento {
                 break;
             case "julkaisu":
                 viite = lisaaJulkaisu();
+                break;
+            case "sekalainen":
+                viite = lisaaSekalainen();
                 break;
             default:
                 io.tulostaRivi("Virheellinen viitetyyppi\n");
@@ -109,6 +113,15 @@ public class Lisaa implements Komento {
         }
 
         return new Julkaisu(kyselyt);
+    }
+    
+    private Viite lisaaSekalainen() {
+        Map<String, String> kyselyt = kysyKentat(Sekalainen.getKentat());
+        if (kyselyt == null) {
+            return null;
+        }
+
+        return new Sekalainen(kyselyt);
     }
 
     @Override
