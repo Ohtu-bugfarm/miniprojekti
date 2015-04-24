@@ -36,8 +36,14 @@ public class Listaa implements Komento {
         }
 
         for (Viite viite: tulostettava) {
+            io.tulostaRivi(viite.getTyyppi());
             io.tulostaRivi(viite.toString());
         }
+        
+        io.tulostaRivi("");
+        io.tulostaRivi("Viitteitä tietokannassa yhteensä " + db.annaViitteet().size());
+        io.tulostaRivi("");
+        
     }
 
 }

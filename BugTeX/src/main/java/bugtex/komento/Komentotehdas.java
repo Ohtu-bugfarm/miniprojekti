@@ -39,6 +39,7 @@ public final class Komentotehdas {
      */
     public Komento hae(String syote) {
         String operaatio = syote.toLowerCase();
+        operaatio = operaatio.trim();
         Komento komento = komennot.get(operaatio);
 
         if (komento == null) {
