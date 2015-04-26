@@ -6,9 +6,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class KirjaTest {
-    
+
     private Kirja kirja;
-    
+
     @Before
     public void setUp() {
         this.kirja = new Kirja("Kirjailija", "Kirja", "Julkaisija", "2015");
@@ -18,12 +18,12 @@ public class KirjaTest {
     public void toStringPalauttaaOikeinMaaranRiveja() {
         assertEquals(5, kirja.toString().split("\n").length);
     }
-    
+
     @Test
     public void koodausMaarittaaOikeanMaaranKenttia() {
         assertEquals(4, kirja.koodaus().size());
     }
-    
+
     @Test
     public void koodausMaarittaaKentatOikein() {
         Map<String, String> k = kirja.koodaus();
@@ -32,5 +32,16 @@ public class KirjaTest {
         assertEquals(kirja.getJulkaisija(), k.get("publisher"));
         assertEquals(kirja.getVuosi(), k.get("year"));
     }
-    
+
+    @Test
+    public void tunnusMuodostuuOikein() {
+        assertEquals("kirjailija2015kirja", kirja.getTunnus());
+    }
+
+    @Test
+    public void josTunnusOnJoMaariteltySitaEiMuodostetaAutomaattisesti() {
+        kirja.getKyselyt().put("tunnus", "1");
+        assertEquals("1", kirja.getTunnus());
+    }
+
 }

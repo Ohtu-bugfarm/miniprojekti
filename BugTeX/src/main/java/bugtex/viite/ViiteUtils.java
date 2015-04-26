@@ -14,11 +14,6 @@ class ViiteUtils {
      */
     public static String ensimmainenSana(String mjono, String jakaja) {
         String[] jako = mjono.split(jakaja);
-
-        if (jako.length == 0) {
-            return mjono;
-        }
-
         return jako[0].toLowerCase();
     }
 

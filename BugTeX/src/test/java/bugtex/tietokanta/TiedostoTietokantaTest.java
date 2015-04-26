@@ -38,12 +38,12 @@ public class TiedostoTietokantaTest {
     public void tiedostoSyntyy() {
         assertTrue(db.tiedosto().exists());
     }
-    
+
     @Test
     public void tyhjaTiedostoPalauttaaTyhjanListan() {
         assertTrue(tyhjaDB.annaViitteet().isEmpty());
     }
-    
+
     @Test
     public void epatyhjaTiedostoPalauttaaEpatyhjanListan() {
         tyhjaDB.lisaa(kirja);
@@ -53,7 +53,7 @@ public class TiedostoTietokantaTest {
         } catch (ClassNotFoundException ex) {
             fail();
         }
-        
+
         assertNotNull(s);
         assertEquals(1, s.annaViitteet().size());
     }
@@ -113,11 +113,16 @@ public class TiedostoTietokantaTest {
         List<Viite> tulokset = db.annaViitteet();
         assertTrue(tulokset.containsAll(kirjoja));
     }
-    
+
     @Test
     public void poistaaViitteen() {
         db.lisaa(kirja);
         assertTrue(db.poistaTunnuksella(kirja.getTunnus()));
+    }
+
+    @Test
+    public void poistaminenEiPaivitaTietokantaaJosPoistettavaaViitettaEiOle() {
+        assertFalse(tyhjaDB.poistaTunnuksella(kirja.getTunnus()));
     }
 
 }

@@ -27,7 +27,7 @@ public class Julkaisu implements Viite, Serializable {
     public Julkaisu(String tekija, String nimi, String kirjanNimi, String vuosi) {
         this.kyselyt = new TreeMap<String, String>();
 
-        this.kyselyt.put("tekija", tekija);
+        this.kyselyt.put("tekijä", tekija);
         this.kyselyt.put("nimi", nimi);
         this.kyselyt.put("kirjan nimi", kirjanNimi);
         this.kyselyt.put("vuosi", vuosi);

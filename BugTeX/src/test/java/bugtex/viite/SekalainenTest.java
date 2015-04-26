@@ -11,25 +11,25 @@ import static org.junit.Assert.*;
 
 
 public class SekalainenTest {
-    
+
     private Sekalainen misc;
-    
-        
+
+
     @Before
     public void setUp() {
         this.misc = new Sekalainen("Tekija", "Nimi", "Julkaisutyyppi", "Tammikuu", "2015", "huomio");
     }
-    
+
     @Test
     public void toStringPalauttaaOikeinMaaranRiveja() {
         assertEquals(7, misc.toString().split("\n").length);
     }
-    
+
     @Test
     public void koodausMaarittaaOikeanMaaranKenttia() {
         assertEquals(6, misc.koodaus().size());
     }
-    
+
     @Test
     public void koodausMaarittaaKentatOikein() {
         Map<String, String> k = misc.koodaus();
@@ -40,4 +40,16 @@ public class SekalainenTest {
         assertEquals(misc.getVuosi(), k.get("year"));
         assertEquals(misc.getHuomautus(), k.get("note"));
     }
+
+    @Test
+    public void tunnusMuodostuuOikein() {
+        assertEquals("tekija2015nimi", misc.getTunnus());
+    }
+
+    @Test
+    public void josTunnusOnJoMaariteltySitaEiMuodostetaAutomaattisesti() {
+        misc.getKyselyt().put("tunnus", "1");
+        assertEquals("1", misc.getTunnus());
+    }
+
 }
