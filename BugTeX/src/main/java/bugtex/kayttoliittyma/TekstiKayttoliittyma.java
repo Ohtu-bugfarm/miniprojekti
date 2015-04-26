@@ -39,10 +39,9 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
                 break;
             }
 
-            if (rivi.equalsIgnoreCase("poistu")) {
+            if (rivi.equalsIgnoreCase("poistu") || Integer.parseInt(rivi) == 10) {
                 break;
             }
-
             komennot.hae(rivi).suorita();
         }
     }

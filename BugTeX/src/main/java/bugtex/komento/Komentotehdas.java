@@ -11,6 +11,7 @@ import java.util.HashMap;
 public final class Komentotehdas {
 
     private final HashMap<String, Komento> komennot;
+    private final HashMap<Integer, Komento> numeroKomennot;
 
     /**
      * Alustaa komentotehtaan.
@@ -19,7 +20,8 @@ public final class Komentotehdas {
      * @param db Käytettävä tietokanta-luokka
      */
     public Komentotehdas(IO io, TietokantaRajapinta db) {
-        this.komennot = new HashMap<String, Komento>();
+        this.komennot = new HashMap<>();
+        this.numeroKomennot = new HashMap<>();
         komennot.put(GeneroiBibtexTiedosto.KOMENTO, new GeneroiBibtexTiedosto(io, db));
         komennot.put(Lisaa.KOMENTO, new Lisaa(io, db));
         komennot.put(Poista.KOMENTO, new Poista(io, db));
@@ -30,6 +32,16 @@ public final class Komentotehdas {
         komennot.put(Muokkaa.KOMENTO, new Muokkaa(io, db));
         komennot.put(ListaaBibtex.KOMENTO, new ListaaBibtex(io, db));
         komennot.put(Hae.KOMENTO, new Hae(io, db));
+        numeroKomennot.put(9, new GeneroiBibtexTiedosto(io, db));
+        numeroKomennot.put(1, new Lisaa(io, db));
+        numeroKomennot.put(2, new Poista(io, db));
+        numeroKomennot.put(4, new Tarkastele(io, db));
+        numeroKomennot.put(6, new TarkasteleBibtex(io, db));
+        numeroKomennot.put(11, new Help(io));
+        numeroKomennot.put(7, new Listaa(io, db));
+        numeroKomennot.put(5, new Muokkaa(io, db));
+        numeroKomennot.put(8, new ListaaBibtex(io, db));
+        numeroKomennot.put(3, new Hae(io, db));
     }
 
     /**
@@ -39,15 +51,17 @@ public final class Komentotehdas {
      * @return komentoa vastaava luokka
      */
     public Komento hae(String syote) {
-        String operaatio = syote.toLowerCase();
-        operaatio = operaatio.trim();
-        Komento komento = komennot.get(operaatio);
-
-        if (komento == null) {
-            komento = komennot.get("help");
+        try {
+            int luku = Integer.parseInt(syote);
+            Komento komento = numeroKomennot.get(luku);
+            return komento;
+        } catch (NumberFormatException e) {
+            String operaatio = syote.toLowerCase().trim();
+            Komento komento = komennot.get(operaatio);
+            if (komento == null) {
+                komento = komennot.get("help");
+            }
+            return komento;
         }
-
-        return komento;
     }
-
 }

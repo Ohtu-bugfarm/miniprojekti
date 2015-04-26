@@ -12,7 +12,11 @@ public class Syotteenlukija implements IO {
     @Override
     public String lueRivi(String etuTeksti) {
         System.out.print(etuTeksti + " ");
-        return lukija.nextLine();
+        if (lukija.hasNextInt()) {
+            return String.valueOf(lukija.nextLine());
+        } else {
+            return lukija.nextLine();
+        }
     }
 
     @Override
