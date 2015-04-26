@@ -7,7 +7,7 @@ import bugtex.viite.Viite;
 /**
  * Komento viitteen muokkaamiselle.
  */
-public class Muokkaa implements Komento {
+class Muokkaa implements Komento {
 
     public final static String KOMENTO = "muokkaa";
 

@@ -2,12 +2,11 @@ package bugtex.komento;
 
 import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
-import bugtex.viite.Viite;
 
 /**
  * Komento viitteen poistamiselle.
  */
-public class Poista implements Komento {
+class Poista implements Komento {
 
     public final static String KOMENTO = "poista";
 
@@ -28,10 +27,8 @@ public class Poista implements Komento {
     @Override
     public void suorita() {
         String poistettavaId = io.lueRiviKysymyksella(">", "Poistettavan viitteen id? ");
-        
-        boolean onnistuiko = db.poistaTunnuksella(poistettavaId);
-        
-        if (onnistuiko) {
+
+        if (db.poistaTunnuksella(poistettavaId)) {
             io.tulostaRivi("Poistettiin viite " + poistettavaId);
         } else {
             io.tulostaRivi("Poisto ei onnistunut");

@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public final class Komentotehdas {
 
-    private HashMap<String, Komento> komennot;
+    private final HashMap<String, Komento> komennot;
 
     /**
      * Alustaa komentotehtaan.
@@ -29,6 +29,7 @@ public final class Komentotehdas {
         komennot.put(Listaa.KOMENTO, new Listaa(io, db));
         komennot.put(Muokkaa.KOMENTO, new Muokkaa(io, db));
         komennot.put(ListaaBibtex.KOMENTO, new ListaaBibtex(io, db));
+        komennot.put(Hae.KOMENTO, new Hae(io, db));
     }
 
     /**

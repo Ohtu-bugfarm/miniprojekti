@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Komento kaikkien viitteiden listaamiselle.
  */
-public class Listaa implements Komento {
+class Listaa implements Komento {
 
     public final static String KOMENTO = "listaa";
 
@@ -39,11 +39,9 @@ public class Listaa implements Komento {
             io.tulostaRivi(viite.getTyyppi());
             io.tulostaRivi(viite.toString());
         }
-        
-        io.tulostaRivi("");
+
         io.tulostaRivi("Viitteitä tietokannassa yhteensä " + db.annaViitteet().size());
         io.tulostaRivi("");
-        
     }
 
 }

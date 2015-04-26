@@ -27,7 +27,8 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     private final File myRefs;
 
     /**
-     *Luo uuden tiedoston jos ei sitä ole, muuten avaa olemassaolevan.
+     * Luo uuden tiedoston jos ei sitä ole, muuten avaa olemassaolevan.
+     *
      * @param tiedosto
      * @throws ClassNotFoundException
      */
@@ -85,7 +86,7 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     }
 
     /**
-     * Hae tietokannan tallennustiedosto
+     * Hae tietokannan tallennustiedosto.
      *
      * @return tallennukseen käytettävää tiedostoa vastaava File-olio
      */

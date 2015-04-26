@@ -8,7 +8,7 @@ import bugtex.viite.Viite;
 /**
  * Komento yksittäisen viitteen tarkasteluun BibTeX-muodossa viitteen id:n perusteella.
  */
-public class TarkasteleBibtex implements Komento {
+class TarkasteleBibtex implements Komento {
 
     public final static String KOMENTO = "bibtex";
 

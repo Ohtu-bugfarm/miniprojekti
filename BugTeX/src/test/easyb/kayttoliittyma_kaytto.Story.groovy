@@ -16,7 +16,7 @@ scenario 'Kun käyttäjä antaa tyhjän komennon ohjelma ei kaadu', {
     }
     
     then 'jolloin ohjelma ilmoittaa tuntemattomasta komennosta', {
-        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot lisaa, poista, " +
+        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot lisaa, poista, hae, " +
                                            "tarkastele, muokkaa, bibtex, listaa, listaaBibtex, " +
                                            "generoiBibtex, poistu, help")
     }
@@ -34,7 +34,7 @@ scenario 'Kun käyttäjä ei tiedä komentoja hän voi pyytää listaa komennois
     }
     
     then 'jolloin ohjelma ohjelma palauttaa listan sen tuntemista komennoista', {
-        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot lisaa, poista, " +
+        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot lisaa, poista, hae, " +
                                            "tarkastele, muokkaa, bibtex, listaa, listaaBibtex, " +
                                            "generoiBibtex, poistu, help")
     }

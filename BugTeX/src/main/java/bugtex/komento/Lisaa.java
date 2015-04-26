@@ -14,7 +14,7 @@ import java.util.TreeMap;
 /**
  * Komento viitteen lisäämiselle.
  */
-public class Lisaa implements Komento {
+class Lisaa implements Komento {
 
     public final static String KOMENTO = "lisaa";
 
@@ -114,7 +114,7 @@ public class Lisaa implements Komento {
 
         return new Julkaisu(kyselyt);
     }
-    
+
     private Viite lisaaSekalainen() {
         Map<String, String> kyselyt = kysyKentat(Sekalainen.getKentat());
         if (kyselyt == null) {

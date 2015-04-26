@@ -7,9 +7,9 @@ import bugtex.bibtex.BibTeXMuotoilija;
 import java.util.List;
 
 /**
- * listaa kaikki viitteet bibtex-muodossa.
+ * Listaa kaikki viitteet bibtex-muodossa.
  */
-public class ListaaBibtex implements Komento {
+class ListaaBibtex implements Komento {
 
     public final static String KOMENTO = "listaabibtex";
 

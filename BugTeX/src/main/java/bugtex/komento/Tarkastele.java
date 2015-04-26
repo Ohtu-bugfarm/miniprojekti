@@ -7,7 +7,7 @@ import bugtex.viite.Viite;
 /**
  * Komento yksittäisen viitteen tarkasteluun viitteen id:n perusteella.
  */
-public class Tarkastele implements Komento {
+class Tarkastele implements Komento {
 
     public final static String KOMENTO = "tarkastele";
 
