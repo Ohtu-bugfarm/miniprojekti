@@ -47,4 +47,9 @@ public class MuistiTietokanta implements TietokantaRajapinta {
         return this.viitteet;
     }
 
+    @Override
+    public boolean paivita() {
+        return true;
+    }
+
 }

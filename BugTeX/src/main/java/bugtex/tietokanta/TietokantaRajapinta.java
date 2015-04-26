@@ -40,4 +40,11 @@ public interface TietokantaRajapinta {
      */
     List<Viite> annaViitteet();
 
+    /**
+     * Päivittää olioihin tapahtuneet muutokset tietokantaan.
+     *
+     * @return true jos päivitys onnistuu, false muuten
+     */
+    boolean paivita();
+
 }

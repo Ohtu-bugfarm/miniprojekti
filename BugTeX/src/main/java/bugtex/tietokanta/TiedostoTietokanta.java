@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * talleta viitteet tiedostoon.
+ * Tallettaa viitteet tiedostoon.
  */
 public class TiedostoTietokanta implements TietokantaRajapinta {
 
@@ -24,7 +24,7 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     private FileInputStream fin;
     private ObjectOutputStream objWriter;
     private ObjectInputStream objReader;
-    private File myRefs;
+    private final File myRefs;
 
     /**
      *Luo uuden tiedoston jos ei sitä ole, muuten avaa olemassaolevan.
@@ -54,21 +54,7 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     @Override
     public boolean lisaa(Viite viite) {
         viitteet.add(viite);
-
-        try {
-            fout = new FileOutputStream(myRefs);
-            objWriter = new ObjectOutputStream(fout);
-            objWriter.writeObject(viitteet);
-            objWriter.close();
-            fout.close();
-            return true;
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return false;
+        return paivita();
     }
 
     @Override
@@ -86,22 +72,11 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     public boolean poistaTunnuksella(String tunnus) {
         Viite viite = haeTunnuksella(tunnus);
 
-        viitteet.remove(viite);
-        
-        try {
-            fout = new FileOutputStream(myRefs);
-            objWriter = new ObjectOutputStream(fout);
-            objWriter.writeObject(viitteet);
-            objWriter.close();
-            fout.close();
-            return true;
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
+        if (!viitteet.remove(viite)) {
+            return false;
         }
 
-        return false;
+        return paivita();
     }
 
     @Override
@@ -116,6 +91,24 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
      */
     public File tiedosto() {
         return myRefs;
+    }
+
+    @Override
+    public boolean paivita() {
+        try {
+            fout = new FileOutputStream(myRefs);
+            objWriter = new ObjectOutputStream(fout);
+            objWriter.writeObject(viitteet);
+            objWriter.close();
+            fout.close();
+            return true;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
     }
 
 }

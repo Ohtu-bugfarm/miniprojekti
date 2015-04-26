@@ -40,9 +40,7 @@ public class Muokkaa implements Komento {
             return;
         }
 
-        String uusi = io.lueRiviKysymyksella(">", "Kentän uusi sisältö:");
-        muokattava.getKyselyt().put(kentta, uusi);
-        io.tulostaRivi("");
+        kysyUusiSisalto(muokattava, kentta);
     }
 
     private String kysyMuokattava(Viite muokattava) {
@@ -60,6 +58,16 @@ public class Muokkaa implements Komento {
         }
 
         return rivit[kentta].split(":")[0];
+    }
+
+    private void kysyUusiSisalto(Viite muokattava, String kentta) {
+        String uusi = io.lueRiviKysymyksella(">", "Kentän uusi sisältö:");
+        muokattava.getKyselyt().put(kentta, uusi);
+        io.tulostaRivi("");
+
+        if (!db.paivita()) {
+            io.tulostaRivi("Virhe kirjoitettaessa tietokantaan");
+        }
     }
 
 }
