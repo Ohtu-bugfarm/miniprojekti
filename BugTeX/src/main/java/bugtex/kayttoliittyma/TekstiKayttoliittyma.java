@@ -38,12 +38,16 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
             } catch (NoSuchElementException ex) {
                 break;
             }
-
-            if (rivi.equalsIgnoreCase("poistu") || Integer.parseInt(rivi) == 10) {
-                break;
+            try {
+                if (rivi.equalsIgnoreCase("poistu") || Integer.parseInt(rivi) == 10) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                if (rivi.equalsIgnoreCase("poistu")) {
+                    break;
+                }
             }
             komennot.hae(rivi).suorita();
         }
     }
-
 }
