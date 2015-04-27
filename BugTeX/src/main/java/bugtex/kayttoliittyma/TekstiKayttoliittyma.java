@@ -39,7 +39,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
                 break;
             }
             try {
-                if (rivi.equalsIgnoreCase("poistu") || Integer.parseInt(rivi) == 10) {
+                if (Integer.parseInt(rivi) == 10) {
                     break;
                 }
             } catch (NumberFormatException e) {
