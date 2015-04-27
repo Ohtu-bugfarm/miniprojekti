@@ -25,5 +25,4 @@ public class KayttoliittymaTest {
     public void LiittymanLuontiOnnistuu() {
         assertEquals(TekstiKayttoliittyma.class, liittyma.getClass());
     }
-
 }

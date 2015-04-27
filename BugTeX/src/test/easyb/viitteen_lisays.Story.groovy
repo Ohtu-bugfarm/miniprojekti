@@ -69,20 +69,3 @@ scenario 'kirjaa ei lisätä jos käyttäjä keskeyttää toiminnon', {
     }
 }
 
-scenario 'virheellisellä komennolla käyttäjälle listataan mahdolliset komennot', {
-    given 'käyttäjä antaa komennon jota järjestelmä ei tunne', {
-        db = new MuistiTietokanta()
-        lukija = new Valelukija("foo")
-        ui = new TekstiKayttoliittyma(lukija, db)
-    }
-    
-    when 'virheellinen komento annettu', {
-        ui.run()
-    }
-    
-    then 'käyttäjälle näytetään lista käytössä olevista komennoista', {
-        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot lisaa, poista, hae, " +
-                                           "tarkastele, muokkaa, bibtex, listaa, listaaBibtex, " +
-                                           "generoiBibtex, poistu, help")
-    }
-}

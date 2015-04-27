@@ -54,6 +54,9 @@ public final class Komentotehdas {
         try {
             int luku = Integer.parseInt(syote);
             Komento komento = numeroKomennot.get(luku);
+            if (komento == null) {
+                komento = numeroKomennot.get(11);
+            }
             return komento;
         } catch (NumberFormatException e) {
             String operaatio = syote.toLowerCase().trim();

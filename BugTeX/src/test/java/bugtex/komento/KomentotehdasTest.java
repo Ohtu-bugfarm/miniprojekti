@@ -32,4 +32,14 @@ public class KomentotehdasTest {
         assertEquals(Help.KOMENTO, komennot.hae("abcd").toString());
     }
     
+    @Test
+    public void loytaaOlemassaOlevanNumeroKomennon() {
+        assertEquals(Lisaa.KOMENTO, komennot.hae("1").toString());
+    }
+    
+    @Test
+    public void virheellinenNumeroKomentoPalauttaaHelpKomennon() {
+        assertEquals(Help.KOMENTO, komennot.hae("22").toString());
+    }
+    
 }

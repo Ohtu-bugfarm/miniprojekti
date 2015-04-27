@@ -26,7 +26,7 @@ scenario 'viitettä ei muokata jos annetun kentän numero on virheellinen', {
     given 'käyttäjä keskeyttää toiminnan kesken muokkauksen', {
         db = new MuistiTietokanta()
         lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi",
-                                "muokkaa", "tekijaVuosinimi", "0", "2")
+                                "muokkaa", "tekijaVuosinimi", "0")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
     
