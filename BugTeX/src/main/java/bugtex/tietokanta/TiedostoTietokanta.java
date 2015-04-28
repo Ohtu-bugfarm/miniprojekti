@@ -39,17 +39,25 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
         try {
             myRefs.getParentFile().mkdirs();
             if (!myRefs.createNewFile()) {
-                fin = new FileInputStream(myRefs);
-                if (fin.available() > 0) {
-                    objReader = new ObjectInputStream(fin);
-                    viitteet = (ArrayList<Viite>) objReader.readObject();
-                    objReader.close();
-                }
-                fin.close();
+                viitteet = lueViitteet();
             }
         } catch (IOException ex) {
             Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private List<Viite> lueViitteet() throws IOException, ClassNotFoundException {
+        List<Viite> luetut = null;
+
+        fin = new FileInputStream(myRefs);
+        if (fin.available() > 0) {
+            objReader = new ObjectInputStream(fin);
+            luetut = (ArrayList<Viite>) objReader.readObject();
+            objReader.close();
+        }
+
+        fin.close();
+        return luetut;
     }
 
     @Override
@@ -97,11 +105,7 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
     @Override
     public boolean paivita() {
         try {
-            fout = new FileOutputStream(myRefs);
-            objWriter = new ObjectOutputStream(fout);
-            objWriter.writeObject(viitteet);
-            objWriter.close();
-            fout.close();
+            kirjoitaViitteetTiedostoon();
             return true;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TiedostoTietokanta.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,6 +114,14 @@ public class TiedostoTietokanta implements TietokantaRajapinta {
         }
 
         return false;
+    }
+
+    private void kirjoitaViitteetTiedostoon() throws FileNotFoundException, IOException {
+        fout = new FileOutputStream(myRefs);
+        objWriter = new ObjectOutputStream(fout);
+        objWriter.writeObject(viitteet);
+        objWriter.close();
+        fout.close();
     }
 
 }

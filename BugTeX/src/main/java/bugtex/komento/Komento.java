@@ -20,8 +20,7 @@ public abstract class Komento {
     }
 
     public Komento(IO io) {
-        this.io = io;
-        this.db = null;
+        this(io, null);
     }
 
     /**

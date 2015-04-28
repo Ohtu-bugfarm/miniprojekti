@@ -13,6 +13,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
 
     private final IO io;
     private final TietokantaRajapinta db;
+    private final Komentotehdas komennot;
 
     /**
      * Alustaa tekstikäyttöliittymän.
@@ -23,32 +24,36 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
     public TekstiKayttoliittyma(IO io, TietokantaRajapinta db) {
         this.io = io;
         this.db = db;
+        this.komennot = new Komentotehdas(io, db);
     }
 
     @Override
     public void run() {
-        Komentotehdas komennot = new Komentotehdas(io, db);
         io.tulostaRivi("Tervetuloa käyttämään BugTeXiä");
         komennot.hae("help").suorita();
 
         while (true) {
-            String rivi;
-            try {
-                rivi = io.lueRiviKysymyksella(">", "Anna komento:");
-            } catch (NoSuchElementException ex) {
+            if (!suoritaKomento()) {
                 break;
             }
-            try {
-                if (Integer.parseInt(rivi) == 10) {
-                    break;
-                }
-            } catch (NumberFormatException e) {
-                if (rivi.equalsIgnoreCase("poistu")) {
-                    break;
-                }
-            }
-            komennot.hae(rivi).suorita();
+
         }
     }
-    
+
+    private boolean suoritaKomento() {
+        String rivi;
+        try {
+            rivi = io.lueRiviKysymyksella(">", "Anna komento:");
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+
+        if (rivi.equalsIgnoreCase("poistu") || rivi.equals("10")) {
+            return false;
+        }
+
+        komennot.hae(rivi).suorita();
+        return true;
+    }
+
 }

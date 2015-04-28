@@ -56,3 +56,19 @@ scenario 'haku, joka ei täsmää viitteeseen, ei tulosta viitteen tietoja', {
         lukija.getTulostukset().shouldNotHave("Hakemaasi viitettä ei löytynyt!")
     }
 }
+
+scenario 'haku ei löydä viitteitä, joissa kenttä ei esiinny', {
+    given 'annettu komento Hae joka ei täsmää lisättyyn viitteeseen', {
+        db = new MuistiTietokanta()
+       lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi", "Hae", "tekijä", "Nimi")
+        ui = new TekstiKayttoliittyma(lukija, db)
+    }
+
+    when 'hakuehdot on annettu', {
+        ui.run()
+    }
+
+    then 'viitteen tiedot eivät tulostu käyttäjän tarkasteltaviksi', {
+        lukija.getTulostukset().shouldNotHave("Hakemaasi viitettä ei löytynyt!")
+    }
+}

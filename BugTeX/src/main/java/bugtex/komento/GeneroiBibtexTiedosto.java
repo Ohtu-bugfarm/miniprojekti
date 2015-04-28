@@ -16,6 +16,8 @@ class GeneroiBibtexTiedosto extends Komento {
 
     public final static String KOMENTO = "generoibibtex";
 
+    private TiedostoonKirjoittaja kirjoittaja;
+
     public GeneroiBibtexTiedosto(IO io, TietokantaRajapinta db) {
         super(io, db);
     }
@@ -26,12 +28,7 @@ class GeneroiBibtexTiedosto extends Komento {
     @Override
     public void suorita() {
         String tiedostoNimi = io.lueRiviKysymyksella(">", "Anna generoitavan tiedoston nimi") + ".bib";
-
-        TiedostoonKirjoittaja kirjoittaja;
-        try {
-            kirjoittaja = new TiedostoonKirjoittaja(tiedostoNimi);
-        } catch (IOException ex) {
-            io.tulostaRivi("Tiedoston avaaminen epäonnistui");
+        if (!alustaKirjoittaja(tiedostoNimi)) {
             return;
         }
 
@@ -41,12 +38,22 @@ class GeneroiBibtexTiedosto extends Komento {
             return;
         }
 
-        if (kirjoitaViitteet(kirjoittaja, kirjoitettavat)) {
+        if (kirjoitaViitteet(kirjoitettavat)) {
             io.tulostaRivi("Generointi onnistui\n");
         }
     }
 
-    private boolean kirjoitaViitteet(TiedostoonKirjoittaja kirjoittaja, List<Viite> kirjoitettavat) {
+    private boolean alustaKirjoittaja(String tiedostonimi) {
+        try {
+            kirjoittaja = new TiedostoonKirjoittaja(tiedostonimi);
+            return true;
+        } catch (IOException ex) {
+            io.tulostaRivi("Tiedoston avaaminen epäonnistui");
+            return false;
+        }
+    }
+
+    private boolean kirjoitaViitteet(List<Viite> kirjoitettavat) {
         for (Viite viite : kirjoitettavat) {
             if (!kirjoittaja.kirjoita(BibTeXMuotoilija.muotoile(viite) + "\n\n")) {
                 io.tulostaRivi("Tiedostoon kirjoittaminen epäonnistui");
@@ -54,10 +61,10 @@ class GeneroiBibtexTiedosto extends Komento {
             }
         }
 
-        return suljeKirjoittaja(kirjoittaja);
+        return suljeKirjoittaja();
     }
 
-    private boolean suljeKirjoittaja(TiedostoonKirjoittaja kirjoittaja) {
+    private boolean suljeKirjoittaja() {
         if (!kirjoittaja.suljeKirjoittaja()) {
             io.tulostaRivi("Tiedoston sulkeminen epäonnistui");
             return false;

@@ -33,21 +33,22 @@ class Muokkaa extends Komento {
         }
 
         String kentta = kysyMuokattava(muokattava);
-        if (kentta == null) {
-            return;
+        if (kentta != null) {
+            kysyUusiSisalto(muokattava, kentta);
         }
+    }
 
-        kysyUusiSisalto(muokattava, kentta);
+    private void tulostaVaihtoehdot(String[] rivit) {
+        for (int i = 1; i <= rivit.length; ++i) {
+            io.tulostaRivi(i + ") " + rivit[i - 1]);
+        }
     }
 
     private String kysyMuokattava(Viite muokattava) {
         String[] rivit = muokattava.toString().split("\n");
-        for (int i = 0; i < rivit.length; ++i) {
-            io.tulostaRivi((i + 1) + ") " + rivit[i]);
-        }
+        tulostaVaihtoehdot(rivit);
 
         io.tulostaRivi("");
-
         int kentta = io.lueNumeroKysymyksella(">", "Muokkaa kenttää numero:") - 1;
         if (kentta < 0 || kentta > rivit.length - 1) {
             io.tulostaRivi("Virheellinen kenttä!\n");

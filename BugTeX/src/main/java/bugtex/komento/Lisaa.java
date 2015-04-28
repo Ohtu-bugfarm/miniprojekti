@@ -39,7 +39,6 @@ class Lisaa extends Komento {
         }
 
         lisaaTietokantaan(lisattava);
-        io.tulostaRivi("");
     }
 
     private Viite maaritaViitteenTyyppi(String tyyppi) {
@@ -60,9 +59,9 @@ class Lisaa extends Komento {
     private void lisaaTietokantaan(Viite lisattava) {
         if (db.lisaa(lisattava)) {
             io.tulostaRivi("Viitteen lisäys onnistui");
-            io.tulostaRivi("Viitteen tunnus on " + lisattava.getTunnus());
+            io.tulostaRivi("Viitteen tunnus on " + lisattava.getTunnus() + "\n");
         } else {
-            io.tulostaRivi("Lisäys ei onnistunut");
+            io.tulostaRivi("Lisäys ei onnistunut\n");
         }
     }
 

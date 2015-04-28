@@ -35,3 +35,19 @@ scenario 'Kun käyttäjä ei tiedä komentoja hän voi pyytää listaa komennois
         lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot:")
     }
 }
+
+scenario 'Käyttäjä voi antaa komennot myös numerokäskyinä', {
+    given 'Käyttäjältä kysytään syötettä', {
+        db = new MuistiTietokanta()
+        lukija = new Valelukija("11")
+        ui = new TekstiKayttoliittyma(lukija, db)
+    }
+    
+    when 'jolloin hän pyytää listaa komennoista', {
+        ui.run()
+    }
+    
+    then 'jolloin ohjelma ohjelma palauttaa listan sen tuntemista komennoista', {
+        lukija.getTulostukset().shouldHave("Ohjelma tuntee komennot:")
+    }
+}

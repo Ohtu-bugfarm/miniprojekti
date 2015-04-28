@@ -16,7 +16,7 @@ scenario 'oikealla komennolla käyttäjä pääsee poistamaan viitteen', {
         ui.run()
     }
 
-    then 'viitteen tiedot tulostuvat käyttäjän tarkasteltavaksi', {
+    then 'poisto ilmoitetaan onnistuneeksi', {
         lukija.getTulostukset().shouldHave("Poistettiin viite tekijaVuosinimi")
     }
 }
