@@ -13,7 +13,7 @@ public class Julkaisu implements Viite, Serializable {
 
     private final Map<String, String> kyselyt;
 
-    private final static String[] KENTAT
+    public final static String[] KENTAT
             = {"tekijä", "nimi", "kirjan nimi", "vuosi"};
 
     /**
@@ -40,10 +40,6 @@ public class Julkaisu implements Viite, Serializable {
      */
     public Julkaisu(Map<String, String> kyselyt) {
         this.kyselyt = kyselyt;
-    }
-
-    public static String[] getKentat() {
-        return KENTAT;
     }
 
     @Override

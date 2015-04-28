@@ -4,17 +4,15 @@ import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
 import bugtex.viite.Viite;
 import bugtex.bibtex.BibTeXMuotoilija;
+
 import java.util.List;
 
 /**
  * Listaa kaikki viitteet bibtex-muodossa.
  */
-class ListaaBibtex implements Komento {
+class ListaaBibtex extends Komento {
 
     public final static String KOMENTO = "listaabibtex";
-
-    private final IO io;
-    private final TietokantaRajapinta db;
 
     /**
      * Alustaa ListaaBibtex-komennon.
@@ -23,8 +21,7 @@ class ListaaBibtex implements Komento {
      * @param db Käytettävä tietokanta-luokka
      */
     public ListaaBibtex(IO io, TietokantaRajapinta db) {
-        this.io = io;
-        this.db = db;
+        super(io, db);
     }
 
     @Override

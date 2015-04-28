@@ -13,7 +13,7 @@ public class Sekalainen implements Viite, Serializable {
 
     private final Map<String, String> kyselyt;
 
-    private final static String[] KENTAT
+    public final static String[] KENTAT
             = {"tekijä", "nimi", "julkaisutyyppi", "kuukausi", "vuosi", "huomautus"};
 
     /**
@@ -26,10 +26,10 @@ public class Sekalainen implements Viite, Serializable {
      * @param vuosi lähteen julkaisuvuosi
      * @param huomautus muuta infoa
      */
-    
+
     public Sekalainen(String tekija, String nimi, String julkaisutyyppi, String kuukausi, String vuosi, String huomautus) {
         this.kyselyt = new TreeMap<String, String>();
-        
+
         this.kyselyt.put("tekijä", tekija);
         this.kyselyt.put("nimi", nimi);
         this.kyselyt.put("julkaisutyyppi", julkaisutyyppi);
@@ -37,19 +37,15 @@ public class Sekalainen implements Viite, Serializable {
         this.kyselyt.put("vuosi", vuosi);
         this.kyselyt.put("huomautus", huomautus);
     }
-    
+
     /**
      * Luo uuden Sekalainen olion
-     * 
+     *
      */
     public Sekalainen(Map<String, String> kyselyt) {
         this.kyselyt = kyselyt;
     }
-    
-    public static String[] getKentat() {
-        return KENTAT;
-    }
-    
+
     @Override
     public Map<String, String> getKyselyt() {
         return this.kyselyt;
@@ -59,7 +55,7 @@ public class Sekalainen implements Viite, Serializable {
     public String getTyyppi() {
         return TYYPPI;
     }
-    
+
     @Override
     public String getTunnus() {
         if (kyselyt.get("tunnus") != null) {
@@ -69,11 +65,11 @@ public class Sekalainen implements Viite, Serializable {
         return ViiteUtils.ensimmainenSana(getTekija(), ",") + getVuosi() +
                ViiteUtils.ensimmainenSana(getNimi(), " ");
     }
-    
+
     public String getTekija() {
         return kyselyt.get("tekijä");
     }
-    
+
     public String getNimi() {
         return kyselyt.get("nimi");
     }
@@ -85,15 +81,15 @@ public class Sekalainen implements Viite, Serializable {
     public String getKuukausi() {
         return kyselyt.get("kuukausi");
     }
-    
+
     public String getVuosi() {
         return kyselyt.get("vuosi");
     }
-    
+
     public String getHuomautus() {
         return kyselyt.get("huomautus");
     }
-    
+
     @Override
     public String toString() {
         String s = "tunnus: " + getTunnus() + "\n";
@@ -109,14 +105,14 @@ public class Sekalainen implements Viite, Serializable {
     @Override
     public Map<String, String> koodaus() {
         Map<String, String> koodit = new TreeMap<String, String>();
-        
+
         koodit.put("author", kyselyt.get("tekijä"));
         koodit.put("title", kyselyt.get("nimi"));
         koodit.put("howpublished", kyselyt.get("julkaisutyyppi"));
         koodit.put("month", kyselyt.get("kuukausi"));
         koodit.put("year", kyselyt.get("vuosi"));
         koodit.put("note", kyselyt.get("huomautus"));
-        
+
         return koodit;
     }
 

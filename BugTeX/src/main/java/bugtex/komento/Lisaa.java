@@ -14,12 +14,9 @@ import java.util.TreeMap;
 /**
  * Komento viitteen lisäämiselle.
  */
-class Lisaa implements Komento {
+class Lisaa extends Komento {
 
     public final static String KOMENTO = "lisaa";
-
-    private final IO io;
-    private final TietokantaRajapinta db;
 
     /**
      * Alustaa lisää-komennon.
@@ -28,55 +25,51 @@ class Lisaa implements Komento {
      * @param db Käytettävä tietokanta-luokka
      */
     public Lisaa(IO io, TietokantaRajapinta db) {
-        this.io = io;
-        this.db = db;
+        super(io, db);
     }
 
     @Override
     public void suorita() {
         String tyyppi = io.lueRiviKysymyksella(">", "viitteen tyyppi? (kirja/artikkeli/julkaisu/sekalainen)");
 
-        Viite viite;
-        switch (tyyppi) {
-            case "kirja":
-                viite = lisaaKirja();
-                break;
-            case "artikkeli":
-                viite = lisaaArtikkeli();
-                break;
-            case "julkaisu":
-                viite = lisaaJulkaisu();
-                break;
-            case "sekalainen":
-                viite = lisaaSekalainen();
-                break;
-            default:
-                io.tulostaRivi("Virheellinen viitetyyppi\n");
-                return;
-        }
-
-        if (viite == null) {
+        Viite lisattava = maaritaViitteenTyyppi(tyyppi);
+        if (lisattava == null) {
+            io.tulostaRivi("Virheellinen viitetyyppi\n");
             return;
         }
 
-        if (db.lisaa(viite)) {
+        lisaaTietokantaan(lisattava);
+        io.tulostaRivi("");
+    }
+
+    private Viite maaritaViitteenTyyppi(String tyyppi) {
+        switch (tyyppi) {
+            case "kirja":
+                return lisaaKirja();
+            case "artikkeli":
+                return lisaaArtikkeli();
+            case "julkaisu":
+                return lisaaJulkaisu();
+            case "sekalainen":
+                return lisaaSekalainen();
+            default:
+                return null;
+        }
+    }
+
+    private void lisaaTietokantaan(Viite lisattava) {
+        if (db.lisaa(lisattava)) {
             io.tulostaRivi("Viitteen lisäys onnistui");
-            io.tulostaRivi("Viitteen tunnus on " + viite.getTunnus());
+            io.tulostaRivi("Viitteen tunnus on " + lisattava.getTunnus());
         } else {
             io.tulostaRivi("Lisäys ei onnistunut");
         }
-
-        io.tulostaRivi("");
     }
 
     private Map<String, String> kysyKentat(String[] kentat) {
         Map<String, String> kyselyt = new TreeMap<>();
         for (String kentta : kentat) {
             String vastaus = io.lueRiviKysymyksella(">", kentta + "?");
-            if (vastaus.equalsIgnoreCase("keskeyta")) {
-                io.tulostaRivi("Keskeytettiin lisäys");
-                return null;
-            }
 
             if (vastaus.isEmpty()) {
                 kyselyt.put(kentta, null);
@@ -89,38 +82,22 @@ class Lisaa implements Komento {
     }
 
     private Viite lisaaKirja() {
-        Map<String, String> kyselyt = kysyKentat(Kirja.getKentat());
-        if (kyselyt == null) {
-            return null;
-        }
-
+        Map<String, String> kyselyt = kysyKentat(Kirja.KENTAT);
         return new Kirja(kyselyt);
     }
 
     private Viite lisaaArtikkeli() {
-        Map<String, String> kyselyt = kysyKentat(Artikkeli.getKentat());
-        if (kyselyt == null) {
-            return null;
-        }
-
+        Map<String, String> kyselyt = kysyKentat(Artikkeli.KENTAT);
         return new Artikkeli(kyselyt);
     }
 
     private Viite lisaaJulkaisu() {
-        Map<String, String> kyselyt = kysyKentat(Julkaisu.getKentat());
-        if (kyselyt == null) {
-            return null;
-        }
-
+        Map<String, String> kyselyt = kysyKentat(Julkaisu.KENTAT);
         return new Julkaisu(kyselyt);
     }
 
     private Viite lisaaSekalainen() {
-        Map<String, String> kyselyt = kysyKentat(Sekalainen.getKentat());
-        if (kyselyt == null) {
-            return null;
-        }
-
+        Map<String, String> kyselyt = kysyKentat(Sekalainen.KENTAT);
         return new Sekalainen(kyselyt);
     }
 

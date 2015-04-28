@@ -7,12 +7,9 @@ import bugtex.viite.Viite;
 /**
  * Komento viitteen muokkaamiselle.
  */
-class Muokkaa implements Komento {
+class Muokkaa extends Komento {
 
     public final static String KOMENTO = "muokkaa";
-
-    private final IO io;
-    private final TietokantaRajapinta db;
 
     /**
      * Alustaa Muokkaa-komennon.
@@ -21,17 +18,17 @@ class Muokkaa implements Komento {
      * @param db Käytettävä tietokanta-luokka
      */
     public Muokkaa(IO io, TietokantaRajapinta db) {
-        this.io = io;
-        this.db = db;
+        super(io, db);
     }
 
     @Override
     public void suorita() {
-        String tunnus = io.lueRiviKysymyksella(">", "viitteen tunnus?");
-        Viite muokattava = db.haeTunnuksella(tunnus);
+        tulostaViitteidenTunnukset();
+        int nro = io.lueNumeroKysymyksella(">", "muokattavan viitteen numero?");
+        Viite muokattava = haeViiteNumerolla(nro);
 
         if (muokattava == null) {
-            io.tulostaRivi("Hakemaasi viitettä ei löytynyt!");
+            io.tulostaRivi("Hakemaasi viitettä ei löytynyt!\n");
             return;
         }
 

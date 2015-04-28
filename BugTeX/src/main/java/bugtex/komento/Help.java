@@ -5,11 +5,23 @@ import bugtex.IO.IO;
 /**
  * Aputekstin näyttävä komento.
  */
-class Help implements Komento {
+class Help extends Komento {
 
     public final static String KOMENTO = "help";
 
-    private final IO io;
+    private final String[] komennot = {
+        Lisaa.KOMENTO,
+        Poista.KOMENTO,
+        Hae.KOMENTO,
+        Tarkastele.KOMENTO,
+        Muokkaa.KOMENTO,
+        TarkasteleBibtex.KOMENTO,
+        Listaa.KOMENTO,
+        ListaaBibtex.KOMENTO,
+        GeneroiBibtexTiedosto.KOMENTO,
+        "poistu",
+        Help.KOMENTO
+    };
 
     /**
      * Alustaa Help-komennon.
@@ -17,14 +29,18 @@ class Help implements Komento {
      * @param io Käytettävä IO-luokka
      */
     public Help(IO io) {
-        this.io = io;
+        super(io);
     }
 
     @Override
     public void suorita() {
-        io.tulostaRivi("Ohjelma tuntee komennot lisaa(1), poista(2), hae(3), tarkastele(4), "
-                     + "muokkaa(5), bibtex(6), listaa(7), listaaBibtex(8), generoiBibtex(9), "
-                     + "poistu(10), help(11)\n");
+        io.tulostaRivi("Ohjelma tuntee komennot:");
+
+        for (int i = 1; i <= komennot.length; ++i) {
+            io.tulostaRivi(i + ") " + komennot[i - 1]);
+        }
+
+        io.tulostaRivi("");
     }
 
     @Override

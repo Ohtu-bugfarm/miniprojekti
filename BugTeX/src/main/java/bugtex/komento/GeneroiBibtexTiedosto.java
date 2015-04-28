@@ -12,16 +12,12 @@ import java.util.List;
 /**
  * Komento BiBTeX-tiedoston generoinnille.
  */
-public class GeneroiBibtexTiedosto implements Komento {
+class GeneroiBibtexTiedosto extends Komento {
 
     public final static String KOMENTO = "generoibibtex";
 
-    private final TietokantaRajapinta db;
-    private final IO io;
-
     public GeneroiBibtexTiedosto(IO io, TietokantaRajapinta db) {
-        this.io = io;
-        this.db = db;
+        super(io, db);
     }
 
     /**
@@ -58,6 +54,10 @@ public class GeneroiBibtexTiedosto implements Komento {
             }
         }
 
+        return suljeKirjoittaja(kirjoittaja);
+    }
+
+    private boolean suljeKirjoittaja(TiedostoonKirjoittaja kirjoittaja) {
         if (!kirjoittaja.suljeKirjoittaja()) {
             io.tulostaRivi("Tiedoston sulkeminen epäonnistui");
             return false;

@@ -8,12 +8,9 @@ import java.util.List;
 /**
  * Komento viitteiden hakemiselle kenttien sisältöjen perusteella.
  */
-class Hae implements Komento {
+class Hae extends Komento {
 
     public final static String KOMENTO = "hae";
-
-    private final IO io;
-    private final TietokantaRajapinta db;
 
     /**
      * Alustaa Hae-komennon.
@@ -22,18 +19,12 @@ class Hae implements Komento {
      * @param db Käytettävä tietokanta-luokka
      */
     public Hae(IO io, TietokantaRajapinta db) {
-        this.io = io;
-        this.db = db;
+        super(io, db);
     }
 
     @Override
     public void suorita() {
         List<Viite> haettava = db.annaViitteet();
-
-        if (haettava.isEmpty()) {
-            io.tulostaRivi("Viitteitä ei löytynyt\n");
-        }
-
         String kentta = io.lueRiviKysymyksella(">", "haettava kenttä?");
         String etsittava = io.lueRiviKysymyksella(">", "kentän sisältö?");
 

@@ -23,8 +23,8 @@ public class TiedostoonKirjoittaja {
     }
 
     /**
-     * Kirjoittaa konstruktorissa määriteltyyn tiedostoon parametrina annetun.
-     * Stringin
+     * Kirjoittaa konstruktorissa määriteltyyn tiedostoon parametrina annetun
+     * Stringin.
      *
      * @param teksti tiedostoon kirjoitettava teksti.
      * @return true jos kirjoittaminen onnistuu, false muuten

@@ -50,4 +50,5 @@ public class TekstiKayttoliittyma implements Kayttoliittyma, Runnable {
             komennot.hae(rivi).suorita();
         }
     }
+    
 }

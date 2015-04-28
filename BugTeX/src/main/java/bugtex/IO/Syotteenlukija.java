@@ -12,11 +12,7 @@ public class Syotteenlukija implements IO {
     @Override
     public String lueRivi(String etuTeksti) {
         System.out.print(etuTeksti + " ");
-        if (lukija.hasNextInt()) {
-            return String.valueOf(lukija.nextLine());
-        } else {
-            return lukija.nextLine();
-        }
+        return lukija.nextLine();
     }
 
     @Override
@@ -34,7 +30,7 @@ public class Syotteenlukija implements IO {
                 numero = Integer.parseInt(id);
                 break;
             } catch (NumberFormatException e) {
-                tulostaRivi("et antanut numeroa");
+                tulostaRivi("Et antanut numeroa!");
             }
         }
 

@@ -13,7 +13,7 @@ public class Artikkeli implements Viite, Serializable {
 
     private final Map<String, String> kyselyt;
 
-    private final static String[] KENTAT
+    public final static String[] KENTAT
             = {"tekijä", "nimi", "lehti", "vuosi", "nide"};
 
     /**
@@ -43,10 +43,6 @@ public class Artikkeli implements Viite, Serializable {
         this.kyselyt = kyselyt;
     }
 
-    public static String[] getKentat() {
-        return KENTAT;
-    }
-    
     @Override
     public String getTyyppi() {
         return TYYPPI;

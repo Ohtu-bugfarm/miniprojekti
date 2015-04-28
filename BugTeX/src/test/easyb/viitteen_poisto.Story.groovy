@@ -8,7 +8,7 @@ description 'Käyttäjä voi poistaa lisätyn viiteen'
 scenario 'oikealla komennolla käyttäjä pääsee poistamaan viitteen', {
     given 'annettu komento Poista viitteen lisäyksen jälkeen', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi", "poista", "tekijaVuosinimi")
+        lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi", "poista", "1")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -24,7 +24,7 @@ scenario 'oikealla komennolla käyttäjä pääsee poistamaan viitteen', {
 scenario 'väärällä id:llä poisto tuottaa virheilmoituksen', {
     given 'annettu komento Poista id:llä jota ei ole olemassa', {
         db = new MuistiTietokanta()
-        lukija = new Valelukija("poista", "3")
+        lukija = new Valelukija("poista", "2")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 

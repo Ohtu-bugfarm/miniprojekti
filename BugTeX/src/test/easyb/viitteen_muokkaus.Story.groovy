@@ -9,7 +9,7 @@ scenario 'oikealla komennolla käyttäjä pääsee muokkaamaan viitettä', {
     given 'annettu komento Lisaa', {
         db = new MuistiTietokanta()
         lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi",
-                                "muokkaa", "tekijaVuosinimi", "1", "2", "listaa")
+                                "muokkaa", "1", "1", "2", "listaa")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
 
@@ -26,7 +26,7 @@ scenario 'viitettä ei muokata jos annetun kentän numero on virheellinen', {
     given 'käyttäjä keskeyttää toiminnan kesken muokkauksen', {
         db = new MuistiTietokanta()
         lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi",
-                                "muokkaa", "tekijaVuosinimi", "0")
+                                "muokkaa", "1", "0")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
     
@@ -43,7 +43,7 @@ scenario 'viitettä ei muokata jos annettu viitteen tunnus on virheellinen', {
     given 'käyttäjä keskeyttää toiminnan kesken lisäyksen', {
         db = new MuistiTietokanta()
         lukija = new Valelukija("lisaa", "kirja", "Tekija", "Nimi", "Julkaisija", "Vuosi",
-                                "muokkaa", "1")
+                                "muokkaa", "0")
         ui = new TekstiKayttoliittyma(lukija, db)
     }
     

@@ -2,16 +2,14 @@ package bugtex.komento;
 
 import bugtex.IO.IO;
 import bugtex.tietokanta.TietokantaRajapinta;
+import bugtex.viite.Viite;
 
 /**
  * Komento viitteen poistamiselle.
  */
-class Poista implements Komento {
+class Poista extends Komento {
 
     public final static String KOMENTO = "poista";
-
-    private final IO io;
-    private final TietokantaRajapinta db;
 
     /**
      * Alustaa poista-komennon.
@@ -20,18 +18,19 @@ class Poista implements Komento {
      * @param db Käytettävä tietokanta-luokka
      */
     public Poista(IO io, TietokantaRajapinta db) {
-        this.io = io;
-        this.db = db;
+        super(io, db);
     }
 
     @Override
     public void suorita() {
-        String poistettavaId = io.lueRiviKysymyksella(">", "Poistettavan viitteen id? ");
+        tulostaViitteidenTunnukset();
+        int nro = io.lueNumeroKysymyksella(">", "poistettavan viitteen numero?");
+        Viite poistettava = haeViiteNumerolla(nro);
 
-        if (db.poistaTunnuksella(poistettavaId)) {
-            io.tulostaRivi("Poistettiin viite " + poistettavaId);
+        if (poistettava != null && db.poistaTunnuksella(poistettava.getTunnus())) {
+            io.tulostaRivi("Poistettiin viite " + poistettava.getTunnus() + "\n");
         } else {
-            io.tulostaRivi("Poisto ei onnistunut");
+            io.tulostaRivi("Poisto ei onnistunut\n");
         }
     }
 
