@@ -18,6 +18,12 @@ class GeneroiBibtexTiedosto extends Komento {
 
     private TiedostoonKirjoittaja kirjoittaja;
 
+    /**
+     * Alustaa GeneroiBibtexTiedosto-komennon.
+     *
+     * @param io Käytettävä IO-luokka
+     * @param db Käytettävä tietokanta-luokka
+     */
     public GeneroiBibtexTiedosto(IO io, TietokantaRajapinta db) {
         super(io, db);
     }

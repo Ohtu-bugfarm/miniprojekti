@@ -32,11 +32,10 @@ public class TiedostoonKirjoittaja {
     public boolean kirjoita(String teksti) {
         try {
             kirjoittaja.write(teksti);
+            return true;
         } catch (IOException ex) {
             return false;
         }
-
-        return true;
     }
 
     /**
@@ -47,11 +46,10 @@ public class TiedostoonKirjoittaja {
     public boolean suljeKirjoittaja() {
         try {
             kirjoittaja.close();
+            return true;
         } catch (IOException ex) {
             return false;
         }
-
-        return true;
     }
 
 }

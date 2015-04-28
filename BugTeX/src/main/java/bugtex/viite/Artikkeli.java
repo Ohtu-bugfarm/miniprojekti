@@ -36,8 +36,7 @@ public class Artikkeli implements Viite, Serializable {
     }
 
     /**
-     * Luo uuden Artikkeli olion
-     *
+     * Luo uuden Artikkeli olion.
      */
     public Artikkeli(Map<String, String> kyselyt) {
         this.kyselyt = kyselyt;
@@ -85,14 +84,14 @@ public class Artikkeli implements Viite, Serializable {
 
     @Override
     public String toString() {
-        String s = "tunnus: " + getTunnus() + "\n";
+        String muotoiltu = "tunnus: " + getTunnus() + "\n";
         for (String kentta : KENTAT) {
             if (kyselyt.get(kentta) != null) {
-                s += kentta + ": " + kyselyt.get(kentta) + "\n";
+                muotoiltu += kentta + ": " + kyselyt.get(kentta) + "\n";
             }
         }
 
-        return s;
+        return muotoiltu;
     }
 
     @Override

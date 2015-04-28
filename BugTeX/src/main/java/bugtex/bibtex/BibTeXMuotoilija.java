@@ -46,9 +46,10 @@ public class BibTeXMuotoilija {
     }
 
     private static String korjaaMuotoilu(String merkkijono) {
-        // näistä pitäisi myöhemmin tehdä esim. HashMap
         merkkijono = merkkijono.replaceAll("ä", "\\\\\"{a}");
         merkkijono = merkkijono.replaceAll("ö", "\\\\\"{o}");
+        merkkijono = merkkijono.replaceAll("å", "\\\\\r{a}");
+        merkkijono = merkkijono.replaceAll("é", "\\\\\'{e}");
 
         merkkijono = merkkijono.replaceAll("#", "\\\\#");
         merkkijono = merkkijono.replaceAll("%", "\\\\%");

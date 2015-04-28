@@ -22,6 +22,13 @@ public interface IO {
      */
     String lueRiviKysymyksella(String etuTeksti, String kysymys);
 
+    /**
+     * Esitä annettu kysymys ja lue numero syötteestä.
+     *
+     * @param etuTeksti lukemista ennen tulostettava teksti
+     * @param kysymys esitettävä kysymys
+     * @return luettu numero
+     */
     int lueNumeroKysymyksella(String etuTeksti, String kysymys);
 
     /**

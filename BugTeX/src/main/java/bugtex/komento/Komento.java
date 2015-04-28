@@ -14,11 +14,22 @@ public abstract class Komento {
     protected final IO io;
     protected final TietokantaRajapinta db;
 
+    /**
+     * Alustaa Komento-olion.
+     *
+     * @param io Käytettävä IO-luokka
+     * @param db Käytettävä tietokanta-luokka
+     */
     public Komento(IO io, TietokantaRajapinta db) {
         this.io = io;
         this.db = db;
     }
 
+    /**
+     * Alustaa Komento-olion.
+     *
+     * @param io Käytettävä IO-luokka
+     */
     public Komento(IO io) {
         this(io, null);
     }
@@ -28,6 +39,9 @@ public abstract class Komento {
      */
     public abstract void suorita();
 
+    /**
+     * Tulostaa tietokannassa olevien viitteiden tunnukset.
+     */
     protected void tulostaViitteidenTunnukset() {
         List<Viite> viitteet = db.annaViitteet();
 
