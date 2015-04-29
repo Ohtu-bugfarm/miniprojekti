@@ -11,3 +11,5 @@
 [Burndown](https://docs.google.com/spreadsheets/d/12kZkfmj_N9J66UR2U48YFMtsBQ0T9RR4tDveIG8110k/edit#gid=0)
 
 [Jenkins](http://ohtu.jamo.io/view/k2015-ohtu-miniprojektit/job/ohtu-bugfarm/)
+
+[LOPPURAPORTTI](https://docs.google.com/document/d/1Zt_mozYNXLa-IogP0RtpZJN39Xwg69YdfczTSdIgkWA/edit)
